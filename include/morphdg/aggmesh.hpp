@@ -1,5 +1,6 @@
 #pragma once
 
+#include <Kokkos_Core.hpp>
 #include <algorithm>
 #include <fstream>
 #include <iostream>
@@ -263,14 +264,14 @@ struct AggMesh {
   void print_mesh_info(int print_elem = 1) const {
     std::cout << "\n=== AggMesh Info ===\n";
 
-    // Nodes 
+    // Nodes
     std::cout << "\n--- Nodes (" << num_nodes() << ") ---\n";
     for (int i = 0; i < num_nodes(); ++i) {
       std::cout << "Node " << i << ": (" << h_nodes[2 * i] << ", "
                 << h_nodes[2 * i + 1] << ")\n";
     }
 
-    // Triangles 
+    // Triangles
     std::cout << "\n--- Triangles (" << num_triangles() << ") ---\n";
     for (int t = 0; t < num_triangles(); ++t) {
       std::cout << "Tri " << t << ": [" << h_triangles[3 * t + 0] << ", "
@@ -295,9 +296,8 @@ struct AggMesh {
       std::cout << "]\n";
     }
 
-    // Elements 
-    if (print_elem ==
-        1) { 
+    // Elements
+    if (print_elem == 1) {
       std::cout << "\n--- Elements (" << num_elements() << ") ---\n";
       for (int p = 0; p < num_elements(); ++p) {
         int start = h_t_offsets[p];
@@ -388,7 +388,8 @@ struct AggMesh {
   //         << x[1] << "," << y[1] << "], [" << x[2] << "," << y[2]
   //         << "]], closed=True))\n";
   //   }
-  //   out << "p = PatchCollection(patches, facecolor='none', edgecolors='gray', "
+  //   out << "p = PatchCollection(patches, facecolor='none', edgecolors='gray',
+  //   "
   //          "linewidths=0.5, zorder=1)\n";
   //   out << "ax.add_collection(p)\n\n";
 
@@ -400,8 +401,10 @@ struct AggMesh {
   //     int nB = h_faces[4 * f + 3];
   //     double ax_coord = h_nodes[2 * nA], ay_coord = h_nodes[2 * nA + 1];
   //     double bx_coord = h_nodes[2 * nB], by_coord = h_nodes[2 * nB + 1];
-  //     out << "ax.plot([" << ax_coord << ", " << bx_coord << "], [" << ay_coord
-  //         << ", " << by_coord << "], color='black', linewidth=2.5, zorder=3)\n";
+  //     out << "ax.plot([" << ax_coord << ", " << bx_coord << "], [" <<
+  //     ay_coord
+  //         << ", " << by_coord << "], color='black', linewidth=2.5,
+  //         zorder=3)\n";
   //   }
 
   //   out << "\n# Draw External Boundary Faces\n";
@@ -411,8 +414,10 @@ struct AggMesh {
   //     int nB = h_bnd_faces[4 * f + 3];
   //     double ax_coord = h_nodes[2 * nA], ay_coord = h_nodes[2 * nA + 1];
   //     double bx_coord = h_nodes[2 * nB], by_coord = h_nodes[2 * nB + 1];
-  //     out << "ax.plot([" << ax_coord << ", " << bx_coord << "], [" << ay_coord
-  //         << ", " << by_coord << "], color='black', linewidth=2.5, zorder=3)\n";
+  //     out << "ax.plot([" << ax_coord << ", " << bx_coord << "], [" <<
+  //     ay_coord
+  //         << ", " << by_coord << "], color='black', linewidth=2.5,
+  //         zorder=3)\n";
   //   }
 
   //   // 3. Draw Labels (Polygon IDs at Centroids)
@@ -449,7 +454,7 @@ struct AggMesh {
   //   out << "\n# Auto-scale and Show\n";
   //   out << "ax.autoscale_view()\n";
   //   out << "ax.set_aspect('equal')\n";
-  //   out << "plt.axis('off')\n"; 
+  //   out << "plt.axis('off')\n";
   //   out << "plt.title('Discontinuous Galerkin Agglomerated Mesh')\n";
   //   out << "plt.savefig('mesh.png')\n";
   //   out.close();
@@ -564,5 +569,73 @@ struct AggMesh {
     create_faces(tri_to_elem);
 
     reorder_by_agglomeration(tri_to_elem, q_elem);
+  }
+
+  // ==============================================================================
+  // KOKKOS DEVICE MEMORY (GPU/OpenMP)
+  // ==============================================================================
+  Kokkos::View<double **, Kokkos::LayoutLeft,
+               Kokkos::DefaultExecutionSpace::memory_space>
+      d_nodes;
+  Kokkos::View<int **, Kokkos::LayoutLeft,
+               Kokkos::DefaultExecutionSpace::memory_space>
+      d_triangles;
+  Kokkos::View<int *, Kokkos::LayoutLeft,
+               Kokkos::DefaultExecutionSpace::memory_space>
+      d_t_offsets;
+  Kokkos::View<double **, Kokkos::LayoutLeft,
+               Kokkos::DefaultExecutionSpace::memory_space>
+      d_bboxes;
+
+  void push_to_device() {
+    int n_nodes = num_nodes();
+    int n_tris = num_triangles();
+    int n_polys = num_elements();
+
+    // 1. Allocate Device Memory
+    // d_nodes = Kokkos::View<double **>("d_nodes", n_nodes, 2);
+    // d_triangles = Kokkos::View<int **>("d_triangles", n_tris, 3);
+    // d_t_offsets = Kokkos::View<int *>("d_t_offsets", h_t_offsets.size());
+    // d_bboxes = Kokkos::View<double **>("d_bboxes", n_polys, 4);
+    
+// 1. Allocate Device Memory (Forcing exact type match using decltype)
+    d_nodes = decltype(d_nodes)("d_nodes", n_nodes, 2);
+    d_triangles = decltype(d_triangles)("d_triangles", n_tris, 3);
+    d_t_offsets = decltype(d_t_offsets)("d_t_offsets", h_t_offsets.size());
+    d_bboxes = decltype(d_bboxes)("d_bboxes", n_polys, 4);    
+
+    // 2. Create Host Mirrors
+    auto mirror_nodes = Kokkos::create_mirror_view(d_nodes);
+    auto mirror_tris = Kokkos::create_mirror_view(d_triangles);
+    auto mirror_toff = Kokkos::create_mirror_view(d_t_offsets);
+    auto mirror_bb = Kokkos::create_mirror_view(d_bboxes);
+
+    // 3. Populate Mirrors from standard std::vectors
+    for (int i = 0; i < n_nodes; ++i) {
+      mirror_nodes(i, 0) = h_nodes[2 * i + 0];
+      mirror_nodes(i, 1) = h_nodes[2 * i + 1];
+    }
+    for (int i = 0; i < n_tris; ++i) {
+      mirror_tris(i, 0) = h_triangles[3 * i + 0];
+      mirror_tris(i, 1) = h_triangles[3 * i + 1];
+      mirror_tris(i, 2) = h_triangles[3 * i + 2];
+    }
+    for (size_t i = 0; i < h_t_offsets.size(); ++i) {
+      mirror_toff(i) = h_t_offsets[i];
+    }
+    for (int i = 0; i < n_polys; ++i) {
+      mirror_bb(i, 0) = h_bboxes[4 * i + 0];
+      mirror_bb(i, 1) = h_bboxes[4 * i + 1];
+      mirror_bb(i, 2) = h_bboxes[4 * i + 2];
+      mirror_bb(i, 3) = h_bboxes[4 * i + 3];
+    }
+
+    // 4. Deep copy the Host Mirrors to the Device Views
+    Kokkos::deep_copy(d_nodes, mirror_nodes);
+    Kokkos::deep_copy(d_triangles, mirror_tris);
+    Kokkos::deep_copy(d_t_offsets, mirror_toff);
+    Kokkos::deep_copy(d_bboxes, mirror_bb);
+
+    
   }
 };

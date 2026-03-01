@@ -1,5 +1,5 @@
 (undo-tree-save-format-version . 1)
-"d12cc76e80aa5557e6ed75a601c1fc6be3574a74"
+"d96c1b0110a7d84dc11ff4602907b1224d405b20"
 [nil nil nil nil (27042 62348 941341 920000) 0 nil]
 ([nil nil ((1 . 2) (t 27042 61666 341509 96000)) nil (27042 62348 941339 56000) 0 nil])
 ([nil nil ((#("i" 0 1 (fontified t)) . -1) (undo-tree-id0 . -1) (undo-tree-id1 . -1) (undo-tree-id2 . -1) 2) nil (27042 62348 941333 748000) 0 nil])
@@ -138,5 +138,6 @@ import numpy as np
 ([nil nil ((102 . 103) (t 27044 236 379393 55000)) nil (27044 5260 395371 476000) 0 nil])
 ([nil nil ((103 . 104) (t 27044 5260 397237 494000)) nil (27044 5266 129631 290000) 0 nil])
 ([nil nil ((nil rear-nonsticky nil 164 . 165) (nil fontified nil 104 . 165) (104 . 165)) nil (27044 5266 129621 792000) 0 nil])
-([nil current ((72 . 73) (t 27044 5266 132162 826000)) nil (27044 5270 112510 10000) 0 nil])
+([nil nil ((72 . 73) (t 27044 5266 132162 826000)) nil (27044 5270 112510 10000) 0 nil])
+([nil current ((apply -2 138 169 undo--wrap-and-run-primitive-undo 138 169 ((138 . 140) (t 27044 5270 114110 981000)))) nil (27044 31172 570410 179000) 0 nil])
 nil

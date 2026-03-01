@@ -58,6 +58,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
   /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/options.h \
   /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/pybind11.h \
   /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/pytypes.h \
+  /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/stl.h \
   /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/trampoline_self_life_support.h \
   /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/typing.h \
   /home/kesmarag/Code/morphdG/include/morphdg/aggmesh.hpp \
@@ -380,13 +381,17 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
   /usr/include/c++/15/bits/fstream.tcc \
   /usr/include/c++/15/bits/functexcept.h \
   /usr/include/c++/15/bits/functional_hash.h \
+  /usr/include/c++/15/bits/gslice.h \
+  /usr/include/c++/15/bits/gslice_array.h \
   /usr/include/c++/15/bits/hash_bytes.h \
   /usr/include/c++/15/bits/hashtable.h \
   /usr/include/c++/15/bits/hashtable_policy.h \
+  /usr/include/c++/15/bits/indirect_array.h \
   /usr/include/c++/15/bits/invoke.h \
   /usr/include/c++/15/bits/ios_base.h \
   /usr/include/c++/15/bits/istream.tcc \
   /usr/include/c++/15/bits/iterator_concepts.h \
+  /usr/include/c++/15/bits/list.tcc \
   /usr/include/c++/15/bits/locale_classes.h \
   /usr/include/c++/15/bits/locale_classes.tcc \
   /usr/include/c++/15/bits/locale_conv.h \
@@ -395,6 +400,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
   /usr/include/c++/15/bits/locale_facets_nonio.h \
   /usr/include/c++/15/bits/locale_facets_nonio.tcc \
   /usr/include/c++/15/bits/localefwd.h \
+  /usr/include/c++/15/bits/mask_array.h \
   /usr/include/c++/15/bits/max_size_type.h \
   /usr/include/c++/15/bits/memory_resource.h \
   /usr/include/c++/15/bits/memoryfwd.h \
@@ -426,6 +432,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
   /usr/include/c++/15/bits/shared_ptr.h \
   /usr/include/c++/15/bits/shared_ptr_atomic.h \
   /usr/include/c++/15/bits/shared_ptr_base.h \
+  /usr/include/c++/15/bits/slice_array.h \
   /usr/include/c++/15/bits/specfun.h \
   /usr/include/c++/15/bits/sstream.tcc \
   /usr/include/c++/15/bits/std_abs.h \
@@ -442,12 +449,15 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
   /usr/include/c++/15/bits/stl_iterator.h \
   /usr/include/c++/15/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/15/bits/stl_iterator_base_types.h \
+  /usr/include/c++/15/bits/stl_list.h \
   /usr/include/c++/15/bits/stl_map.h \
   /usr/include/c++/15/bits/stl_multimap.h \
+  /usr/include/c++/15/bits/stl_multiset.h \
   /usr/include/c++/15/bits/stl_numeric.h \
   /usr/include/c++/15/bits/stl_pair.h \
   /usr/include/c++/15/bits/stl_raw_storage_iter.h \
   /usr/include/c++/15/bits/stl_relops.h \
+  /usr/include/c++/15/bits/stl_set.h \
   /usr/include/c++/15/bits/stl_stack.h \
   /usr/include/c++/15/bits/stl_tempbuf.h \
   /usr/include/c++/15/bits/stl_tree.h \
@@ -469,6 +479,10 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
   /usr/include/c++/15/bits/uses_allocator.h \
   /usr/include/c++/15/bits/uses_allocator_args.h \
   /usr/include/c++/15/bits/utility.h \
+  /usr/include/c++/15/bits/valarray_after.h \
+  /usr/include/c++/15/bits/valarray_array.h \
+  /usr/include/c++/15/bits/valarray_array.tcc \
+  /usr/include/c++/15/bits/valarray_before.h \
   /usr/include/c++/15/bits/vector.tcc \
   /usr/include/c++/15/bits/version.h \
   /usr/include/c++/15/cassert \
@@ -515,6 +529,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
   /usr/include/c++/15/istream \
   /usr/include/c++/15/iterator \
   /usr/include/c++/15/limits \
+  /usr/include/c++/15/list \
   /usr/include/c++/15/locale \
   /usr/include/c++/15/map \
   /usr/include/c++/15/math.h \
@@ -534,6 +549,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
   /usr/include/c++/15/ranges \
   /usr/include/c++/15/ratio \
   /usr/include/c++/15/semaphore \
+  /usr/include/c++/15/set \
   /usr/include/c++/15/span \
   /usr/include/c++/15/sstream \
   /usr/include/c++/15/stack \
@@ -564,6 +580,8 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
   /usr/include/c++/15/unordered_map \
   /usr/include/c++/15/unordered_set \
   /usr/include/c++/15/utility \
+  /usr/include/c++/15/valarray \
+  /usr/include/c++/15/variant \
   /usr/include/c++/15/vector \
   /usr/include/c++/15/version \
   /usr/include/c++/15/x86_64-redhat-linux/bits/atomic_word.h \
@@ -951,8 +969,6 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 
 /usr/include/c++/15/x86_64-redhat-linux/bits/opt_random.h:
 
-/usr/include/c++/15/x86_64-redhat-linux/bits/messages_members.h:
-
 /usr/include/c++/15/x86_64-redhat-linux/bits/gthr.h:
 
 /usr/include/c++/15/x86_64-redhat-linux/bits/gthr-default.h:
@@ -1021,6 +1037,28 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 
 /usr/include/c++/15/system_error:
 
+/usr/include/c++/15/string_view:
+
+/usr/include/python3.12/cpython/pyctype.h:
+
+/usr/include/inttypes.h:
+
+/usr/include/c++/15/stop_token:
+
+/usr/include/c++/15/x86_64-redhat-linux/bits/c++config.h:
+
+/usr/include/c++/15/stdlib.h:
+
+/usr/include/c++/15/stack:
+
+/usr/include/c++/15/sstream:
+
+/usr/include/c++/15/set:
+
+/usr/include/c++/15/ranges:
+
+/usr/include/c++/15/pstl/glue_numeric_defs.h:
+
 /usr/include/bits/errno.h:
 
 /opt/kokkos/include/KokkosCore_Config_SetupBackend.hpp:
@@ -1039,6 +1077,8 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 
 /usr/include/sys/single_threaded.h:
 
+/usr/include/c++/15/valarray:
+
 /usr/include/asm-generic/errno.h:
 
 /usr/include/alloca.h:
@@ -1054,6 +1094,10 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 /usr/include/c++/15/array:
 
 /usr/include/asm/unistd_64.h:
+
+/usr/include/c++/15/stdexcept:
+
+/opt/kokkos/include/mdspan/mdspan.hpp:
 
 /opt/kokkos/include/impl/Kokkos_PartitionSpace.hpp:
 
@@ -1193,6 +1237,8 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 
 /usr/include/c++/15/bits/cxxabi_forced.h:
 
+/usr/include/c++/15/bits/valarray_before.h:
+
 /usr/include/c++/15/compare:
 
 /opt/kokkos/include/impl/Kokkos_GraphImpl_fwd.hpp:
@@ -1240,6 +1286,12 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 /usr/include/c++/15/bits/predefined_ops.h:
 
 /usr/include/c++/15/optional:
+
+/usr/include/python3.12/modsupport.h:
+
+/opt/kokkos/include/traits/Kokkos_WorkTagTrait.hpp:
+
+/opt/kokkos/include/View/Kokkos_ViewCtor.hpp:
 
 /usr/include/asm-generic/posix_types.h:
 
@@ -1343,12 +1395,6 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 
 /opt/kokkos/include/View/Kokkos_ViewUniformType.hpp:
 
-/usr/include/python3.12/cpython/pyctype.h:
-
-/usr/include/inttypes.h:
-
-/usr/include/c++/15/stop_token:
-
 /usr/include/c++/15/bits/stl_stack.h:
 
 /lib64/libgcc_s.so.1:
@@ -1386,6 +1432,8 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 /usr/include/bits/floatn-common.h:
 
 /usr/include/c++/15/bits/exception_ptr.h:
+
+/usr/include/c++/15/bits/gslice.h:
 
 /usr/include/c++/15/ext/atomicity.h:
 
@@ -1435,17 +1483,13 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 
 /usr/include/bits/fp-logb.h:
 
-/usr/include/c++/15/pstl/glue_numeric_defs.h:
+/usr/include/c++/15/bits/valarray_array.h:
 
 CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 
 /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/internals.h:
 
 /usr/include/c++/15/ctime:
-
-/usr/include/c++/15/x86_64-redhat-linux/bits/c++config.h:
-
-/usr/include/c++/15/stdlib.h:
 
 /opt/kokkos/include/OpenMP/Kokkos_OpenMP_MDRangePolicy.hpp:
 
@@ -1461,11 +1505,11 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 
 /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/numpy.h:
 
-/usr/include/stdio.h:
-
-/home/kesmarag/Code/morphdG/include/morphdg/aggmesh.hpp:
-
 /opt/kokkos/include/experimental/__p0009_bits/compressed_pair.hpp:
+
+/usr/include/c++/15/streambuf:
+
+/usr/include/c++/15/format:
 
 /opt/kokkos/lib64/libkokkosalgorithms.a:
 
@@ -1482,10 +1526,6 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 /opt/kokkos/include/desul/atomics/Generic.hpp:
 
 /usr/include/c++/15/atomic:
-
-/opt/kokkos/include/mdspan/mdspan.hpp:
-
-/usr/include/c++/15/stdexcept:
 
 /usr/include/python3.12/cpython/picklebufobject.h:
 
@@ -1510,6 +1550,16 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 /opt/kokkos/include/desul/atomics.hpp:
 
 /opt/kokkos/include/experimental/__p0009_bits/extents.hpp:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/stl.h:
+
+/usr/include/python3.12/pymath.h:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/complex.h:
+
+/usr/include/python3.12/ceval.h:
+
+/usr/include/c++/15/bits/atomic_base.h:
 
 /usr/lib64/libpthread.a:
 
@@ -1551,15 +1601,9 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 
 /usr/include/c++/15/bits/string_view.tcc:
 
-/usr/include/python3.12/pymath.h:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/complex.h:
-
-/usr/include/python3.12/ceval.h:
-
-/usr/include/c++/15/bits/atomic_base.h:
-
 /opt/kokkos/include/Kokkos_View.hpp:
+
+/usr/include/c++/15/bits/stl_set.h:
 
 /opt/kokkos/include/View/MDSpan/Kokkos_MDSpan_Layout.hpp:
 
@@ -1574,6 +1618,10 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 /opt/kokkos/lib64/libkokkoscontainers.so.5.0.99:
 
 /opt/kokkos/include/Kokkos_NumericTraits.hpp:
+
+/usr/include/stdio.h:
+
+/home/kesmarag/Code/morphdG/include/morphdg/aggmesh.hpp:
 
 /home/kesmarag/Code/morphdG/include/morphdg/dgsolver.hpp:
 
@@ -1606,12 +1654,6 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 /opt/kokkos/include/impl/Kokkos_CStyleMemoryManagement.hpp:
 
 /opt/kokkos/include/Kokkos_Atomics_Desul_Wrapper.hpp:
-
-/usr/include/python3.12/modsupport.h:
-
-/opt/kokkos/include/traits/Kokkos_WorkTagTrait.hpp:
-
-/opt/kokkos/include/View/Kokkos_ViewCtor.hpp:
 
 /usr/include/math.h:
 
@@ -1680,6 +1722,14 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 /usr/include/c++/15/tr1/bessel_function.tcc:
 
 /opt/kokkos/include/Kokkos_Macros.hpp:
+
+/usr/include/c++/15/span:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/cast.h:
+
+/usr/include/c++/15/cerrno:
+
+/opt/kokkos/include/Kokkos_MemoryTraits.hpp:
 
 /opt/kokkos/include/Kokkos_ExecPolicy.hpp:
 
@@ -1751,6 +1801,10 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 
 /usr/include/bits/getopt_core.h:
 
+/usr/include/c++/15/x86_64-redhat-linux/bits/messages_members.h:
+
+/usr/include/c++/15/bits/list.tcc:
+
 /usr/include/c++/15/debug/debug.h:
 
 /usr/include/bits/getopt_posix.h:
@@ -1790,8 +1844,6 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 /usr/include/python3.12/cpython/ceval.h:
 
 /usr/include/bits/posix1_lim.h:
-
-/usr/include/c++/15/sstream:
 
 /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/typing.h:
 
@@ -1869,8 +1921,6 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 
 /usr/include/c++/15/pstl/glue_algorithm_defs.h:
 
-/usr/include/bits/types/cookie_io_functions_t.h:
-
 /usr/lib/gcc/x86_64-redhat-linux/15/include/pmmintrin.h:
 
 /usr/include/bits/types/error_t.h:
@@ -1890,8 +1940,6 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 /usr/include/bits/types/struct_statx_timestamp.h:
 
 /usr/include/bits/types/struct_timespec.h:
-
-/usr/include/bits/types/struct_timeval.h:
 
 /usr/include/c++/15/random:
 
@@ -1965,7 +2013,17 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 
 /usr/include/c++/15/bits/atomic_timed_wait.h:
 
+/usr/include/c++/15/variant:
+
 /usr/include/c++/15/bits/basic_ios.h:
+
+/usr/include/c++/15/pstl/pstl_config.h:
+
+/opt/kokkos/include/Kokkos_UniqueToken.hpp:
+
+/lib64/libm.so.6:
+
+/usr/include/c++/15/bits/basic_ios.tcc:
 
 /usr/include/c++/15/cctype:
 
@@ -1973,9 +2031,9 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 
 /usr/include/c++/15/bits/random.h:
 
-/usr/include/c++/15/stack:
-
 /usr/include/c++/15/bits/cxxabi_init_exception.h:
+
+/usr/include/c++/15/bits/gslice_array.h:
 
 /usr/include/c++/15/bits/exception.h:
 
@@ -2001,6 +2059,8 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 
 /usr/include/c++/15/ext/string_conversions.h:
 
+/usr/include/c++/15/bits/indirect_array.h:
+
 /usr/include/c++/15/bits/iterator_concepts.h:
 
 /opt/kokkos/include/KokkosCore_config.h:
@@ -2010,6 +2070,10 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 /usr/include/c++/15/ratio:
 
 /usr/include/c++/15/bits/stl_map.h:
+
+/usr/include/bits/types/struct_timeval.h:
+
+/usr/include/c++/15/list:
 
 /usr/include/c++/15/bits/locale_classes.tcc:
 
@@ -2026,6 +2090,8 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 /usr/include/c++/15/bits/locale_facets_nonio.tcc:
 
 /usr/include/c++/15/bits/localefwd.h:
+
+/usr/include/c++/15/bits/mask_array.h:
 
 /opt/kokkos/include/impl/Kokkos_Utilities.hpp:
 
@@ -2095,11 +2161,23 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 
 /usr/include/c++/15/bits/shared_ptr_base.h:
 
+/usr/include/c++/15/semaphore:
+
+/usr/include/c++/15/bits/stl_multimap.h:
+
 /usr/include/c++/15/x86_64-redhat-linux/bits/ctype_inline.h:
 
 /lib64/libc.so.6:
 
 /usr/include/c++/15/bits/stl_uninitialized.h:
+
+/usr/include/c++/15/bits/slice_array.h:
+
+/usr/include/c++/15/bits/erase_if.h:
+
+/usr/include/c++/15/bits/std_mutex.h:
+
+/usr/include/c++/15/charconv:
 
 /usr/include/bits/environments.h:
 
@@ -2137,15 +2215,19 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 
 /usr/include/c++/15/bits/stl_iterator_base_types.h:
 
-/usr/include/c++/15/bits/stl_numeric.h:
+/usr/include/c++/15/bits/stl_list.h:
 
-/usr/include/c++/15/bits/streambuf_iterator.h:
+/usr/include/c++/15/bits/unique_lock.h:
+
+/usr/include/c++/15/bits/stl_multiset.h:
 
 /usr/include/python3.12/cpython/unicodeobject.h:
 
 /usr/include/c++/15/bits/unicode.h:
 
-/usr/include/c++/15/bits/unique_lock.h:
+/usr/include/c++/15/bits/stl_numeric.h:
+
+/usr/include/c++/15/bits/streambuf_iterator.h:
 
 /usr/include/c++/15/bits/move.h:
 
@@ -2163,13 +2245,13 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 
 /usr/include/c++/15/bits/uses_allocator_args.h:
 
+/usr/include/bits/types/cookie_io_functions_t.h:
+
+/usr/include/c++/15/bits/valarray_after.h:
+
+/usr/include/c++/15/bits/valarray_array.tcc:
+
 /usr/include/c++/15/bits/version.h:
-
-/usr/include/c++/15/bits/erase_if.h:
-
-/usr/include/c++/15/bits/std_mutex.h:
-
-/usr/include/c++/15/charconv:
 
 /usr/include/c++/15/cinttypes:
 
@@ -2216,31 +2298,3 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 /usr/include/c++/15/numeric:
 
 /usr/include/c++/15/pstl/glue_memory_defs.h:
-
-/opt/kokkos/include/Kokkos_UniqueToken.hpp:
-
-/lib64/libm.so.6:
-
-/usr/include/c++/15/bits/basic_ios.tcc:
-
-/usr/include/c++/15/pstl/pstl_config.h:
-
-/usr/include/c++/15/ranges:
-
-/usr/include/c++/15/bits/stl_multimap.h:
-
-/usr/include/c++/15/semaphore:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/cast.h:
-
-/usr/include/c++/15/cerrno:
-
-/opt/kokkos/include/Kokkos_MemoryTraits.hpp:
-
-/usr/include/c++/15/span:
-
-/usr/include/c++/15/format:
-
-/usr/include/c++/15/streambuf:
-
-/usr/include/c++/15/string_view:
