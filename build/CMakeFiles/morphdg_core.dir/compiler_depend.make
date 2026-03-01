@@ -61,6 +61,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
   /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/trampoline_self_life_support.h \
   /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/typing.h \
   /home/kesmarag/Code/morphdG/include/morphdg/aggmesh.hpp \
+  /home/kesmarag/Code/morphdG/include/morphdg/dgsolver.hpp \
   /opt/kokkos/include/KokkosCore_Config_DeclareBackend.hpp \
   /opt/kokkos/include/KokkosCore_Config_FwdBackend.hpp \
   /opt/kokkos/include/KokkosCore_Config_SetupBackend.hpp \
@@ -1018,7 +1019,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 
 /usr/include/c++/15/thread:
 
-/usr/include/bits/floatn.h:
+/usr/include/c++/15/system_error:
 
 /usr/include/bits/errno.h:
 
@@ -1184,8 +1185,6 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 
 /usr/include/bits/endian.h:
 
-/usr/include/c++/15/system_error:
-
 /opt/kokkos/include/desul/atomics/Config.hpp:
 
 /opt/kokkos/include/desul/atomics/Compare_Exchange_GCC.hpp:
@@ -1227,6 +1226,20 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 /usr/include/python3.12/enumobject.h:
 
 /opt/kokkos/include/View/Kokkos_ViewMapping.hpp:
+
+/usr/include/python3.12/pyframe.h:
+
+/usr/include/python3.12/cpython/abstract.h:
+
+/opt/kokkos/include/impl/Kokkos_Tools_Generic.hpp:
+
+/opt/kokkos/include/View/Kokkos_ViewDataAnalysis.hpp:
+
+/usr/include/python3.12/sliceobject.h:
+
+/usr/include/c++/15/bits/predefined_ops.h:
+
+/usr/include/c++/15/optional:
 
 /usr/include/asm-generic/posix_types.h:
 
@@ -1562,6 +1575,8 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 
 /opt/kokkos/include/Kokkos_NumericTraits.hpp:
 
+/home/kesmarag/Code/morphdG/include/morphdg/dgsolver.hpp:
+
 /usr/include/features-time64.h:
 
 /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/using_smart_holder.h:
@@ -1726,19 +1741,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 
 /usr/include/c++/15/bits/std_function.h:
 
-/usr/include/python3.12/pyframe.h:
-
-/usr/include/python3.12/cpython/abstract.h:
-
-/opt/kokkos/include/impl/Kokkos_Tools_Generic.hpp:
-
-/opt/kokkos/include/View/Kokkos_ViewDataAnalysis.hpp:
-
-/usr/include/python3.12/sliceobject.h:
-
-/usr/include/c++/15/bits/predefined_ops.h:
-
-/usr/include/c++/15/optional:
+/usr/include/bits/floatn.h:
 
 /usr/include/bits/flt-eval-method.h:
 

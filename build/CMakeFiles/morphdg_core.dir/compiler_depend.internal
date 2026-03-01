@@ -63,6 +63,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o
  /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/trampoline_self_life_support.h
  /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/typing.h
  /home/kesmarag/Code/morphdG/include/morphdg/aggmesh.hpp
+ /home/kesmarag/Code/morphdG/include/morphdg/dgsolver.hpp
  /opt/kokkos/include/KokkosCore_Config_DeclareBackend.hpp
  /opt/kokkos/include/KokkosCore_Config_FwdBackend.hpp
  /opt/kokkos/include/KokkosCore_Config_SetupBackend.hpp

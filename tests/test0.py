@@ -6,8 +6,17 @@ engine = morphdg.KokkosManager()
 print("Initializing AggMesh...")
 mesh = morphdg.AggMesh()
 
-mesh.load_base_mesh("./mesh.dat") 
-mesh.generate_random_polygons(15, 42)
+mesh.load("./mesh.dat") 
+mesh.random_agglomerate(32, 42)
 
-print("Plotting natively...")
-mesh.plot()
+print("Plotting...")
+# mesh.plot()
+
+solver = morphdg.DGSolver()
+
+# Set the coefficients interactively
+solver.coeffs.vx = 2.5
+solver.coeffs.alpha = 5.0
+
+
+print(solver.coeffs.vx)
