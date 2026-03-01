@@ -1,0 +1,3 @@
+/home/kesmarag/Code/morphdG/build/CMakeFiles/morphdg_core.dir
+/home/kesmarag/Code/morphdG/build/CMakeFiles/edit_cache.dir
+/home/kesmarag/Code/morphdG/build/CMakeFiles/rebuild_cache.dir

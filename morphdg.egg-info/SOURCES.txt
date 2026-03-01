@@ -1,0 +1,6 @@
+setup.py
+morphdg/__init__.py
+morphdg.egg-info/PKG-INFO
+morphdg.egg-info/SOURCES.txt
+morphdg.egg-info/dependency_links.txt
+morphdg.egg-info/top_level.txt
