@@ -11,7 +11,7 @@ def _plot_mesh(self):
     nodes = self.nodes.reshape(-1, 2)         # [N_nodes, 2]
     triangles = self.triangles.reshape(-1, 3) # [N_tri, 3]
     faces = self.faces.reshape(-1, 4)         # [N_faces, 4]
-    bnd_faces = self.bnd_faces.reshape(-1, 4) # [N_bnd, 4]
+    bnd_faces = self.bnd_faces.reshape(-1, 3) # [N_bnd, 4]
     
     # Draw Triangles
     patches = [Polygon(nodes[tri], closed=True) for tri in triangles]
@@ -25,7 +25,7 @@ def _plot_mesh(self):
         
     # Draw Boundary Faces 
     for f in bnd_faces:
-        nA, nB = f[2], f[3]
+        nA, nB = f[1], f[2]
         ax.plot([nodes[nA, 0], nodes[nB, 0]], [nodes[nA, 1], nodes[nB, 1]], color='black', linewidth=1.5, zorder=3)
 
     # Format and display

@@ -582,6 +582,11 @@ struct AggMesh {
   Kokkos::View<int *, Kokkos::LayoutLeft,
                Kokkos::DefaultExecutionSpace::memory_space>
       d_faces;
+
+  Kokkos::View<int *, Kokkos::LayoutLeft,
+               Kokkos::DefaultExecutionSpace::memory_space>
+      d_bnd_faces; // boundary
+
   Kokkos::View<int *, Kokkos::LayoutLeft,
                Kokkos::DefaultExecutionSpace::memory_space>
       d_t_offsets;
@@ -598,6 +603,13 @@ struct AggMesh {
     d_nodes = decltype(d_nodes)("d_nodes", n_nodes, 2);
     d_triangles = decltype(d_triangles)("d_triangles", n_tris, 3);
     d_faces = decltype(d_faces)("d_faces", h_faces.size());
+
+    d_bnd_faces = decltype(d_bnd_faces)("d_bnd_faces", h_bnd_faces.size());
+    auto mirror_bnd = Kokkos::create_mirror_view(d_bnd_faces);
+    for (size_t i = 0; i < h_bnd_faces.size(); ++i) {
+      mirror_bnd(i) = h_bnd_faces[i];
+    }
+
     auto mirror_faces = Kokkos::create_mirror_view(d_faces);
     // Populate the mirror
     for (size_t i = 0; i < h_faces.size(); ++i) {
@@ -637,6 +649,7 @@ struct AggMesh {
     Kokkos::deep_copy(d_nodes, mirror_nodes);
     Kokkos::deep_copy(d_triangles, mirror_tris);
     Kokkos::deep_copy(d_faces, mirror_faces);
+    Kokkos::deep_copy(d_bnd_faces, mirror_bnd);
     Kokkos::deep_copy(d_t_offsets, mirror_toff);
     Kokkos::deep_copy(d_bboxes, mirror_bb);
   }

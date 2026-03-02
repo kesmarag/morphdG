@@ -73,19 +73,19 @@ PYBIND11_MODULE(morphdg_core, m) {
                              })
       .def("push_to_device", &AggMesh::push_to_device);
 
-  // py::class_<Coeffs>(m, "Coeffs")
-  // .def(py::init<>())
+  py::class_<Coeffs>(m, "Coeffs")
+  .def(py::init<>())
   // .def_readwrite("Kxx", &Coeffs::Kxx)
   // .def_readwrite("Kxy", &Coeffs::Kxy)
   // .def_readwrite("Kyx", &Coeffs::Kyx)
   // .def_readwrite("Kyy", &Coeffs::Kyy)
   // .def_readwrite("vx", &Coeffs::vx)
   // .def_readwrite("vy", &Coeffs::vy)
-  // .def_readwrite("alpha", &Coeffs::alpha);
+  .def_readwrite("alpha", &Coeffs::alpha);
 
   py::class_<DGSolver>(m, "DGSolver")
       .def(py::init<>())
-      // .def_readwrite("coeffs", &DGSolver::coeffs)
+      .def_readwrite("coeffs", &DGSolver::coeffs)
       .def("vol_quad_points", &DGSolver::vol_quad_points, py::arg("mesh"))
       .def_readonly("total_dofs", &DGSolver::total_dofs)
       // The Zero-Copy Lambda Bridge for NumPy Arrays
@@ -179,8 +179,25 @@ PYBIND11_MODULE(morphdg_core, m) {
              py::buffer_info b = a.request();
              s.set_Kyx_face(static_cast<const double *>(b.ptr), b.shape[0]);
            })
-      .def("set_Kyy_face", [](DGSolver &s, py::array_t<double> a) {
-        py::buffer_info b = a.request();
-        s.set_Kyy_face(static_cast<const double *>(b.ptr), b.shape[0]);
-      });
+      .def("set_Kyy_face",
+           [](DGSolver &s, py::array_t<double> a) {
+             py::buffer_info b = a.request();
+             s.set_Kyy_face(static_cast<const double *>(b.ptr), b.shape[0]);
+           })
+      .def("set_g_D_face",
+           [](DGSolver &s, py::array_t<double> a) {
+             py::buffer_info b = a.request();
+             s.set_g_D_face(static_cast<const double *>(b.ptr), b.shape[0]);
+           })
+      .def("set_g_N_face",
+           [](DGSolver &s, py::array_t<double> a) {
+             py::buffer_info b = a.request();
+             s.set_g_N_face(static_cast<const double *>(b.ptr), b.shape[0]);
+           })
+      .def("set_bctype_face",
+           [](DGSolver &s, py::array_t<double> a) {
+             py::buffer_info b = a.request();
+             s.set_bctype_face(static_cast<const double *>(b.ptr), b.shape[0]);
+           })
+      .def("get_global_system", &DGSolver::get_global_system);
 }
