@@ -89,8 +89,7 @@ struct AggMesh {
     }
   }
 
-  void create_faces(const std::vector<int> &tri_to_elem, double vx = 0.0,
-                    double vy = 0.0) {
+  void create_faces(const std::vector<int> &tri_to_elem) {
     int n_tri = num_triangles();
 
     h_faces.clear();
@@ -165,20 +164,20 @@ struct AggMesh {
         }
 
         // Calculate the Inner Product
-        double inn_prod = vx * nx + vy * ny;
-        int tag = 3; // Default to Wall
+        // double inn_prod = vx * nx + vy * ny;
+        // int tag = 1; // Default to Wall
 
         // Tag dynamically based on wind direction
-        if (inn_prod < -1e-6) {
-          tag = 1; // Inflow (Flow entering T+)
-        } else if (inn_prod > 1e-6) {
-          tag = 2; // Outflow (Flow leaving T+)
-        }
+        // if (inn_prod < -1e-6) {
+        // tag = 1; // Inflow (Flow entering T+)
+        // } else if (inn_prod > 1e-6) {
+        // tag = 2; // Outflow (Flow leaving T+)
+        // }
 
         h_bnd_faces.push_back(ePlus); // Index 0: T+
-        h_bnd_faces.push_back(tag);   // Index 1: Boundary Tag
-        h_bnd_faces.push_back(nA);    // Index 2: nA
-        h_bnd_faces.push_back(nB);    // Index 3: nB
+        // h_bnd_faces.push_back(tag);   // Index 1: Boundary Tag
+        h_bnd_faces.push_back(nA); // Index 1: nA
+        h_bnd_faces.push_back(nB); // Index 2: nB
         bnd_face_count++;
       }
     }
@@ -316,7 +315,7 @@ struct AggMesh {
       }
     }
 
-    // 5. Internal Faces
+    // Internal Faces
     int num_faces = h_faces.size() / 4;
     if (num_faces > 0) {
       std::cout << "\n--- Internal Faces (" << num_faces << ") ---\n";
@@ -331,27 +330,27 @@ struct AggMesh {
       }
     }
 
-    // 6. Boundary Faces
-    int num_bnd_faces = h_bnd_faces.size() / 4;
+    // Boundary Faces
+    int num_bnd_faces = h_bnd_faces.size() / 3;
     if (num_bnd_faces > 0) {
       std::cout << "\n--- Boundary Faces (" << num_bnd_faces << ") ---\n";
       for (int f = 0; f < num_bnd_faces; ++f) {
-        int ePlus = h_bnd_faces[4 * f + 0];
-        int tag = h_bnd_faces[4 * f + 1];
-        int nA = h_bnd_faces[4 * f + 2];
-        int nB = h_bnd_faces[4 * f + 3];
+        int ePlus = h_bnd_faces[3 * f + 0];
+        // int tag = h_bnd_faces[3 * f + 1];
+        int nA = h_bnd_faces[3 * f + 1];
+        int nB = h_bnd_faces[3 * f + 2];
 
-        std::string tag_name;
-        if (tag == 1)
-          tag_name = "Inflow ";
-        else if (tag == 2)
-          tag_name = "Outflow";
-        else
-          tag_name = "Wall   ";
+        // std::string tag_name;
+        // if (tag == 1)
+        //   tag_name = "Inflow ";
+        // else if (tag == 2)
+        //   tag_name = "Outflow";
+        // else
+        //   tag_name = "Wall   ";
 
-        std::cout << "Face " << f << ": Element (" << ePlus
-                  << ") | Type: " << tag_name << " | Nodes [" << nA << ", "
-                  << nB << "]\n";
+        // std::cout << "Face " << f << ": Element (" << ePlus
+        //           << ") | Type: " << tag_name << " | Nodes [" << nA << ", "
+        //           << nB << "]\n";
       }
     }
 
@@ -582,6 +581,9 @@ struct AggMesh {
       d_triangles;
   Kokkos::View<int *, Kokkos::LayoutLeft,
                Kokkos::DefaultExecutionSpace::memory_space>
+      d_faces;
+  Kokkos::View<int *, Kokkos::LayoutLeft,
+               Kokkos::DefaultExecutionSpace::memory_space>
       d_t_offsets;
   Kokkos::View<double **, Kokkos::LayoutLeft,
                Kokkos::DefaultExecutionSpace::memory_space>
@@ -592,17 +594,18 @@ struct AggMesh {
     int n_tris = num_triangles();
     int n_polys = num_elements();
 
-    // 1. Allocate Device Memory
-    // d_nodes = Kokkos::View<double **>("d_nodes", n_nodes, 2);
-    // d_triangles = Kokkos::View<int **>("d_triangles", n_tris, 3);
-    // d_t_offsets = Kokkos::View<int *>("d_t_offsets", h_t_offsets.size());
-    // d_bboxes = Kokkos::View<double **>("d_bboxes", n_polys, 4);
-    
-// 1. Allocate Device Memory (Forcing exact type match using decltype)
+    // 1. Allocate Device Memory (Forcing exact type match using decltype)
     d_nodes = decltype(d_nodes)("d_nodes", n_nodes, 2);
     d_triangles = decltype(d_triangles)("d_triangles", n_tris, 3);
+    d_faces = decltype(d_faces)("d_faces", h_faces.size());
+    auto mirror_faces = Kokkos::create_mirror_view(d_faces);
+    // Populate the mirror
+    for (size_t i = 0; i < h_faces.size(); ++i) {
+      mirror_faces(i) = h_faces[i];
+    }
+
     d_t_offsets = decltype(d_t_offsets)("d_t_offsets", h_t_offsets.size());
-    d_bboxes = decltype(d_bboxes)("d_bboxes", n_polys, 4);    
+    d_bboxes = decltype(d_bboxes)("d_bboxes", n_polys, 4);
 
     // 2. Create Host Mirrors
     auto mirror_nodes = Kokkos::create_mirror_view(d_nodes);
@@ -633,9 +636,8 @@ struct AggMesh {
     // 4. Deep copy the Host Mirrors to the Device Views
     Kokkos::deep_copy(d_nodes, mirror_nodes);
     Kokkos::deep_copy(d_triangles, mirror_tris);
+    Kokkos::deep_copy(d_faces, mirror_faces);
     Kokkos::deep_copy(d_t_offsets, mirror_toff);
     Kokkos::deep_copy(d_bboxes, mirror_bb);
-
-    
   }
 };

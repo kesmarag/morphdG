@@ -1,7 +1,7 @@
 #pragma once
 #include <Kokkos_Core.hpp>
-#include <vector>
 #include <iomanip>
+#include <vector>
 
 struct Coeffs {
   // Diffusion Tensor
@@ -160,8 +160,6 @@ int linear_search(const ViewCSRCols &cols, int start_idx, int end_idx,
   return -1;
 }
 
-
-
 template <typename RowView, typename ColView, typename ValView,
           typename OffsetView>
 void print_csr_matrix_blocks(const RowView &h_row_ptr, const ColView &h_col_ind,
@@ -222,7 +220,6 @@ void print_csr_matrix_blocks(const RowView &h_row_ptr, const ColView &h_col_ind,
               << " rows hidden) ...\n";
   }
 }
-
 
 struct AssembleVolumeKernel {
   ViewCSRVals global_vals;
@@ -346,6 +343,166 @@ struct AssembleVolumeKernel {
   }
 };
 
+
+
+struct AssembleFaceKernel {
+    ViewCSRVals global_vals;
+    ViewCSRCols global_cols;
+    ViewCSRRows global_rows;
+    ViewInt1D faces; 
+    ViewReal2D nodes;
+    ViewReal2D bboxes;
+    ViewInt1D element_orders;
+    ViewInt1D dof_offsets;
+
+    // Face Physics Fields
+    ViewReal1D vx_face, vy_face;
+    ViewReal1D Kxx_face, Kxy_face, Kyx_face, Kyy_face;
+    Real alpha; // The penalty parameter
+
+    AssembleFaceKernel(
+        ViewCSRVals _vals, ViewCSRCols _cols, ViewCSRRows _rows, ViewInt1D _faces,
+        ViewReal2D _nodes, ViewReal2D _bb, ViewInt1D _orders, ViewInt1D _offsets,
+        ViewReal1D _vxf, ViewReal1D _vyf, ViewReal1D _Kxxf, ViewReal1D _Kxyf, 
+        ViewReal1D _Kyxf, ViewReal1D _Kyyf, Real _alpha
+    ) : 
+        global_vals(_vals), global_cols(_cols), global_rows(_rows), faces(_faces),
+        nodes(_nodes), bboxes(_bb), element_orders(_orders), dof_offsets(_offsets),
+        vx_face(_vxf), vy_face(_vyf), Kxx_face(_Kxxf), Kxy_face(_Kxyf), 
+        Kyx_face(_Kyxf), Kyy_face(_Kyyf), alpha(_alpha) {}
+
+    KOKKOS_INLINE_FUNCTION
+    void operator()(const int f) const {
+        // 1. Unpack Face Geometry
+        int ePlus = faces(4 * f + 0);
+        int eMinus = faces(4 * f + 1);
+        int nA = faces(4 * f + 2);
+        int nB = faces(4 * f + 3);
+
+        Real xA = nodes(nA, 0), yA = nodes(nA, 1);
+        Real xB = nodes(nB, 0), yB = nodes(nB, 1);
+        Real dx = xB - xA, dy = yB - yA;
+        Real h_edge = Kokkos::sqrt(dx * dx + dy * dy);
+        
+        // Unoriented Normal Vector
+        Real nx = dy / h_edge;
+        Real ny = -dx / h_edge;
+
+        // Ensure Normal points OUTWARD from ePlus (+)
+        Real cx = 0.5 * (bboxes(ePlus, 0) + bboxes(ePlus, 2));
+        Real cy = 0.5 * (bboxes(ePlus, 1) + bboxes(ePlus, 3));
+        Real face_cx = 0.5 * (xA + xB), face_cy = 0.5 * (yA + yB);
+        if ((nx * (face_cx - cx) + ny * (face_cy - cy)) < 0.0) {
+            nx = -nx; ny = -ny;
+        }
+
+        // 2. Element Setup
+        int pPlus = element_orders(ePlus), pMinus = element_orders(eMinus);
+        int n_bPlus = get_basis_count(pPlus), n_bMinus = get_basis_count(pMinus);
+        int row_start_Plus = dof_offsets(ePlus), row_start_Minus = dof_offsets(eMinus);
+
+        // Local 4x4 Interaction Blocks
+        Real K_PP[MAX_BASIS][MAX_BASIS] = {0.0}; // Plus-Plus
+        Real K_PM[MAX_BASIS][MAX_BASIS] = {0.0}; // Plus-Minus
+        Real K_MP[MAX_BASIS][MAX_BASIS] = {0.0}; // Minus-Plus
+        Real K_MM[MAX_BASIS][MAX_BASIS] = {0.0}; // Minus-Minus
+
+        int n_q = QuadData1D::get_num_face_points();
+
+        for (int q = 0; q < n_q; ++q) {
+            Real xi, w_ref;
+            QuadData1D::get_face(q, xi, w_ref);
+            Real w = w_ref * (h_edge / 2.0); // Jacobian of 1D line
+
+            // Physical coordinates of quad point
+            Real shapeA = 0.5 * (1.0 - xi), shapeB = 0.5 * (1.0 + xi);
+            Real x_phys = shapeA * xA + shapeB * xB;
+            Real y_phys = shapeA * yA + shapeB * yB;
+
+            // Global 1D Index for O(1) Memory Lookup!
+            int global_q_idx = f * n_q + q;
+            Real l_vx = vx_face(global_q_idx), l_vy = vy_face(global_q_idx);
+            Real l_Kxx = Kxx_face(global_q_idx), l_Kyy = Kyy_face(global_q_idx);
+            
+            // Calculate Upwind Physics
+            Real vn = l_vx * nx + l_vy * ny; // Normal Velocity
+            Real upwind_flux_P = (vn > 0.0) ? vn : 0.0; // Leaves Plus
+            Real upwind_flux_M = (vn < 0.0) ? vn : 0.0; // Leaves Minus
+
+            // SIPG Penalty Parameter (using max polynomial and local diffusion)
+            Real p_max = (pPlus > pMinus) ? pPlus : pMinus;
+            Real K_max = (l_Kxx > l_Kyy) ? l_Kxx : l_Kyy; // Simplified tensor magnitude
+            Real penalty = alpha * (p_max * p_max / h_edge) * K_max;
+
+            // Evaluate Basis Functions at the edge for both elements
+            Real vP[MAX_BASIS], gxP[MAX_BASIS], gyP[MAX_BASIS];
+            Real vM[MAX_BASIS], gxM[MAX_BASIS], gyM[MAX_BASIS];
+
+            for (int i = 0; i < n_bPlus; ++i)
+                eval_physical_basis_dynamic(i, bboxes(ePlus, 0), bboxes(ePlus, 1), bboxes(ePlus, 2), bboxes(ePlus, 3), x_phys, y_phys, vP[i], gxP[i], gyP[i]);
+            
+            for (int i = 0; i < n_bMinus; ++i)
+                eval_physical_basis_dynamic(i, bboxes(eMinus, 0), bboxes(eMinus, 1), bboxes(eMinus, 2), bboxes(eMinus, 3), x_phys, y_phys, vM[i], gxM[i], gyM[i]);
+
+            // --- THE 4 MATRIX BLOCKS ---
+            for (int r = 0; r < n_bPlus; ++r) {
+                for (int c = 0; c < n_bPlus; ++c) { // Plus-Plus
+                    Real adv = upwind_flux_P * vP[r] * vP[c];
+                    Real diff = penalty * vP[r] * vP[c] 
+                              - 0.5 * (l_Kxx * gxP[c] * nx + l_Kyy * gyP[c] * ny) * vP[r] 
+                              - 0.5 * (l_Kxx * gxP[r] * nx + l_Kyy * gyP[r] * ny) * vP[c];
+                    K_PP[r][c] += (adv + diff) * w;
+                }
+                for (int c = 0; c < n_bMinus; ++c) { // Plus-Minus
+                    Real adv = upwind_flux_M * vP[r] * vM[c];
+                    Real diff = -penalty * vP[r] * vM[c] 
+                              - 0.5 * (l_Kxx * gxM[c] * nx + l_Kyy * gyM[c] * ny) * vP[r] 
+                              + 0.5 * (l_Kxx * gxP[r] * nx + l_Kyy * gyP[r] * ny) * vM[c];
+                    K_PM[r][c] += (adv + diff) * w;
+                }
+            }
+
+            for (int r = 0; r < n_bMinus; ++r) {
+                for (int c = 0; c < n_bPlus; ++c) { // Minus-Plus
+                    Real adv = -upwind_flux_P * vM[r] * vP[c];
+                    Real diff = -penalty * vM[r] * vP[c] 
+                              + 0.5 * (l_Kxx * gxP[c] * nx + l_Kyy * gyP[c] * ny) * vM[r] 
+                              - 0.5 * (l_Kxx * gxM[r] * nx + l_Kyy * gyM[r] * ny) * vP[c];
+                    K_MP[r][c] += (adv + diff) * w;
+                }
+                for (int c = 0; c < n_bMinus; ++c) { // Minus-Minus
+                    Real adv = -upwind_flux_M * vM[r] * vM[c];
+                    Real diff = penalty * vM[r] * vM[c] 
+                              + 0.5 * (l_Kxx * gxM[c] * nx + l_Kyy * gyM[c] * ny) * vM[r] 
+                              + 0.5 * (l_Kxx * gxM[r] * nx + l_Kyy * gyM[r] * ny) * vM[c];
+                    K_MM[r][c] += (adv + diff) * w;
+                }
+            }
+        }
+
+        // 3. Scatter All 4 Blocks to Global CSR Matrix
+        auto scatter = [&](int r_start, int c_start, int num_r, int num_c, Real local_K[MAX_BASIS][MAX_BASIS]) {
+            for (int r = 0; r < num_r; ++r) {
+                int global_row = r_start + r;
+                int row_ptr_start = global_rows(global_row);
+                int row_ptr_end = global_rows(global_row + 1);
+                for (int c = 0; c < num_c; ++c) {
+                    if (Kokkos::abs(local_K[r][c]) > 1e-12) {
+                        int global_col = c_start + c;
+                        int idx = linear_search(global_cols, row_ptr_start, row_ptr_end, global_col);
+                        if (idx != -1) Kokkos::atomic_add(&global_vals(idx), local_K[r][c]);
+                    }
+                }
+            }
+        };
+
+        scatter(row_start_Plus, row_start_Plus, n_bPlus, n_bPlus, K_PP);
+        scatter(row_start_Plus, row_start_Minus, n_bPlus, n_bMinus, K_PM);
+        scatter(row_start_Minus, row_start_Plus, n_bMinus, n_bPlus, K_MP);
+        scatter(row_start_Minus, row_start_Minus, n_bMinus, n_bMinus, K_MM);
+    }
+};
+
 struct DGSolver {
 
   Coeffs coeffs;
@@ -401,6 +558,68 @@ struct DGSolver {
       }
     }
     return {x_quads, y_quads};
+  }
+
+  // --- EXACT FACE QUADRATURE COORDINATE GENERATOR ---
+  std::pair<std::vector<double>, std::vector<double>>
+  face_quad_points(const AggMesh &mesh) {
+    int n_q_face =
+        QuadData1D::get_num_face_points(); // Should be 2 points per face
+
+    int num_int_faces = mesh.h_faces.size() / 4;
+    int num_bnd_faces = mesh.h_bnd_faces.size() / 3;
+    int total_faces = num_int_faces + num_bnd_faces;
+
+    // Allocate the unified 1D arrays
+    std::vector<double> x_face(total_faces * n_q_face);
+    std::vector<double> y_face(total_faces * n_q_face);
+
+    int offset = 0;
+
+    // 1. Map Internal Faces
+    for (int f = 0; f < num_int_faces; ++f) {
+      int nA = mesh.h_faces[4 * f + 2];
+      int nB = mesh.h_faces[4 * f + 3];
+
+      double xA = mesh.h_nodes[2 * nA], yA = mesh.h_nodes[2 * nA + 1];
+      double xB = mesh.h_nodes[2 * nB], yB = mesh.h_nodes[2 * nB + 1];
+
+      for (int q = 0; q < n_q_face; ++q) {
+        double xi, w;
+        QuadData1D::get_face(q, xi, w);
+
+        // Map from 1D reference [-1, 1] to the physical 2D segment
+        double shapeA = 0.5 * (1.0 - xi);
+        double shapeB = 0.5 * (1.0 + xi);
+
+        x_face[offset] = shapeA * xA + shapeB * xB;
+        y_face[offset] = shapeA * yA + shapeB * yB;
+        offset++;
+      }
+    }
+
+    // 2. Map Boundary Faces (Appended straight to the end!)
+    for (int f = 0; f < num_bnd_faces; ++f) {
+      int nA = mesh.h_bnd_faces[3 * f + 1];
+      int nB = mesh.h_bnd_faces[3 * f + 2];
+
+      double xA = mesh.h_nodes[2 * nA], yA = mesh.h_nodes[2 * nA + 1];
+      double xB = mesh.h_nodes[2 * nB], yB = mesh.h_nodes[2 * nB + 1];
+
+      for (int q = 0; q < n_q_face; ++q) {
+        double xi, w;
+        QuadData1D::get_face(q, xi, w);
+
+        double shapeA = 0.5 * (1.0 - xi);
+        double shapeB = 0.5 * (1.0 + xi);
+
+        x_face[offset] = shapeA * xA + shapeB * xB;
+        y_face[offset] = shapeA * yA + shapeB * yB;
+        offset++;
+      }
+    }
+
+    return {x_face, y_face};
   }
 
   // --- ADAPTIVITY STATE VIEWS ---
@@ -497,6 +716,72 @@ struct DGSolver {
     Kokkos::deep_copy(d_Kyy_quad, h_raw);
   }
 
+  // --- FACE ZERO-COPY VIEWS ---
+  Kokkos::View<double *, Kokkos::LayoutLeft,
+               Kokkos::DefaultExecutionSpace::memory_space>
+      d_vx_face;
+  Kokkos::View<double *, Kokkos::LayoutLeft,
+               Kokkos::DefaultExecutionSpace::memory_space>
+      d_vy_face;
+
+  Kokkos::View<double *, Kokkos::LayoutLeft,
+               Kokkos::DefaultExecutionSpace::memory_space>
+      d_Kxx_face;
+  Kokkos::View<double *, Kokkos::LayoutLeft,
+               Kokkos::DefaultExecutionSpace::memory_space>
+      d_Kxy_face;
+  Kokkos::View<double *, Kokkos::LayoutLeft,
+               Kokkos::DefaultExecutionSpace::memory_space>
+      d_Kyx_face;
+  Kokkos::View<double *, Kokkos::LayoutLeft,
+               Kokkos::DefaultExecutionSpace::memory_space>
+      d_Kyy_face;
+
+  // --- FACE SETTERS ---
+  void set_vx_face(const double *data, int n) {
+    Kokkos::View<const double *, Kokkos::HostSpace,
+                 Kokkos::MemoryTraits<Kokkos::Unmanaged>>
+        h_raw(data, n);
+    Kokkos::resize(d_vx_face, n);
+    Kokkos::deep_copy(d_vx_face, h_raw);
+  }
+  void set_vy_face(const double *data, int n) {
+    Kokkos::View<const double *, Kokkos::HostSpace,
+                 Kokkos::MemoryTraits<Kokkos::Unmanaged>>
+        h_raw(data, n);
+    Kokkos::resize(d_vy_face, n);
+    Kokkos::deep_copy(d_vy_face, h_raw);
+  }
+
+  void set_Kxx_face(const double *data, int n) {
+    Kokkos::View<const double *, Kokkos::HostSpace,
+                 Kokkos::MemoryTraits<Kokkos::Unmanaged>>
+        h_raw(data, n);
+    Kokkos::resize(d_Kxx_face, n);
+    Kokkos::deep_copy(d_Kxx_face, h_raw);
+  }
+  void set_Kxy_face(const double *data, int n) {
+    Kokkos::View<const double *, Kokkos::HostSpace,
+                 Kokkos::MemoryTraits<Kokkos::Unmanaged>>
+        h_raw(data, n);
+    Kokkos::resize(d_Kxy_face, n);
+    Kokkos::deep_copy(d_Kxy_face, h_raw);
+  }
+  void set_Kyx_face(const double *data, int n) {
+    Kokkos::View<const double *, Kokkos::HostSpace,
+                 Kokkos::MemoryTraits<Kokkos::Unmanaged>>
+        h_raw(data, n);
+    Kokkos::resize(d_Kyx_face, n);
+    Kokkos::deep_copy(d_Kyx_face, h_raw);
+  }
+  void set_Kyy_face(const double *data, int n) {
+    Kokkos::View<const double *, Kokkos::HostSpace,
+                 Kokkos::MemoryTraits<Kokkos::Unmanaged>>
+        h_raw(data, n);
+    Kokkos::resize(d_Kyy_face, n);
+    Kokkos::deep_copy(d_Kyy_face, h_raw);
+  }
+
   // --- GLOBAL SYSTEM MEMORY ---
   ViewCSRVals d_global_vals;
   ViewCSRCols d_global_cols;
@@ -504,7 +789,7 @@ struct DGSolver {
   ViewReal1D d_rhs;
 
   // --- KOKKOS KERNEL LAUNCHER ---
-  void assemble_volume(const AggMesh &mesh) {
+  void assemble(const AggMesh &mesh) {
     // 1. Zero out the matrix values and RHS vector before accumulating
     // (We use Kokkos::deep_copy to blast zeros across the GPU memory instantly)
     Kokkos::deep_copy(d_global_vals, 0.0);
@@ -527,6 +812,22 @@ struct DGSolver {
     // 4. Synchronization barrier: Wait for the GPU to finish before returning
     // to Python
     Kokkos::fence();
+
+
+    // Launch Internal Face Kernel!
+    int num_int_faces = mesh.h_faces.size() / 4;
+    
+    // We pass coeffs.alpha so Python can tune the penalty parameter dynamically!
+    AssembleFaceKernel face_kernel(
+        d_global_vals, d_global_cols, d_global_rows, mesh.d_faces,
+        mesh.d_nodes, mesh.d_bboxes, d_orders, d_offsets,
+        d_vx_face, d_vy_face, d_Kxx_face, d_Kxy_face, d_Kyx_face, d_Kyy_face, coeffs.alpha
+    );
+
+    Kokkos::parallel_for("AssembleInternalFaces", num_int_faces, face_kernel);
+    Kokkos::fence();
+
+    
   }
 
   // Inside struct DGSolver in include/morphdg/dg_solver.hpp
@@ -624,8 +925,8 @@ struct DGSolver {
     // assemble_volume!)
   }
 
-// Inside struct DGSolver
-  
+  // Inside struct DGSolver
+
   void print_matrix(int print_limit = 20) {
     if (total_dofs == 0 || d_global_rows.extent(0) == 0) {
       std::cout << "Matrix is empty or not allocated yet!\n";
@@ -633,15 +934,16 @@ struct DGSolver {
     }
 
     // 1. Safely pull the CSR arrays from the GPU back to the CPU
-    auto h_rows = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), d_global_rows);
-    auto h_cols = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), d_global_cols);
-    auto h_vals = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), d_global_vals);
-    auto h_offs = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), d_offsets);
+    auto h_rows =
+        Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), d_global_rows);
+    auto h_cols =
+        Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), d_global_cols);
+    auto h_vals =
+        Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), d_global_vals);
+    auto h_offs =
+        Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), d_offsets);
 
     // 2. Call your print function using the Host Views
     print_csr_matrix_blocks(h_rows, h_cols, h_vals, h_offs, print_limit);
   }
-
-
-  
 };

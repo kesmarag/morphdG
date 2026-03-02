@@ -141,13 +141,46 @@ PYBIND11_MODULE(morphdg_core, m) {
              py::buffer_info b = a.request();
              s.set_Kyy_field(static_cast<const double *>(b.ptr), b.shape[0]);
            })
-      .def("assemble_volume", &DGSolver::assemble_volume, py::arg("mesh"))
+      .def("assemble", &DGSolver::assemble, py::arg("mesh"))
       .def("create_sparse_graph", &DGSolver::create_sparse_graph,
            py::arg("mesh"))
-      .def("set_source_nodal", [](DGSolver &s, py::array_t<double> a) {
+      .def("set_source_nodal",
+           [](DGSolver &s, py::array_t<double> a) {
+             py::buffer_info b = a.request();
+             if (b.ndim != 1)
+               throw std::runtime_error(
+                   "Source field must be a 1D NumPy array");
+             s.set_source_nodal(static_cast<const double *>(b.ptr), b.shape[0]);
+           })
+      .def("print_matrix", &DGSolver::print_matrix, py::arg("limit") = 20)
+      .def("face_quad_points", &DGSolver::face_quad_points, py::arg("mesh"))
+      .def("set_vx_face",
+           [](DGSolver &s, py::array_t<double> a) {
+             py::buffer_info b = a.request();
+             s.set_vx_face(static_cast<const double *>(b.ptr), b.shape[0]);
+           })
+      .def("set_vy_face",
+           [](DGSolver &s, py::array_t<double> a) {
+             py::buffer_info b = a.request();
+             s.set_vy_face(static_cast<const double *>(b.ptr), b.shape[0]);
+           })
+      .def("set_Kxx_face",
+           [](DGSolver &s, py::array_t<double> a) {
+             py::buffer_info b = a.request();
+             s.set_Kxx_face(static_cast<const double *>(b.ptr), b.shape[0]);
+           })
+      .def("set_Kxy_face",
+           [](DGSolver &s, py::array_t<double> a) {
+             py::buffer_info b = a.request();
+             s.set_Kxy_face(static_cast<const double *>(b.ptr), b.shape[0]);
+           })
+      .def("set_Kyx_face",
+           [](DGSolver &s, py::array_t<double> a) {
+             py::buffer_info b = a.request();
+             s.set_Kyx_face(static_cast<const double *>(b.ptr), b.shape[0]);
+           })
+      .def("set_Kyy_face", [](DGSolver &s, py::array_t<double> a) {
         py::buffer_info b = a.request();
-        if (b.ndim != 1)
-          throw std::runtime_error("Source field must be a 1D NumPy array");
-        s.set_source_nodal(static_cast<const double *>(b.ptr), b.shape[0]);
-      }).def("print_matrix", &DGSolver::print_matrix, py::arg("limit") = 20);
+        s.set_Kyy_face(static_cast<const double *>(b.ptr), b.shape[0]);
+      });
 }

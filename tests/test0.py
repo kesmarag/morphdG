@@ -14,7 +14,7 @@ mesh.random_agglomerate(2, 42)
 mesh.push_to_device()
 
 # print("Plotting...")
-mesh.plot()
+# mesh.plot()
 
 solver = morphdg.DGSolver()
 
@@ -32,8 +32,8 @@ solver.set_p_orders(p_orders)
 x = np.array(x_list)
 y = np.array(y_list)
 
-vx_field =  0.0 * y
-vy_field =  0.0 * x
+vx_field =   y
+vy_field =    x
 
 # 3. Pass the zero-copy arrays straight into Kokkos
 solver.set_vx_field(vx_field)
@@ -66,10 +66,34 @@ solver.create_sparse_graph(mesh)
 print("4. Launching GPU Volume Kernel...")
 
 # Step C: Assemble!
-solver.assemble_volume(mesh)
+
+# --- FACE PHYSICS SETUP ---
+xf_list, yf_list = solver.face_quad_points(mesh)
+Xf = np.array(xf_list)
+Yf = np.array(yf_list)
+
+# Evaluate the exact same mathematical functions!
+vxf_field = 1.0 * Yf
+vyf_field = 1.0 * Xf
+
+solver.set_vx_face(vxf_field)
+solver.set_vy_face(vyf_field)
+
+solver.set_Kxx_face(np.ones_like(Xf))
+solver.set_Kyy_face(np.ones_like(Xf))
+solver.set_Kxy_face(np.zeros_like(Xf))
+solver.set_Kyx_face(np.zeros_like(Xf))
+
+print(f"Loaded face physics at {len(Xf)} boundary/edge points.")
+
+
+solver.assemble(mesh)
 
 
 solver.print_matrix(15)
+
+
+
 
 del solver
 del mesh
