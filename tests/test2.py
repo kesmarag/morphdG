@@ -3,10 +3,17 @@ import morphdg as mdg
 
 mesh = mdg.Mesh()
 mesh.load("mesh.dat")   
-mesh.agglomerate(1024, 42)
-# mesh.plot()
+mesh.agglomerate(4, 42)
+mesh.plot()
 
 solver = mdg.DGSolver(mesh, p_order=1, alpha=5.0)
+
+
+p_array = np.ones(mesh.num_elements, dtype=np.int32)
+p_array[:2] = 2
+
+
+solver.update_p_orders(p_array)
 
 solver.set_pde_params(
     vx = 0.0, 
@@ -23,6 +30,6 @@ solver.set_neumann_bc(loc=lambda x, y: y > 0.99, neumann_input=0.0)
 solver.set_neumann_bc(loc=lambda x, y: y < 0.01, neumann_input=0.0)
 
 solution = solver.solve(mode="kokkos")
-# solver.plot_solution(solution, "dg_solution.png")
+solver.plot_solution(solution, "dg_solution.png")
 
 del solver, mesh

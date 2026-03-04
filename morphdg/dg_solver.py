@@ -128,25 +128,25 @@ class DGSolver:
         else:
             raise ValueError(f"Unknown backend '{mode}'.")
 
-    # def solve(self, mode="scipy"):
-    #     self._apply_boundaries()
-    #     self._cpp_solver.create_sparse_graph(self.mesh._cpp_mesh)
-    #     self._cpp_solver.assemble(self.mesh._cpp_mesh)
-        
-    #     if mode == "scipy":
-    #         vals, cols, rows, rhs = self._cpp_solver.get_global_system()
-    #         A = sp.csr_matrix((vals, cols, rows), shape=(len(rhs), len(rhs)))
-    #         print("Solving with SciPy SuperLU Backend...")
-    #         return spla.spsolve(A, rhs)
-    #     else:
-    #         raise ValueError(f"Unknown mode '{backend}'.")
+    def update_p_orders(self, p_order):
+        if isinstance(p_order, int):
+            self.p_orders = np.full(self.mesh.num_elements, p_order, dtype=np.int32)
+        else:
+            self.p_orders = np.asarray(p_order, dtype=np.int32)
+        self._cpp_solver.set_p_orders(self.p_orders)
+        print(f" -> p-orders updated! Matrix resized to {self._cpp_solver.total_dofs} DOFs.")    
 
-    # def plot_solution(self, solution, filename="dG_sol.png"):
+
+
+    # def plot_solution(self, solution, save_as="dg_solution.png"):
     #     print("Reconstructing High-Order solution for plotting...")
     #     nodes = self.mesh._cpp_mesh.nodes.reshape(-1, 2) 
     #     tris = self.mesh._cpp_mesh.triangles.reshape(-1, 3)
     #     t_offsets = self.mesh._cpp_mesh.t_offsets
     #     n_elem = self.mesh._cpp_mesh.num_elements
+        
+    #     # DYNAMIC DOFS: Figure out if P=1 (3 DOFs) or P=2 (6 DOFs)
+    #     n_basis = len(solution) // n_elem
         
     #     tri_vals = np.zeros(len(tris))
         
@@ -160,7 +160,9 @@ class DGSolver:
     #         dx, dy = max_x - min_x, max_y - min_y
             
     #         scale_x, scale_y = np.sqrt(2.0 / dx), np.sqrt(2.0 / dy)
-    #         c0, c1, c2 = solution[e*3 : e*3+3]
+            
+    #         # Extract the exact coefficients for THIS element based on n_basis stride
+    #         coeffs = solution[e * n_basis : (e + 1) * n_basis]
             
     #         for t in range(start_tri, end_tri):
     #             n1, n2, n3 = tris[t]
@@ -170,37 +172,61 @@ class DGSolver:
     #             xi  = 2.0 * (cx - min_x) / dx - 1.0
     #             eta = 2.0 * (cy - min_y) / dy - 1.0
                 
-    #             v0 = scale_x * 0.70710678 * scale_y * 0.70710678
-    #             v1 = scale_x * (1.22474487 * xi) * scale_y * 0.70710678
-    #             v2 = scale_x * 0.70710678 * scale_y * (1.22474487 * eta)
+    #             # Legendre 1D polynomials
+    #             L0_xi = 0.70710678
+    #             L1_xi = 1.22474487 * xi
+    #             L2_xi = 1.58113883 * (1.5 * xi**2 - 0.5)
                 
-    #             tri_vals[t] = c0*v0 + c1*v1 + c2*v2
+    #             L0_eta = 0.70710678
+    #             L1_eta = 1.22474487 * eta
+    #             L2_eta = 1.58113883 * (1.5 * eta**2 - 0.5)
+                
+    #             # P=1 Basis (Linear)
+    #             v0 = scale_x * L0_xi * scale_y * L0_eta
+    #             v1 = scale_x * L1_xi * scale_y * L0_eta
+    #             v2 = scale_x * L0_xi * scale_y * L1_eta
+    #             val = coeffs[0]*v0 + coeffs[1]*v1 + coeffs[2]*v2
+                
+    #             # P=2 Basis (Add quadratic terms if they exist)
+    #             if n_basis == 6:
+    #                 v3 = scale_x * L2_xi * scale_y * L0_eta
+    #                 v4 = scale_x * L1_xi * scale_y * L1_eta
+    #                 v5 = scale_x * L0_xi * scale_y * L2_eta
+    #                 val += coeffs[3]*v3 + coeffs[4]*v4 + coeffs[5]*v5
+                    
+    #             tri_vals[t] = val
 
     #     plt.figure(figsize=(10, 8))
     #     plt.tripcolor(nodes[:, 0], nodes[:, 1], tris, facecolors=tri_vals, 
     #                   cmap='inferno', edgecolors='k', linewidth=0.1)
-    #     plt.colorbar(label='Value')
-    #     plt.title('Discontinuous Galerkin Solution')
+    #     plt.colorbar(label='Physical Field Value')
+        
+    #     p_str = 1 if n_basis == 3 else 2
+    #     plt.title(f'Discontinuous Galerkin Solution (P-order = {p_str})')
     #     plt.axis('equal')
     #     plt.tight_layout()
-    #     plt.savefig(filename, dpi=300)
-    #     print(f" -> Saved to '{filename}'!")
+    #     plt.savefig(save_as, dpi=300)
+    #     print(f" -> Saved to '{save_as}'!")
     #     plt.close()
-
-
     def plot_solution(self, solution, save_as="dg_solution.png"):
-        print("Reconstructing High-Order solution for plotting...")
+        print("Reconstructing Adaptive High-Order solution for plotting...")
         nodes = self.mesh._cpp_mesh.nodes.reshape(-1, 2) 
         tris = self.mesh._cpp_mesh.triangles.reshape(-1, 3)
         t_offsets = self.mesh._cpp_mesh.t_offsets
-        n_elem = self.mesh._cpp_mesh.num_elements
-        
-        # DYNAMIC DOFS: Figure out if P=1 (3 DOFs) or P=2 (6 DOFs)
-        n_basis = len(solution) // n_elem
+        n_elem = self.mesh.num_elements
         
         tri_vals = np.zeros(len(tris))
+        dof_offset = 0  # <--- Dynamic read head for the solution array
         
         for e in range(n_elem):
+            # Calculate how many basis functions this specific element has
+            p = self.p_orders[e]
+            n_basis_e = (p + 1) * (p + 2) // 2
+            
+            # Slice the exact coefficients for this element
+            coeffs = solution[dof_offset : dof_offset + n_basis_e]
+            dof_offset += n_basis_e
+            
             start_tri = t_offsets[e]
             end_tri   = t_offsets[e+1]
             
@@ -211,9 +237,6 @@ class DGSolver:
             
             scale_x, scale_y = np.sqrt(2.0 / dx), np.sqrt(2.0 / dy)
             
-            # Extract the exact coefficients for THIS element based on n_basis stride
-            coeffs = solution[e * n_basis : (e + 1) * n_basis]
-            
             for t in range(start_tri, end_tri):
                 n1, n2, n3 = tris[t]
                 cx = (nodes[n1, 0] + nodes[n2, 0] + nodes[n3, 0]) / 3.0
@@ -222,23 +245,15 @@ class DGSolver:
                 xi  = 2.0 * (cx - min_x) / dx - 1.0
                 eta = 2.0 * (cy - min_y) / dy - 1.0
                 
-                # Legendre 1D polynomials
-                L0_xi = 0.70710678
-                L1_xi = 1.22474487 * xi
-                L2_xi = 1.58113883 * (1.5 * xi**2 - 0.5)
+                L0_xi, L1_xi, L2_xi = 0.70710678, 1.22474487 * xi, 1.58113883 * (1.5 * xi**2 - 0.5)
+                L0_eta, L1_eta, L2_eta = 0.70710678, 1.22474487 * eta, 1.58113883 * (1.5 * eta**2 - 0.5)
                 
-                L0_eta = 0.70710678
-                L1_eta = 1.22474487 * eta
-                L2_eta = 1.58113883 * (1.5 * eta**2 - 0.5)
-                
-                # P=1 Basis (Linear)
                 v0 = scale_x * L0_xi * scale_y * L0_eta
                 v1 = scale_x * L1_xi * scale_y * L0_eta
                 v2 = scale_x * L0_xi * scale_y * L1_eta
                 val = coeffs[0]*v0 + coeffs[1]*v1 + coeffs[2]*v2
                 
-                # P=2 Basis (Add quadratic terms if they exist)
-                if n_basis == 6:
+                if n_basis_e == 6:
                     v3 = scale_x * L2_xi * scale_y * L0_eta
                     v4 = scale_x * L1_xi * scale_y * L1_eta
                     v5 = scale_x * L0_xi * scale_y * L2_eta
@@ -250,13 +265,10 @@ class DGSolver:
         plt.tripcolor(nodes[:, 0], nodes[:, 1], tris, facecolors=tri_vals, 
                       cmap='inferno', edgecolors='k', linewidth=0.1)
         plt.colorbar(label='Physical Field Value')
-        
-        p_str = 1 if n_basis == 3 else 2
-        plt.title(f'Discontinuous Galerkin Solution (P-order = {p_str})')
+        plt.title('Adaptive Discontinuous Galerkin Solution')
         plt.axis('equal')
         plt.tight_layout()
         plt.savefig(save_as, dpi=300)
         print(f" -> Saved to '{save_as}'!")
         plt.close()
-
 
