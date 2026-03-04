@@ -65,6 +65,232 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o
  /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/typing.h
  /home/kesmarag/Code/morphdG/include/morphdg/aggmesh.hpp
  /home/kesmarag/Code/morphdG/include/morphdg/dgsolver.hpp
+ /opt/kokkos-kernels/include/KokkosBatched_Gemm_Serial_Internal.hpp
+ /opt/kokkos-kernels/include/KokkosBatched_Gemm_TeamVector_Internal.hpp
+ /opt/kokkos-kernels/include/KokkosBatched_InnerGemmFixC_Decl.hpp
+ /opt/kokkos-kernels/include/KokkosBatched_InnerGemmFixC_Serial_Impl.hpp
+ /opt/kokkos-kernels/include/KokkosBatched_Util.hpp
+ /opt/kokkos-kernels/include/KokkosBatched_Vector.hpp
+ /opt/kokkos-kernels/include/KokkosBatched_Vector_SIMD.hpp
+ /opt/kokkos-kernels/include/KokkosBatched_Vector_SIMD_Arith.hpp
+ /opt/kokkos-kernels/include/KokkosBatched_Vector_SIMD_Logical.hpp
+ /opt/kokkos-kernels/include/KokkosBatched_Vector_SIMD_Math.hpp
+ /opt/kokkos-kernels/include/KokkosBatched_Vector_SIMD_Misc.hpp
+ /opt/kokkos-kernels/include/KokkosBatched_Vector_SIMD_Relation.hpp
+ /opt/kokkos-kernels/include/KokkosBatched_Vector_SIMD_View.hpp
+ /opt/kokkos-kernels/include/KokkosBlas.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_abs.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_abs_impl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_abs_spec.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_abs_tpl_spec_avail.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_abs_tpl_spec_decl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_axpby.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_axpby_impl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_axpby_mv_impl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_axpby_spec.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_axpby_tpl_spec_avail.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_axpby_tpl_spec_decl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_axpby_unification_attempt_traits.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_dot.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_dot_impl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_dot_mv_impl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_dot_spec.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_dot_tpl_spec_avail.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_dot_tpl_spec_decl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_fill.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_mult.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_mult_impl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_mult_spec.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_mult_tpl_spec_avail.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_mult_tpl_spec_decl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_nrm1.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_nrm1_impl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_nrm1_spec.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_nrm1_tpl_spec_avail.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_nrm1_tpl_spec_decl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_nrm2.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_nrm2_impl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_nrm2_spec.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_nrm2_squared.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_nrm2_tpl_spec_avail.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_nrm2_tpl_spec_decl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_nrm2w.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_nrm2w_impl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_nrm2w_spec.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_nrm2w_squared.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_nrm2w_tpl_spec_avail.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_nrm2w_tpl_spec_decl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_nrminf.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_nrminf_impl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_nrminf_spec.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_nrminf_tpl_spec_avail.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_nrminf_tpl_spec_decl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_reciprocal.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_reciprocal_impl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_reciprocal_spec.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_reciprocal_tpl_spec_avail.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_reciprocal_tpl_spec_decl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_scal.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_scal_impl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_scal_mv_impl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_scal_spec.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_scal_tpl_spec_avail.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_scal_tpl_spec_decl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_serial_scal_impl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_set_impl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_sum.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_sum_impl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_sum_spec.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_sum_tpl_spec_avail.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_sum_tpl_spec_decl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_team_scal_impl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_update.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_update_impl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_update_spec.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_update_tpl_spec_avail.hpp
+ /opt/kokkos-kernels/include/KokkosBlas1_update_tpl_spec_decl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas2_gemv.hpp
+ /opt/kokkos-kernels/include/KokkosBlas2_gemv_impl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas2_gemv_spec.hpp
+ /opt/kokkos-kernels/include/KokkosBlas2_gemv_tpl_spec_avail.hpp
+ /opt/kokkos-kernels/include/KokkosBlas2_gemv_tpl_spec_decl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas2_serial_gemv.hpp
+ /opt/kokkos-kernels/include/KokkosBlas2_serial_gemv_impl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas2_serial_gemv_inner_multiple_dot.hpp
+ /opt/kokkos-kernels/include/KokkosBlas2_serial_gemv_internal.hpp
+ /opt/kokkos-kernels/include/KokkosBlas2_serial_gemv_tpl_spec_decl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas2_team_gemv.hpp
+ /opt/kokkos-kernels/include/KokkosBlas2_team_gemv_impl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas2_team_gemv_spec.hpp
+ /opt/kokkos-kernels/include/KokkosBlas3_gemm.hpp
+ /opt/kokkos-kernels/include/KokkosBlas3_gemm_dotbased_impl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas3_gemm_impl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas3_gemm_spec.hpp
+ /opt/kokkos-kernels/include/KokkosBlas3_gemm_tpl_spec_avail.hpp
+ /opt/kokkos-kernels/include/KokkosBlas3_gemm_tpl_spec_decl.hpp
+ /opt/kokkos-kernels/include/KokkosBlas_serial_axpy.hpp
+ /opt/kokkos-kernels/include/KokkosBlas_serial_nrm2.hpp
+ /opt/kokkos-kernels/include/KokkosBlas_tpl_spec.hpp
+ /opt/kokkos-kernels/include/KokkosBlas_util.hpp
+ /opt/kokkos-kernels/include/KokkosKernels_AlwaysFalse.hpp
+ /opt/kokkos-kernels/include/KokkosKernels_ArithTraits.hpp
+ /opt/kokkos-kernels/include/KokkosKernels_Controls.hpp
+ /opt/kokkos-kernels/include/KokkosKernels_Error.hpp
+ /opt/kokkos-kernels/include/KokkosKernels_ExecSpaceUtils.hpp
+ /opt/kokkos-kernels/include/KokkosKernels_Iota.hpp
+ /opt/kokkos-kernels/include/KokkosKernels_LowerBound.hpp
+ /opt/kokkos-kernels/include/KokkosKernels_Macros.hpp
+ /opt/kokkos-kernels/include/KokkosKernels_Predicates.hpp
+ /opt/kokkos-kernels/include/KokkosKernels_PrintUtils.hpp
+ /opt/kokkos-kernels/include/KokkosKernels_SafeCompare.hpp
+ /opt/kokkos-kernels/include/KokkosKernels_SimpleUtils.hpp
+ /opt/kokkos-kernels/include/KokkosKernels_Singleton.hpp
+ /opt/kokkos-kernels/include/KokkosKernels_Utils.hpp
+ /opt/kokkos-kernels/include/KokkosKernels_VectorUtils.hpp
+ /opt/kokkos-kernels/include/KokkosKernels_ViewUtils.hpp
+ /opt/kokkos-kernels/include/KokkosKernels_config.h
+ /opt/kokkos-kernels/include/KokkosKernels_default_types.hpp
+ /opt/kokkos-kernels/include/KokkosKernels_helpers.hpp
+ /opt/kokkos-kernels/include/KokkosKernels_tpl_handles_decl.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_BsrMatrix.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_CrsMatrix.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_SellMatrix.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_StaticCrsGraph.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_Utils_cusparse.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_Utils_mkl.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_Utils_rocsparse.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_findRelOffset.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_merge_matrix.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_spmv.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_spmv_bsrmatrix_impl.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_spmv_bsrmatrix_impl_v42.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_spmv_bsrmatrix_spec.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_spmv_bsrmatrix_tpl_spec_avail.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_spmv_bsrmatrix_tpl_spec_decl.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_spmv_handle.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_spmv_impl.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_spmv_impl_merge.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_spmv_impl_omp.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_spmv_mv_tpl_spec_avail.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_spmv_mv_tpl_spec_decl.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_spmv_sellmatrix_impl.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_spmv_sellmatrix_spec.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_spmv_sellmatrix_tpl_spec_avail.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_spmv_sellmatrix_tpl_spec_decl.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_spmv_spec.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_spmv_struct_impl.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_spmv_struct_spec.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_spmv_struct_tpl_spec_avail.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_spmv_struct_tpl_spec_decl.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_spmv_tpl_spec_avail.hpp
+ /opt/kokkos-kernels/include/KokkosSparse_spmv_tpl_spec_decl.hpp
+ /opt/kokkos-kernels/include/Kokkos_InnerProductSpaceTraits.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_abs_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_abs_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_abs_mv_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_abs_mv_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_axpby_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_axpby_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_axpby_mv_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_axpby_mv_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_dot_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_dot_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_dot_mv_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_dot_mv_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_mult_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_mult_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_mult_mv_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_mult_mv_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm1_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm1_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm1_mv_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm1_mv_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2_mv_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2_mv_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2w_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2w_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2w_mv_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2w_mv_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrminf_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrminf_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrminf_mv_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrminf_mv_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_reciprocal_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_reciprocal_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_reciprocal_mv_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_reciprocal_mv_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_scal_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_scal_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_scal_mv_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_scal_mv_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_sum_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_sum_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_sum_mv_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_sum_mv_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_update_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_update_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_update_mv_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_update_mv_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas2_gemv_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas2_gemv_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas3_gemm_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas3_gemm_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_bsrmatrix_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_bsrmatrix_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_mv_bsrmatrix_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_mv_bsrmatrix_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_mv_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_mv_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_mv_struct_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_mv_struct_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_sellmatrix_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_sellmatrix_eti_spec_decl.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_struct_eti_spec_avail.hpp
+ /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_struct_eti_spec_decl.hpp
  /opt/kokkos/include/KokkosCore_Config_DeclareBackend.hpp
  /opt/kokkos/include/KokkosCore_Config_FwdBackend.hpp
  /opt/kokkos/include/KokkosCore_Config_SetupBackend.hpp
@@ -78,6 +304,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o
  /opt/kokkos/include/Kokkos_Atomic.hpp
  /opt/kokkos/include/Kokkos_Atomics_Desul_Wrapper.hpp
  /opt/kokkos/include/Kokkos_BitManipulation.hpp
+ /opt/kokkos/include/Kokkos_Bitset.hpp
  /opt/kokkos/include/Kokkos_Clamp.hpp
  /opt/kokkos/include/Kokkos_Complex.hpp
  /opt/kokkos/include/Kokkos_Concepts.hpp
@@ -88,6 +315,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o
  /opt/kokkos/include/Kokkos_DetectionIdiom.hpp
  /opt/kokkos/include/Kokkos_ExecPolicy.hpp
  /opt/kokkos/include/Kokkos_Extents.hpp
+ /opt/kokkos/include/Kokkos_Functional.hpp
  /opt/kokkos/include/Kokkos_Half.hpp
  /opt/kokkos/include/Kokkos_HostSpace.hpp
  /opt/kokkos/include/Kokkos_Layout.hpp
@@ -111,6 +339,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o
  /opt/kokkos/include/Kokkos_Tuners.hpp
  /opt/kokkos/include/Kokkos_TypeInfo.hpp
  /opt/kokkos/include/Kokkos_UniqueToken.hpp
+ /opt/kokkos/include/Kokkos_UnorderedMap.hpp
  /opt/kokkos/include/Kokkos_Vectorization.hpp
  /opt/kokkos/include/Kokkos_View.hpp
  /opt/kokkos/include/Kokkos_WorkGraphPolicy.hpp
@@ -187,6 +416,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o
  /opt/kokkos/include/fwd/Kokkos_Fwd_OPENMP.hpp
  /opt/kokkos/include/impl/KokkosExp_Host_IterateTile.hpp
  /opt/kokkos/include/impl/Kokkos_AnalyzePolicy.hpp
+ /opt/kokkos/include/impl/Kokkos_Bitset_impl.hpp
  /opt/kokkos/include/impl/Kokkos_BuiltinReducers.hpp
  /opt/kokkos/include/impl/Kokkos_CStyleMemoryManagement.hpp
  /opt/kokkos/include/impl/Kokkos_CheckUsage.hpp
@@ -195,6 +425,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o
  /opt/kokkos/include/impl/Kokkos_ConcurrentBitset.hpp
  /opt/kokkos/include/impl/Kokkos_DesulAtomicsConfig.hpp
  /opt/kokkos/include/impl/Kokkos_Error.hpp
+ /opt/kokkos/include/impl/Kokkos_Functional_impl.hpp
  /opt/kokkos/include/impl/Kokkos_FunctorAnalysis.hpp
  /opt/kokkos/include/impl/Kokkos_GraphImpl_fwd.hpp
  /opt/kokkos/include/impl/Kokkos_Half_FloatingPointWrapper.hpp
@@ -213,6 +444,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o
  /opt/kokkos/include/impl/Kokkos_Profiling_C_Interface.h
  /opt/kokkos/include/impl/Kokkos_Profiling_DeviceInfo.hpp
  /opt/kokkos/include/impl/Kokkos_Profiling_Interface.hpp
+ /opt/kokkos/include/impl/Kokkos_QuadPrecisionMath.hpp
  /opt/kokkos/include/impl/Kokkos_ScopeGuard.hpp
  /opt/kokkos/include/impl/Kokkos_SharedAlloc.hpp
  /opt/kokkos/include/impl/Kokkos_StringManipulation.hpp
@@ -220,6 +452,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o
  /opt/kokkos/include/impl/Kokkos_Tools.hpp
  /opt/kokkos/include/impl/Kokkos_Tools_Generic.hpp
  /opt/kokkos/include/impl/Kokkos_Traits.hpp
+ /opt/kokkos/include/impl/Kokkos_UnorderedMap_impl.hpp
  /opt/kokkos/include/impl/Kokkos_Utilities.hpp
  /opt/kokkos/include/impl/Kokkos_Volatile_Load.hpp
  /opt/kokkos/include/impl/Kokkos_ZeroMemset_fwd.hpp
@@ -490,6 +723,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o
  /usr/include/c++/15/cassert
  /usr/include/c++/15/cctype
  /usr/include/c++/15/cerrno
+ /usr/include/c++/15/cfloat
  /usr/include/c++/15/charconv
  /usr/include/c++/15/chrono
  /usr/include/c++/15/cinttypes
@@ -757,16 +991,124 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o
  /usr/include/unistd.h
  /usr/include/wchar.h
  /usr/include/wctype.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/adxintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/amxavx512intrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/amxbf16intrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/amxcomplexintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/amxfp16intrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/amxfp8intrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/amxint8intrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/amxmovrsintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/amxtf32intrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/amxtileintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/amxtransposeintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2-512bf16intrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2-512convertintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2-512mediaintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2-512minmaxintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2-512satcvtintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2bf16intrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2convertintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2copyintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2mediaintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2minmaxintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2satcvtintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx2intrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512bf16intrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512bf16vlintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512bitalgintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512bitalgvlintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512bwintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512cdintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512dqintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512fintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512fp16intrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512fp16vlintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512ifmaintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512ifmavlintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vbmi2intrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vbmi2vlintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vbmiintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vbmivlintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vlbwintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vldqintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vlintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vnniintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vnnivlintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vp2intersectintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vp2intersectvlintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vpopcntdqintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vpopcntdqvlintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avxifmaintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avxintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avxneconvertintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avxvnniint16intrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avxvnniint8intrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/avxvnniintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/bmi2intrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/bmiintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/cetintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/cldemoteintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/clflushoptintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/clwbintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/clzerointrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/cmpccxaddintrin.h
  /usr/lib/gcc/x86_64-redhat-linux/15/include/emmintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/enqcmdintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/f16cintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/float.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/fmaintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/fxsrintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/gfniintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/hresetintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/ia32intrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/immintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/keylockerintrin.h
  /usr/lib/gcc/x86_64-redhat-linux/15/include/limits.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/lwpintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/lzcntintrin.h
  /usr/lib/gcc/x86_64-redhat-linux/15/include/mm_malloc.h
  /usr/lib/gcc/x86_64-redhat-linux/15/include/mmintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/movdirintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/movrsintrin.h
  /usr/lib/gcc/x86_64-redhat-linux/15/include/mwaitintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/mwaitxintrin.h
  /usr/lib/gcc/x86_64-redhat-linux/15/include/omp.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/pconfigintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/pkuintrin.h
  /usr/lib/gcc/x86_64-redhat-linux/15/include/pmmintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/popcntintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/prfchiintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/prfchwintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/raointintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/rdseedintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/rtmintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/serializeintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/sgxintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/sha512intrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/shaintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/sm3intrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/sm4intrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/smmintrin.h
  /usr/lib/gcc/x86_64-redhat-linux/15/include/stdarg.h
  /usr/lib/gcc/x86_64-redhat-linux/15/include/stddef.h
  /usr/lib/gcc/x86_64-redhat-linux/15/include/stdint.h
  /usr/lib/gcc/x86_64-redhat-linux/15/include/syslimits.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/tbmintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/tmmintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/tsxldtrkintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/uintrintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/usermsrintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/vaesintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/vpclmulqdqintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/waitpkgintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/wbnoinvdintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/wmmintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/x86gprintrin.h
  /usr/lib/gcc/x86_64-redhat-linux/15/include/xmmintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/xsavecintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/xsaveintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/xsaveoptintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/xsavesintrin.h
+ /usr/lib/gcc/x86_64-redhat-linux/15/include/xtestintrin.h
 

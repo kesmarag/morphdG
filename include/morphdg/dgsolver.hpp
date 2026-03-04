@@ -1,14 +1,14 @@
 #pragma once
-#include <Kokkos_Core.hpp>
-#include <iomanip>
-#include <pybind11/numpy.h>
-#include <pybind11/pybind11.h>
-#include <vector>
 #include <KokkosBlas1_axpby.hpp>
 #include <KokkosBlas1_dot.hpp>
 #include <KokkosBlas1_nrm2.hpp>
 #include <KokkosSparse_CrsMatrix.hpp>
 #include <KokkosSparse_spmv.hpp>
+#include <Kokkos_Core.hpp>
+#include <iomanip>
+#include <pybind11/numpy.h>
+#include <pybind11/pybind11.h>
+#include <vector>
 
 struct Coeffs {
   double alpha = 0.0;
@@ -1045,11 +1045,13 @@ struct DGSolver {
     auto h_offsets =
         Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), d_offsets);
 
-// --- ADD THESE 4 LINES TO REMOVE DUPLICATES ---
+    // --- ADD THESE 4 LINES TO REMOVE DUPLICATES ---
     for (int e = 0; e < n_elem; ++e) {
       std::sort(elem_neighbors[e].begin(), elem_neighbors[e].end());
-      elem_neighbors[e].erase(std::unique(elem_neighbors[e].begin(), elem_neighbors[e].end()), elem_neighbors[e].end());
-    }    
+      elem_neighbors[e].erase(
+          std::unique(elem_neighbors[e].begin(), elem_neighbors[e].end()),
+          elem_neighbors[e].end());
+    }
     // 3. Build the Sparsity Pattern (List of non-zero columns for each global
     // row)
     std::vector<std::vector<int>> row_cols(total_dofs);
@@ -1141,10 +1143,11 @@ struct DGSolver {
     print_csr_matrix_blocks(h_rows, h_cols, h_vals, h_offs, print_limit);
   }
 
-
-// --- KOKKOS GPU CONJUGATE GRADIENT SOLVER (SYMMETRIC ONLY) ---
-  pybind11::array_t<Real> solve_cg(int max_iters = 10000, Real tolerance = 1e-8) {
-    using CrsMatrixType = KokkosSparse::CrsMatrix<Real, int, ExecutionSpace, void, int>;
+  // --- KOKKOS GPU CONJUGATE GRADIENT SOLVER (SYMMETRIC ONLY) ---
+  pybind11::array_t<Real> solve_cg(int max_iters = 10000,
+                                   Real tolerance = 1e-8) {
+    using CrsMatrixType =
+        KokkosSparse::CrsMatrix<Real, int, ExecutionSpace, void, int>;
     int nnz = d_global_vals.extent(0);
     CrsMatrixType A("LHS_Matrix", total_dofs, total_dofs, nnz, d_global_vals,
                     d_global_rows, d_global_cols);
@@ -1185,13 +1188,14 @@ struct DGSolver {
         r_dot_r = r_new_dot_r_new;
       }
       if (iter == max_iters) {
-        std::cout << "   -> Warning: CG did not converge within " << max_iters 
+        std::cout << "   -> Warning: CG did not converge within " << max_iters
                   << " iterations." << std::endl;
       }
     }
 
     pybind11::array_t<Real> py_x(total_dofs);
-    Kokkos::View<Real*, Kokkos::HostSpace, Kokkos::MemoryTraits<Kokkos::Unmanaged>> 
+    Kokkos::View<Real *, Kokkos::HostSpace,
+                 Kokkos::MemoryTraits<Kokkos::Unmanaged>>
         h_py_x(py_x.mutable_data(), py_x.shape(0));
     Kokkos::deep_copy(h_py_x, d_x);
 
@@ -1199,8 +1203,10 @@ struct DGSolver {
   }
 
   // --- KOKKOS GPU BiCGStab SOLVER (NON-SYMMETRIC MATRICES) ---
-  pybind11::array_t<Real> solve_bicgstab(int max_iters = 10000, Real tolerance = 1e-8) {
-    using CrsMatrixType = KokkosSparse::CrsMatrix<Real, int, ExecutionSpace, void, int>;
+  pybind11::array_t<Real> solve_bicgstab(int max_iters = 10000,
+                                         Real tolerance = 1e-8) {
+    using CrsMatrixType =
+        KokkosSparse::CrsMatrix<Real, int, ExecutionSpace, void, int>;
     int nnz = d_global_vals.extent(0);
     CrsMatrixType A("LHS_Matrix", total_dofs, total_dofs, nnz, d_global_vals,
                     d_global_rows, d_global_cols);
@@ -1209,9 +1215,9 @@ struct DGSolver {
     ViewReal1D d_r("r", total_dofs);
     ViewReal1D d_r0_star("r0_star", total_dofs);
     ViewReal1D d_p("p", total_dofs);
-    ViewReal1D d_v("v", total_dofs); 
+    ViewReal1D d_v("v", total_dofs);
     ViewReal1D d_s("s", total_dofs);
-    ViewReal1D d_t("t", total_dofs); 
+    ViewReal1D d_t("t", total_dofs);
 
     Kokkos::deep_copy(d_x, 0.0);
     Kokkos::deep_copy(d_r, d_rhs);
@@ -1225,7 +1231,8 @@ struct DGSolver {
       int iter = 0;
       for (; iter < max_iters; ++iter) {
         Real rho = KokkosBlas::dot(d_r0_star, d_r);
-        if (std::abs(rho) < 1e-14) break; 
+        if (std::abs(rho) < 1e-14)
+          break;
 
         if (iter > 0) {
           Real beta = (rho / rho_prev) * (alpha / omega);
@@ -1235,7 +1242,8 @@ struct DGSolver {
 
         KokkosSparse::spmv("N", 1.0, A, d_p, 0.0, d_v);
         Real r0_dot_v = KokkosBlas::dot(d_r0_star, d_v);
-        if (std::abs(r0_dot_v) < 1e-14) break; 
+        if (std::abs(r0_dot_v) < 1e-14)
+          break;
 
         alpha = rho / r0_dot_v;
 
@@ -1245,7 +1253,8 @@ struct DGSolver {
         Real norm_s = Kokkos::sqrt(KokkosBlas::dot(d_s, d_s));
         if (norm_s / initial_norm < tolerance) {
           KokkosBlas::axpy(alpha, d_p, d_x);
-          std::cout << "   -> BiCGStab Converged in " << iter + 1 << " iterations! Norm: " << norm_s << std::endl;
+          std::cout << "   -> BiCGStab Converged in " << iter + 1
+                    << " iterations! Norm: " << norm_s << std::endl;
           break;
         }
 
@@ -1262,25 +1271,25 @@ struct DGSolver {
 
         Real current_norm = Kokkos::sqrt(KokkosBlas::dot(d_r, d_r));
         if (current_norm / initial_norm < tolerance) {
-          std::cout << "   -> BiCGStab Converged in " << iter + 1 << " iterations! Norm: " << current_norm << std::endl;
+          std::cout << "   -> BiCGStab Converged in " << iter + 1
+                    << " iterations! Norm: " << current_norm << std::endl;
           break;
         }
 
         rho_prev = rho;
       }
       if (iter == max_iters) {
-        std::cout << "   -> Warning: BiCGStab did not converge within " << max_iters << " iterations." << std::endl;
+        std::cout << "   -> Warning: BiCGStab did not converge within "
+                  << max_iters << " iterations." << std::endl;
       }
     }
 
     pybind11::array_t<Real> py_x(total_dofs);
-    Kokkos::View<Real*, Kokkos::HostSpace, Kokkos::MemoryTraits<Kokkos::Unmanaged>> 
+    Kokkos::View<Real *, Kokkos::HostSpace,
+                 Kokkos::MemoryTraits<Kokkos::Unmanaged>>
         h_py_x(py_x.mutable_data(), py_x.shape(0));
     Kokkos::deep_copy(h_py_x, d_x);
 
     return py_x;
   }
-
-
-  
 };

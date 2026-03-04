@@ -63,6 +63,232 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
   /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/typing.h \
   /home/kesmarag/Code/morphdG/include/morphdg/aggmesh.hpp \
   /home/kesmarag/Code/morphdG/include/morphdg/dgsolver.hpp \
+  /opt/kokkos-kernels/include/KokkosBatched_Gemm_Serial_Internal.hpp \
+  /opt/kokkos-kernels/include/KokkosBatched_Gemm_TeamVector_Internal.hpp \
+  /opt/kokkos-kernels/include/KokkosBatched_InnerGemmFixC_Decl.hpp \
+  /opt/kokkos-kernels/include/KokkosBatched_InnerGemmFixC_Serial_Impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBatched_Util.hpp \
+  /opt/kokkos-kernels/include/KokkosBatched_Vector.hpp \
+  /opt/kokkos-kernels/include/KokkosBatched_Vector_SIMD.hpp \
+  /opt/kokkos-kernels/include/KokkosBatched_Vector_SIMD_Arith.hpp \
+  /opt/kokkos-kernels/include/KokkosBatched_Vector_SIMD_Logical.hpp \
+  /opt/kokkos-kernels/include/KokkosBatched_Vector_SIMD_Math.hpp \
+  /opt/kokkos-kernels/include/KokkosBatched_Vector_SIMD_Misc.hpp \
+  /opt/kokkos-kernels/include/KokkosBatched_Vector_SIMD_Relation.hpp \
+  /opt/kokkos-kernels/include/KokkosBatched_Vector_SIMD_View.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_abs.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_abs_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_abs_spec.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_abs_tpl_spec_avail.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_abs_tpl_spec_decl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_axpby.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_axpby_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_axpby_mv_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_axpby_spec.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_axpby_tpl_spec_avail.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_axpby_tpl_spec_decl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_axpby_unification_attempt_traits.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_dot.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_dot_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_dot_mv_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_dot_spec.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_dot_tpl_spec_avail.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_dot_tpl_spec_decl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_fill.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_mult.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_mult_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_mult_spec.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_mult_tpl_spec_avail.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_mult_tpl_spec_decl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_nrm1.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_nrm1_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_nrm1_spec.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_nrm1_tpl_spec_avail.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_nrm1_tpl_spec_decl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_nrm2.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_nrm2_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_nrm2_spec.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_nrm2_squared.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_nrm2_tpl_spec_avail.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_nrm2_tpl_spec_decl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_nrm2w.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_nrm2w_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_nrm2w_spec.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_nrm2w_squared.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_nrm2w_tpl_spec_avail.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_nrm2w_tpl_spec_decl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_nrminf.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_nrminf_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_nrminf_spec.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_nrminf_tpl_spec_avail.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_nrminf_tpl_spec_decl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_reciprocal.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_reciprocal_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_reciprocal_spec.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_reciprocal_tpl_spec_avail.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_reciprocal_tpl_spec_decl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_scal.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_scal_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_scal_mv_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_scal_spec.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_scal_tpl_spec_avail.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_scal_tpl_spec_decl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_serial_scal_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_set_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_sum.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_sum_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_sum_spec.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_sum_tpl_spec_avail.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_sum_tpl_spec_decl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_team_scal_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_update.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_update_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_update_spec.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_update_tpl_spec_avail.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas1_update_tpl_spec_decl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas2_gemv.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas2_gemv_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas2_gemv_spec.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas2_gemv_tpl_spec_avail.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas2_gemv_tpl_spec_decl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas2_serial_gemv.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas2_serial_gemv_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas2_serial_gemv_inner_multiple_dot.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas2_serial_gemv_internal.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas2_serial_gemv_tpl_spec_decl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas2_team_gemv.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas2_team_gemv_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas2_team_gemv_spec.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas3_gemm.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas3_gemm_dotbased_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas3_gemm_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas3_gemm_spec.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas3_gemm_tpl_spec_avail.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas3_gemm_tpl_spec_decl.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas_serial_axpy.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas_serial_nrm2.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas_tpl_spec.hpp \
+  /opt/kokkos-kernels/include/KokkosBlas_util.hpp \
+  /opt/kokkos-kernels/include/KokkosKernels_AlwaysFalse.hpp \
+  /opt/kokkos-kernels/include/KokkosKernels_ArithTraits.hpp \
+  /opt/kokkos-kernels/include/KokkosKernels_Controls.hpp \
+  /opt/kokkos-kernels/include/KokkosKernels_Error.hpp \
+  /opt/kokkos-kernels/include/KokkosKernels_ExecSpaceUtils.hpp \
+  /opt/kokkos-kernels/include/KokkosKernels_Iota.hpp \
+  /opt/kokkos-kernels/include/KokkosKernels_LowerBound.hpp \
+  /opt/kokkos-kernels/include/KokkosKernels_Macros.hpp \
+  /opt/kokkos-kernels/include/KokkosKernels_Predicates.hpp \
+  /opt/kokkos-kernels/include/KokkosKernels_PrintUtils.hpp \
+  /opt/kokkos-kernels/include/KokkosKernels_SafeCompare.hpp \
+  /opt/kokkos-kernels/include/KokkosKernels_SimpleUtils.hpp \
+  /opt/kokkos-kernels/include/KokkosKernels_Singleton.hpp \
+  /opt/kokkos-kernels/include/KokkosKernels_Utils.hpp \
+  /opt/kokkos-kernels/include/KokkosKernels_VectorUtils.hpp \
+  /opt/kokkos-kernels/include/KokkosKernels_ViewUtils.hpp \
+  /opt/kokkos-kernels/include/KokkosKernels_config.h \
+  /opt/kokkos-kernels/include/KokkosKernels_default_types.hpp \
+  /opt/kokkos-kernels/include/KokkosKernels_helpers.hpp \
+  /opt/kokkos-kernels/include/KokkosKernels_tpl_handles_decl.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_BsrMatrix.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_CrsMatrix.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_SellMatrix.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_StaticCrsGraph.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_Utils_cusparse.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_Utils_mkl.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_Utils_rocsparse.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_findRelOffset.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_merge_matrix.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_spmv.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_spmv_bsrmatrix_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_spmv_bsrmatrix_impl_v42.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_spmv_bsrmatrix_spec.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_spmv_bsrmatrix_tpl_spec_avail.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_spmv_bsrmatrix_tpl_spec_decl.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_spmv_handle.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_spmv_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_spmv_impl_merge.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_spmv_impl_omp.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_spmv_mv_tpl_spec_avail.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_spmv_mv_tpl_spec_decl.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_spmv_sellmatrix_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_spmv_sellmatrix_spec.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_spmv_sellmatrix_tpl_spec_avail.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_spmv_sellmatrix_tpl_spec_decl.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_spmv_spec.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_spmv_struct_impl.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_spmv_struct_spec.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_spmv_struct_tpl_spec_avail.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_spmv_struct_tpl_spec_decl.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_spmv_tpl_spec_avail.hpp \
+  /opt/kokkos-kernels/include/KokkosSparse_spmv_tpl_spec_decl.hpp \
+  /opt/kokkos-kernels/include/Kokkos_InnerProductSpaceTraits.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_abs_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_abs_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_abs_mv_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_abs_mv_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_axpby_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_axpby_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_axpby_mv_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_axpby_mv_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_dot_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_dot_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_dot_mv_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_dot_mv_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_mult_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_mult_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_mult_mv_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_mult_mv_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm1_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm1_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm1_mv_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm1_mv_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2_mv_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2_mv_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2w_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2w_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2w_mv_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2w_mv_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrminf_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrminf_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrminf_mv_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrminf_mv_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_reciprocal_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_reciprocal_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_reciprocal_mv_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_reciprocal_mv_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_scal_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_scal_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_scal_mv_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_scal_mv_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_sum_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_sum_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_sum_mv_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_sum_mv_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_update_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_update_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_update_mv_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_update_mv_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas2_gemv_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas2_gemv_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas3_gemm_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas3_gemm_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_bsrmatrix_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_bsrmatrix_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_mv_bsrmatrix_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_mv_bsrmatrix_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_mv_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_mv_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_mv_struct_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_mv_struct_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_sellmatrix_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_sellmatrix_eti_spec_decl.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_struct_eti_spec_avail.hpp \
+  /opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_struct_eti_spec_decl.hpp \
   /opt/kokkos/include/KokkosCore_Config_DeclareBackend.hpp \
   /opt/kokkos/include/KokkosCore_Config_FwdBackend.hpp \
   /opt/kokkos/include/KokkosCore_Config_SetupBackend.hpp \
@@ -76,6 +302,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
   /opt/kokkos/include/Kokkos_Atomic.hpp \
   /opt/kokkos/include/Kokkos_Atomics_Desul_Wrapper.hpp \
   /opt/kokkos/include/Kokkos_BitManipulation.hpp \
+  /opt/kokkos/include/Kokkos_Bitset.hpp \
   /opt/kokkos/include/Kokkos_Clamp.hpp \
   /opt/kokkos/include/Kokkos_Complex.hpp \
   /opt/kokkos/include/Kokkos_Concepts.hpp \
@@ -86,6 +313,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
   /opt/kokkos/include/Kokkos_DetectionIdiom.hpp \
   /opt/kokkos/include/Kokkos_ExecPolicy.hpp \
   /opt/kokkos/include/Kokkos_Extents.hpp \
+  /opt/kokkos/include/Kokkos_Functional.hpp \
   /opt/kokkos/include/Kokkos_Half.hpp \
   /opt/kokkos/include/Kokkos_HostSpace.hpp \
   /opt/kokkos/include/Kokkos_Layout.hpp \
@@ -109,6 +337,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
   /opt/kokkos/include/Kokkos_Tuners.hpp \
   /opt/kokkos/include/Kokkos_TypeInfo.hpp \
   /opt/kokkos/include/Kokkos_UniqueToken.hpp \
+  /opt/kokkos/include/Kokkos_UnorderedMap.hpp \
   /opt/kokkos/include/Kokkos_Vectorization.hpp \
   /opt/kokkos/include/Kokkos_View.hpp \
   /opt/kokkos/include/Kokkos_WorkGraphPolicy.hpp \
@@ -185,6 +414,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
   /opt/kokkos/include/fwd/Kokkos_Fwd_OPENMP.hpp \
   /opt/kokkos/include/impl/KokkosExp_Host_IterateTile.hpp \
   /opt/kokkos/include/impl/Kokkos_AnalyzePolicy.hpp \
+  /opt/kokkos/include/impl/Kokkos_Bitset_impl.hpp \
   /opt/kokkos/include/impl/Kokkos_BuiltinReducers.hpp \
   /opt/kokkos/include/impl/Kokkos_CStyleMemoryManagement.hpp \
   /opt/kokkos/include/impl/Kokkos_CheckUsage.hpp \
@@ -193,6 +423,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
   /opt/kokkos/include/impl/Kokkos_ConcurrentBitset.hpp \
   /opt/kokkos/include/impl/Kokkos_DesulAtomicsConfig.hpp \
   /opt/kokkos/include/impl/Kokkos_Error.hpp \
+  /opt/kokkos/include/impl/Kokkos_Functional_impl.hpp \
   /opt/kokkos/include/impl/Kokkos_FunctorAnalysis.hpp \
   /opt/kokkos/include/impl/Kokkos_GraphImpl_fwd.hpp \
   /opt/kokkos/include/impl/Kokkos_Half_FloatingPointWrapper.hpp \
@@ -211,6 +442,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
   /opt/kokkos/include/impl/Kokkos_Profiling_C_Interface.h \
   /opt/kokkos/include/impl/Kokkos_Profiling_DeviceInfo.hpp \
   /opt/kokkos/include/impl/Kokkos_Profiling_Interface.hpp \
+  /opt/kokkos/include/impl/Kokkos_QuadPrecisionMath.hpp \
   /opt/kokkos/include/impl/Kokkos_ScopeGuard.hpp \
   /opt/kokkos/include/impl/Kokkos_SharedAlloc.hpp \
   /opt/kokkos/include/impl/Kokkos_StringManipulation.hpp \
@@ -218,6 +450,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
   /opt/kokkos/include/impl/Kokkos_Tools.hpp \
   /opt/kokkos/include/impl/Kokkos_Tools_Generic.hpp \
   /opt/kokkos/include/impl/Kokkos_Traits.hpp \
+  /opt/kokkos/include/impl/Kokkos_UnorderedMap_impl.hpp \
   /opt/kokkos/include/impl/Kokkos_Utilities.hpp \
   /opt/kokkos/include/impl/Kokkos_Volatile_Load.hpp \
   /opt/kokkos/include/impl/Kokkos_ZeroMemset_fwd.hpp \
@@ -488,6 +721,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
   /usr/include/c++/15/cassert \
   /usr/include/c++/15/cctype \
   /usr/include/c++/15/cerrno \
+  /usr/include/c++/15/cfloat \
   /usr/include/c++/15/charconv \
   /usr/include/c++/15/chrono \
   /usr/include/c++/15/cinttypes \
@@ -755,33 +989,199 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
   /usr/include/unistd.h \
   /usr/include/wchar.h \
   /usr/include/wctype.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/adxintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/amxavx512intrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/amxbf16intrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/amxcomplexintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/amxfp16intrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/amxfp8intrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/amxint8intrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/amxmovrsintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/amxtf32intrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/amxtileintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/amxtransposeintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2-512bf16intrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2-512convertintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2-512mediaintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2-512minmaxintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2-512satcvtintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2bf16intrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2convertintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2copyintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2mediaintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2minmaxintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2satcvtintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx2intrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512bf16intrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512bf16vlintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512bitalgintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512bitalgvlintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512bwintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512cdintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512dqintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512fintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512fp16intrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512fp16vlintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512ifmaintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512ifmavlintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vbmi2intrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vbmi2vlintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vbmiintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vbmivlintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vlbwintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vldqintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vlintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vnniintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vnnivlintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vp2intersectintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vp2intersectvlintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vpopcntdqintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vpopcntdqvlintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avxifmaintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avxintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avxneconvertintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avxvnniint16intrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avxvnniint8intrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/avxvnniintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/bmi2intrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/bmiintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/cetintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/cldemoteintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/clflushoptintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/clwbintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/clzerointrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/cmpccxaddintrin.h \
   /usr/lib/gcc/x86_64-redhat-linux/15/include/emmintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/enqcmdintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/f16cintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/float.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/fmaintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/fxsrintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/gfniintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/hresetintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/ia32intrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/immintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/keylockerintrin.h \
   /usr/lib/gcc/x86_64-redhat-linux/15/include/limits.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/lwpintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/lzcntintrin.h \
   /usr/lib/gcc/x86_64-redhat-linux/15/include/mm_malloc.h \
   /usr/lib/gcc/x86_64-redhat-linux/15/include/mmintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/movdirintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/movrsintrin.h \
   /usr/lib/gcc/x86_64-redhat-linux/15/include/mwaitintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/mwaitxintrin.h \
   /usr/lib/gcc/x86_64-redhat-linux/15/include/omp.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/pconfigintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/pkuintrin.h \
   /usr/lib/gcc/x86_64-redhat-linux/15/include/pmmintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/popcntintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/prfchiintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/prfchwintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/raointintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/rdseedintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/rtmintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/serializeintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/sgxintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/sha512intrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/shaintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/sm3intrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/sm4intrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/smmintrin.h \
   /usr/lib/gcc/x86_64-redhat-linux/15/include/stdarg.h \
   /usr/lib/gcc/x86_64-redhat-linux/15/include/stddef.h \
   /usr/lib/gcc/x86_64-redhat-linux/15/include/stdint.h \
   /usr/lib/gcc/x86_64-redhat-linux/15/include/syslimits.h \
-  /usr/lib/gcc/x86_64-redhat-linux/15/include/xmmintrin.h
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/tbmintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/tmmintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/tsxldtrkintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/uintrintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/usermsrintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/vaesintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/vpclmulqdqintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/waitpkgintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/wbnoinvdintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/wmmintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/x86gprintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/xmmintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/xsavecintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/xsaveintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/xsaveoptintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/xsavesintrin.h \
+  /usr/lib/gcc/x86_64-redhat-linux/15/include/xtestintrin.h
 
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/xsavesintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/xsaveoptintrin.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/15/include/xmmintrin.h:
 
-/usr/lib/gcc/x86_64-redhat-linux/15/include/syslimits.h:
+/usr/lib/gcc/x86_64-redhat-linux/15/include/x86gprintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/wbnoinvdintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/waitpkgintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/vaesintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/usermsrintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/tmmintrin.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/15/include/stdint.h:
 
-/usr/lib/gcc/x86_64-redhat-linux/15/include/stdarg.h:
+/usr/lib/gcc/x86_64-redhat-linux/15/include/serializeintrin.h:
 
-/usr/lib/gcc/x86_64-redhat-linux/15/include/omp.h:
+/usr/lib/gcc/x86_64-redhat-linux/15/include/rtmintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/popcntintrin.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/15/include/mwaitintrin.h:
 
-/usr/lib/gcc/x86_64-redhat-linux/15/include/mm_malloc.h:
+/usr/lib/gcc/x86_64-redhat-linux/15/include/movrsintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/movdirintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/fxsrintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/fmaintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/f16cintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/enqcmdintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/clzerointrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avxvnniint16intrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avxintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vnniintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vldqintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vlbwintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512bitalgvlintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512bitalgintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2copyintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2convertintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/amxtf32intrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/amxint8intrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/amxcomplexintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/amxavx512intrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/adxintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/rdseedintrin.h:
 
 /usr/include/wctype.h:
 
@@ -789,15 +1189,17 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 
 /usr/include/unistd.h:
 
-/usr/include/syscall.h:
-
-/usr/include/sys/types.h:
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2-512convertintrin.h:
 
 /usr/include/sys/time.h:
 
 /usr/include/sys/syscall.h:
 
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vp2intersectvlintrin.h:
+
 /usr/include/sys/stat.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/pkuintrin.h:
 
 /usr/include/sys/select.h:
 
@@ -819,8 +1221,6 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 
 /usr/include/python3.12/traceback.h:
 
-/usr/include/python3.12/rangeobject.h:
-
 /usr/include/python3.12/pytypedefs.h:
 
 /usr/include/python3.12/pythonrun.h:
@@ -833,9 +1233,9 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 
 /usr/include/python3.12/pymem.h:
 
-/usr/include/python3.12/pymacro.h:
+/usr/lib/gcc/x86_64-redhat-linux/15/include/pconfigintrin.h:
 
-/usr/include/python3.12/pylifecycle.h:
+/usr/include/python3.12/pymacro.h:
 
 /usr/include/python3.12/pyconfig.h:
 
@@ -857,19 +1257,15 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 
 /usr/include/python3.12/listobject.h:
 
-/usr/include/python3.12/pyerrors.h:
-
-/usr/include/python3.12/iterobject.h:
-
 /usr/include/python3.12/import.h:
 
-/usr/include/python3.12/genericaliasobject.h:
+/usr/lib/gcc/x86_64-redhat-linux/15/include/clflushoptintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vlintrin.h:
 
 /usr/include/python3.12/fileutils.h:
 
 /usr/include/python3.12/dictobject.h:
-
-/usr/include/python3.12/cpython/weakrefobject.h:
 
 /usr/include/python3.12/cpython/tupleobject.h:
 
@@ -889,8 +1285,6 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 
 /usr/include/python3.12/cpython/pyerrors.h:
 
-/usr/include/python3.12/cpython/pydebug.h:
-
 /usr/include/python3.12/cpython/odictobject.h:
 
 /usr/include/python3.12/tracemalloc.h:
@@ -905,6 +1299,8 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 
 /usr/include/python3.12/cpython/longobject.h:
 
+/usr/lib/gcc/x86_64-redhat-linux/15/include/tbmintrin.h:
+
 /usr/include/python3.12/cpython/longintrepr.h:
 
 /usr/include/python3.12/cpython/listobject.h:
@@ -916,6 +1312,8 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 /usr/include/python3.12/descrobject.h:
 
 /usr/include/python3.12/cpython/genobject.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2mediaintrin.h:
 
 /usr/include/python3.12/cpython/frameobject.h:
 
@@ -929,7 +1327,7 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 
 /usr/include/python3.12/cpython/code.h:
 
-/usr/include/python3.12/cpython/classobject.h:
+/usr/lib/gcc/x86_64-redhat-linux/15/include/gfniintrin.h:
 
 /usr/include/python3.12/cpython/cellobject.h:
 
@@ -949,29 +1347,21 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 
 /usr/include/linux/posix_types.h:
 
-/usr/include/python3.12/cpython/complexobject.h:
-
-/usr/include/linux/errno.h:
-
 /usr/include/linux/close_range.h:
-
-/usr/include/gnu/stubs-64.h:
 
 /usr/include/features.h:
 
-/usr/include/errno.h:
-
 /usr/include/ctype.h:
 
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2-512satcvtintrin.h:
+
 /usr/include/c++/15/x86_64-redhat-linux/bits/time_members.h:
-
-/usr/include/c++/15/x86_64-redhat-linux/bits/os_defines.h:
-
-/usr/include/c++/15/x86_64-redhat-linux/bits/opt_random.h:
 
 /usr/include/c++/15/x86_64-redhat-linux/bits/gthr.h:
 
 /usr/include/c++/15/x86_64-redhat-linux/bits/gthr-default.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/raointintrin.h:
 
 /usr/include/c++/15/x86_64-redhat-linux/bits/error_constants.h:
 
@@ -989,13 +1379,15 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 
 /usr/include/c++/15/x86_64-redhat-linux/bits/basic_file.h:
 
-/usr/include/c++/15/x86_64-redhat-linux/bits/atomic_word.h:
+/usr/lib/gcc/x86_64-redhat-linux/15/include/float.h:
 
 /usr/include/c++/15/version:
 
 /usr/include/c++/15/vector:
 
 /usr/include/c++/15/utility:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512bwintrin.h:
 
 /usr/include/c++/15/unordered_set:
 
@@ -1004,6 +1396,8 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 /usr/include/c++/15/typeinfo:
 
 /usr/include/c++/15/type_traits:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/immintrin.h:
 
 /usr/include/c++/15/tuple:
 
@@ -1024,8 +1418,6 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 /usr/include/limits.h:
 
 /usr/include/c++/15/tr1/gamma.tcc:
-
-/usr/include/c++/15/tr1/exp_integral.tcc:
 
 /usr/include/python3.12/cpython/descrobject.h:
 
@@ -1053,109 +1445,1629 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 
 /usr/include/c++/15/sstream:
 
+/usr/lib/gcc/x86_64-redhat-linux/15/include/amxtransposeintrin.h:
+
 /usr/include/c++/15/set:
 
 /usr/include/c++/15/ranges:
 
-/usr/include/c++/15/pstl/glue_numeric_defs.h:
+/usr/include/c++/15/pstl/glue_memory_defs.h:
 
-/usr/include/bits/errno.h:
+/usr/include/c++/15/pstl/glue_algorithm_defs.h:
 
-/opt/kokkos/include/KokkosCore_Config_SetupBackend.hpp:
+/usr/include/c++/15/optional:
 
-/usr/include/bits/endianness.h:
+/usr/include/c++/15/numeric:
 
-/usr/include/bits/dlfcn.h:
+/usr/include/c++/15/new:
 
-/opt/kokkos/include/impl/Kokkos_Tools.hpp:
+/usr/include/c++/15/memory:
 
-/usr/include/bits/cpu-set.h:
+/usr/include/c++/15/locale:
 
-/usr/include/c++/15/bits/new_allocator.h:
+/usr/include/c++/15/limits:
 
-/usr/include/bits/confname.h:
+/usr/include/c++/15/iostream:
 
-/usr/include/sys/single_threaded.h:
+/usr/include/c++/15/functional:
 
-/usr/include/c++/15/valarray:
+/usr/lib/gcc/x86_64-redhat-linux/15/include/clwbintrin.h:
 
-/usr/include/asm-generic/errno.h:
+/usr/include/c++/15/fstream:
 
-/usr/include/alloca.h:
+/usr/include/c++/15/forward_list:
 
-/opt/kokkos/include/traits/Kokkos_StaticBatchSizeTrait.hpp:
+/usr/include/c++/15/streambuf:
 
-/usr/include/endian.h:
+/usr/include/c++/15/format:
 
-/opt/kokkos/include/traits/Kokkos_ScheduleTrait.hpp:
+/usr/include/c++/15/ext/type_traits.h:
 
-/opt/kokkos/include/traits/Kokkos_OccupancyControlTrait.hpp:
+/usr/include/python3.12/sysmodule.h:
 
-/usr/include/c++/15/array:
+/usr/include/c++/15/ext/numeric_traits.h:
 
-/usr/include/asm/unistd_64.h:
+/usr/include/c++/15/ext/concurrence.h:
 
-/usr/include/c++/15/stdexcept:
+/usr/include/c++/15/ext/atomicity.h:
 
-/opt/kokkos/include/mdspan/mdspan.hpp:
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512bf16intrin.h:
 
-/opt/kokkos/include/impl/Kokkos_PartitionSpace.hpp:
+/usr/include/c++/15/deque:
 
-/usr/lib/gcc/x86_64-redhat-linux/15/include/stddef.h:
+/usr/include/c++/15/debug/debug.h:
 
-/opt/kokkos/include/traits/Kokkos_PolicyTraitAdaptor.hpp:
+/usr/include/c++/15/cxxabi.h:
+
+/usr/include/c++/15/cwctype:
+
+/usr/include/c++/15/cwchar:
+
+/usr/include/c++/15/ctime:
+
+/usr/include/c++/15/cstdlib:
+
+/usr/include/c++/15/cstdio:
+
+/usr/include/c++/15/cstddef:
+
+/usr/include/c++/15/complex:
+
+/usr/include/c++/15/compare:
 
 /usr/include/c++/15/cmath:
 
-/opt/kokkos/include/impl/Kokkos_Traits.hpp:
-
-/usr/include/c++/15/bits/uses_allocator.h:
-
-/usr/include/stdc-predef.h:
-
-/usr/include/c++/15/tr1/ell_integral.tcc:
-
-/opt/kokkos/include/impl/Kokkos_Profiling.hpp:
-
-/opt/kokkos/include/impl/Kokkos_NvidiaGpuArchitectures.hpp:
-
-/opt/kokkos/include/impl/Kokkos_Volatile_Load.hpp:
-
-/opt/kokkos/include/traits/Kokkos_ExecutionSpaceTrait.hpp:
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vbmivlintrin.h:
 
 /usr/include/python3.12/abstract.h:
 
 /usr/include/c++/15/clocale:
 
-/opt/kokkos/include/impl/Kokkos_Half_NumericTraits.hpp:
+/usr/include/c++/15/cinttypes:
 
-/opt/kokkos/include/impl/Kokkos_FunctorAnalysis.hpp:
+/usr/include/c++/15/math.h:
 
-/opt/kokkos/include/impl/Kokkos_Error.hpp:
+/usr/include/c++/15/chrono:
 
-/opt/kokkos/include/impl/Kokkos_DesulAtomicsConfig.hpp:
+/usr/include/c++/15/bits/version.h:
 
-/opt/kokkos/include/impl/Kokkos_CheckUsage.hpp:
+/usr/include/c++/15/bits/valarray_before.h:
 
-/opt/kokkos/include/experimental/__p0009_bits/mdspan.hpp:
+/usr/include/c++/15/bits/valarray_array.tcc:
 
-/opt/kokkos/include/impl/KokkosExp_Host_IterateTile.hpp:
+/usr/include/c++/15/bits/valarray_array.h:
 
-/usr/include/asm/types.h:
+/usr/include/c++/15/bits/uses_allocator.h:
+
+/usr/include/c++/15/bits/unordered_set.h:
+
+/usr/include/python3.12/complexobject.h:
+
+/usr/include/dlfcn.h:
+
+/usr/include/c++/15/bits/unordered_map.h:
+
+/usr/include/c++/15/bits/unique_lock.h:
+
+/usr/include/c++/15/bits/uniform_int_dist.h:
+
+/usr/include/python3.12/cpython/unicodeobject.h:
+
+/usr/include/c++/15/bits/unicode.h:
+
+/usr/include/c++/15/bits/stringfwd.h:
+
+/usr/include/c++/15/bits/streambuf_iterator.h:
+
+/usr/include/c++/15/bits/streambuf.tcc:
+
+/usr/include/c++/15/bits/stream_iterator.h:
+
+/usr/include/c++/15/bits/stl_vector.h:
+
+/usr/include/c++/15/bits/stl_tempbuf.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/cmpccxaddintrin.h:
+
+/usr/include/c++/15/bits/stl_set.h:
+
+/usr/include/c++/15/bits/stl_numeric.h:
+
+/usr/include/c++/15/bits/stl_multiset.h:
+
+/usr/include/c++/15/ratio:
+
+/usr/include/c++/15/bits/stl_map.h:
+
+/usr/include/c++/15/bits/stl_list.h:
+
+/usr/include/c++/15/bits/stl_iterator_base_types.h:
+
+/usr/include/c++/15/bits/stl_iterator_base_funcs.h:
+
+/usr/include/c++/15/bits/stl_deque.h:
+
+/usr/include/c++/15/bits/slice_array.h:
+
+/usr/include/c++/15/iomanip:
+
+/usr/include/c++/15/bits/shared_ptr.h:
+
+/usr/include/c++/15/map:
+
+/usr/include/c++/15/bits/refwrap.h:
+
+/usr/include/python3.12/objimpl.h:
+
+/usr/include/c++/15/bits/ranges_util.h:
+
+/usr/include/c++/15/bits/ranges_uninitialized.h:
+
+/usr/include/c++/15/bits/ranges_cmp.h:
+
+/usr/include/c++/15/bits/ranges_base.h:
+
+/usr/include/c++/15/bits/range_access.h:
+
+/usr/include/python3.12/floatobject.h:
+
+/usr/include/c++/15/cfloat:
+
+/usr/include/c++/15/bits/stl_relops.h:
+
+/usr/include/c++/15/bits/random.tcc:
+
+/usr/include/c++/15/bits/random.h:
+
+/usr/include/c++/15/bits/quoted_string.h:
+
+/usr/include/python3.12/sliceobject.h:
+
+/usr/include/c++/15/bits/predefined_ops.h:
+
+/usr/include/python3.12/pymacconfig.h:
+
+/usr/include/c++/15/bits/parse_numbers.h:
+
+/usr/include/c++/15/bits/ostream_insert.h:
+
+/usr/include/python3.12/cpython/object.h:
+
+/usr/include/c++/15/bits/stl_raw_storage_iter.h:
+
+/usr/include/c++/15/bits/ostream.h:
+
+/usr/include/c++/15/bits/node_handle.h:
+
+/usr/include/c++/15/bits/new_allocator.h:
+
+/usr/include/c++/15/bits/unique_ptr.h:
+
+/usr/include/c++/15/bits/move.h:
 
 /usr/include/c++/15/bits/monostate.h:
 
-/opt/kokkos/include/impl/Kokkos_Profiling_C_Interface.h:
+/usr/include/c++/15/bits/nested_exception.h:
 
-/opt/kokkos/include/experimental/__p2642_bits/layout_padded_fwd.hpp:
+/usr/include/c++/15/bits/memoryfwd.h:
 
-/usr/lib/gcc/x86_64-redhat-linux/15/include/mmintrin.h:
+/usr/include/c++/15/bits/mask_array.h:
 
-/usr/include/python3.12/cpython/pyfpe.h:
+/usr/include/c++/15/bits/locale_facets_nonio.h:
 
-/usr/include/asm-generic/int-ll64.h:
+/usr/include/gnu/stubs.h:
 
-/opt/kokkos/include/experimental/__p2642_bits/layout_padded.hpp:
+/usr/include/c++/15/bits/locale_facets.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512dqintrin.h:
+
+/usr/include/python3.12/cpython/pythread.h:
+
+/usr/include/c++/15/bits/locale_conv.h:
+
+/usr/include/c++/15/bits/locale_classes.tcc:
+
+/usr/include/c++/15/x86_64-redhat-linux/bits/messages_members.h:
+
+/usr/include/c++/15/bits/list.tcc:
+
+/usr/include/c++/15/bits/iterator_concepts.h:
+
+/usr/include/c++/15/bits/invoke.h:
+
+/usr/include/c++/15/bits/indirect_array.h:
+
+/usr/include/c++/15/bits/hashtable_policy.h:
+
+/usr/include/c++/15/bits/hashtable.h:
+
+/usr/include/c++/15/bits/hash_bytes.h:
+
+/usr/include/c++/15/bits/gslice.h:
+
+/usr/include/c++/15/bits/functexcept.h:
+
+/usr/include/c++/15/bits/forward_list.tcc:
+
+/usr/include/c++/15/bits/forward_list.h:
+
+/usr/include/c++/15/bits/formatfwd.h:
+
+/usr/include/c++/15/bits/exception_ptr.h:
+
+/usr/include/c++/15/bits/exception_defines.h:
+
+/usr/include/c++/15/bits/enable_special_members.h:
+
+/usr/include/c++/15/bits/deque.tcc:
+
+/usr/include/c++/15/bits/cxxabi_init_exception.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avxvnniint8intrin.h:
+
+/usr/include/c++/15/bits/cxxabi_forced.h:
+
+/usr/include/c++/15/bits/codecvt.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/xsavecintrin.h:
+
+/usr/include/c++/15/iosfwd:
+
+/usr/include/c++/15/bits/chrono_io.h:
+
+/usr/include/c++/15/bits/uses_allocator_args.h:
+
+/usr/include/c++/15/bits/chrono.h:
+
+/usr/include/c++/15/cctype:
+
+/usr/include/c++/15/bits/char_traits.h:
+
+/usr/include/c++/15/bits/basic_string.tcc:
+
+/usr/include/c++/15/ostream:
+
+/usr/include/c++/15/bits/basic_string.h:
+
+/usr/include/c++/15/variant:
+
+/usr/include/c++/15/bits/basic_ios.h:
+
+/usr/include/c++/15/bits/atomic_wait.h:
+
+/usr/include/c++/15/bits/atomic_timed_wait.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avxneconvertintrin.h:
+
+/usr/include/python3.12/ceval.h:
+
+/usr/include/c++/15/bits/atomic_base.h:
+
+/usr/include/locale.h:
+
+/usr/include/c++/15/bits/allocated_ptr.h:
+
+/usr/include/c++/15/bits/align.h:
+
+/usr/include/c++/15/numbers:
+
+/usr/include/c++/15/exception:
+
+/usr/include/c++/15/backward/binders.h:
+
+/usr/include/c++/15/backward/auto_ptr.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/sha512intrin.h:
+
+/usr/include/c++/15/array:
+
+/usr/include/python3.12/bytesobject.h:
+
+/usr/include/c++/15/algorithm:
+
+/usr/include/c++/15/bits/string_view.tcc:
+
+/usr/include/bits/xopen_lim.h:
+
+/usr/include/bits/wchar.h:
+
+/usr/include/c++/15/mutex:
+
+/usr/include/bits/waitstatus.h:
+
+/usr/include/python3.12/Python.h:
+
+/usr/include/bits/uio_lim.h:
+
+/usr/include/bits/typesizes.h:
+
+/usr/include/bits/types/wint_t.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/xsaveintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/hresetintrin.h:
+
+/usr/include/bits/types/timer_t.h:
+
+/usr/include/c++/15/random:
+
+/usr/include/c++/15/bits/stl_algo.h:
+
+/usr/include/bits/types/time_t.h:
+
+/usr/include/c++/15/bits/ptr_traits.h:
+
+/usr/include/bits/types/struct_tm.h:
+
+/usr/include/bits/types/struct_timespec.h:
+
+/usr/include/c++/15/bits/allocator.h:
+
+/usr/include/bits/types/struct_statx_timestamp.h:
+
+/usr/include/c++/15/climits:
+
+/usr/include/c++/15/bits/vector.tcc:
+
+/usr/include/bits/types/struct_statx.h:
+
+/usr/include/c++/15/bits/shared_ptr_atomic.h:
+
+/usr/include/bits/types/struct_sched_param.h:
+
+/usr/include/c++/15/bits/stl_function.h:
+
+/usr/include/c++/15/bits/memory_resource.h:
+
+/usr/include/bits/types/struct_itimerspec.h:
+
+/usr/include/bits/types/struct___jmp_buf_tag.h:
+
+/usr/include/bits/types/struct_FILE.h:
+
+/usr/include/bits/types/sigset_t.h:
+
+/usr/include/bits/types/mbstate_t.h:
+
+/usr/include/bits/types/clockid_t.h:
+
+/usr/include/bits/types/clock_t.h:
+
+/usr/include/python3.12/pystate.h:
+
+/usr/include/bits/types/__sigset_t.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_reciprocal_eti_spec_avail.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrminf_mv_eti_spec_avail.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/mm_malloc.h:
+
+/opt/kokkos-kernels/include/KokkosBlas1_nrm2w_squared.hpp:
+
+/usr/include/c++/15/bits/charconv.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2_mv_eti_spec_decl.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_axpby_eti_spec_decl.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512fp16vlintrin.h:
+
+/usr/include/c++/15/bits/std_function.h:
+
+/opt/kokkos/include/experimental/__p0009_bits/trait_backports.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm1_mv_eti_spec_avail.hpp:
+
+/usr/include/errno.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_reciprocal_mv_eti_spec_avail.hpp:
+
+/opt/kokkos/include/Kokkos_Atomics_Desul_Wrapper.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm1_eti_spec_decl.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_mult_mv_eti_spec_decl.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_mult_mv_eti_spec_avail.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_dot_mv_eti_spec_avail.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_axpby_mv_eti_spec_decl.hpp:
+
+/opt/kokkos-kernels/include/KokkosSparse_spmv_tpl_spec_decl.hpp:
+
+/opt/kokkos/include/Kokkos_Layout.hpp:
+
+/opt/kokkos/include/desul/atomics/Thread_Fence_GCC.hpp:
+
+/opt/kokkos-kernels/include/KokkosSparse_spmv_struct_impl.hpp:
+
+/opt/kokkos-kernels/include/Kokkos_InnerProductSpaceTraits.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/omp.h:
+
+/opt/kokkos-kernels/include/KokkosKernels_AlwaysFalse.hpp:
+
+/usr/include/c++/15/string:
+
+/usr/include/bits/timesize.h:
+
+/opt/kokkos-kernels/include/KokkosSparse_spmv_spec.hpp:
+
+/usr/include/c++/15/pstl/glue_numeric_defs.h:
+
+/opt/kokkos-kernels/include/KokkosSparse_spmv_sellmatrix_tpl_spec_decl.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_abs_eti_spec_decl.hpp:
+
+/opt/kokkos/include/experimental/__p2630_bits/strided_slice.hpp:
+
+/usr/include/python3.12/setobject.h:
+
+/usr/include/python3.12/cpython/setobject.h:
+
+/usr/include/c++/15/initializer_list:
+
+/opt/kokkos-kernels/include/KokkosSparse_spmv_bsrmatrix_tpl_spec_avail.hpp:
+
+/opt/kokkos-kernels/include/KokkosSparse_spmv.hpp:
+
+/opt/kokkos-kernels/include/KokkosSparse_StaticCrsGraph.hpp:
+
+/usr/include/c++/15/iterator:
+
+/opt/kokkos-kernels/include/KokkosKernels_LowerBound.hpp:
+
+/opt/kokkos-kernels/include/KokkosSparse_spmv_impl.hpp:
+
+/opt/kokkos-kernels/include/KokkosKernels_helpers.hpp:
+
+/usr/include/string.h:
+
+/usr/include/c++/15/bits/stl_tree.h:
+
+/opt/kokkos-kernels/include/KokkosKernels_Macros.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vpopcntdqintrin.h:
+
+/opt/kokkos-kernels/include/KokkosSparse_Utils_rocsparse.hpp:
+
+/opt/kokkos-kernels/include/KokkosKernels_ExecSpaceUtils.hpp:
+
+/opt/kokkos-kernels/include/KokkosKernels_ArithTraits.hpp:
+
+/usr/include/c++/15/bits/fstream.tcc:
+
+/opt/kokkos-kernels/include/KokkosSparse_Utils_mkl.hpp:
+
+/usr/include/c++/15/ios:
+
+/usr/include/c++/15/bits/std_abs.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2w_mv_eti_spec_avail.hpp:
+
+/usr/include/c++/15/istream:
+
+/opt/kokkos-kernels/include/KokkosBlas1_update_tpl_spec_decl.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas_tpl_spec.hpp:
+
+/usr/include/python3.12/genericaliasobject.h:
+
+/opt/kokkos-kernels/include/KokkosBlas_serial_nrm2.hpp:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/exception_translation.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/cldemoteintrin.h:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/pybind11_namespace_macros.h:
+
+/usr/include/python3.12/rangeobject.h:
+
+/opt/kokkos-kernels/include/KokkosBlas_serial_axpy.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/stdarg.h:
+
+/opt/kokkos-kernels/include/KokkosBlas1_nrm1_impl.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_mv_eti_spec_avail.hpp:
+
+/usr/include/bits/mathcalls.h:
+
+/opt/kokkos-kernels/include/KokkosKernels_Utils.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_reciprocal.hpp:
+
+/opt/kokkos/include/experimental/__p0009_bits/dynamic_extent.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/vpclmulqdqintrin.h:
+
+/usr/include/python3.12/cpython/pydebug.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2w_eti_spec_avail.hpp:
+
+/opt/kokkos-kernels/include/KokkosSparse_spmv_sellmatrix_tpl_spec_avail.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas3_gemm.hpp:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/native_enum_data.h:
+
+/opt/kokkos-kernels/include/KokkosBlas2_gemv_tpl_spec_decl.hpp:
+
+/opt/kokkos/include/Kokkos_Printf.hpp:
+
+/usr/include/c++/15/bits/stl_bvector.h:
+
+/opt/kokkos/include/impl/Kokkos_TeamMDPolicy.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/smmintrin.h:
+
+/usr/include/python3.12/cpython/classobject.h:
+
+/opt/kokkos-kernels/include/KokkosBlas1_update_tpl_spec_avail.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_team_scal_impl.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_sum_spec.hpp:
+
+/opt/kokkos-kernels/include/KokkosKernels_tpl_handles_decl.hpp:
+
+/opt/kokkos-kernels/include/KokkosSparse_spmv_sellmatrix_impl.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512fp16intrin.h:
+
+/opt/kokkos-kernels/include/KokkosSparse_spmv_struct_tpl_spec_avail.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_scal_tpl_spec_decl.hpp:
+
+/opt/kokkos-kernels/include/KokkosKernels_ViewUtils.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas2_gemv_spec.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_scal_spec.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx2intrin.h:
+
+/opt/kokkos/include/impl/Kokkos_Functional_impl.hpp:
+
+/usr/include/python3.12/cpython/complexobject.h:
+
+/usr/include/linux/errno.h:
+
+/opt/kokkos-kernels/include/KokkosBlas1_scal_mv_impl.hpp:
+
+/usr/include/bits/posix2_lim.h:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/typing.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/amxmovrsintrin.h:
+
+/opt/kokkos-kernels/lib64/libkokkoskernels.so:
+
+/opt/kokkos-kernels/include/KokkosBatched_Gemm_Serial_Internal.hpp:
+
+/usr/include/c++/15/bits/ranges_algo.h:
+
+/opt/kokkos/include/impl/Kokkos_Half_FloatingPointWrapper.hpp:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/gil_simple.h:
+
+/opt/kokkos-kernels/include/KokkosSparse_spmv_tpl_spec_avail.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/tsxldtrkintrin.h:
+
+/usr/include/python3.12/cpython/picklebufobject.h:
+
+/opt/kokkos/include/fwd/Kokkos_Fwd_OPENMP.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/pmmintrin.h:
+
+/usr/include/bits/types/error_t.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_axpby_eti_spec_avail.hpp:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/gil.h:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/class.h:
+
+/opt/kokkos/include/View/Hooks/Kokkos_ViewHooks.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/prfchiintrin.h:
+
+/usr/lib64/libc.so:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas3_gemm_eti_spec_avail.hpp:
+
+/opt/kokkos-kernels/include/KokkosBatched_Gemm_TeamVector_Internal.hpp:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/holder_caster_foreign_helpers.h:
+
+/usr/include/c++/15/x86_64-redhat-linux/bits/opt_random.h:
+
+/opt/kokkos-kernels/include/KokkosBatched_Vector_SIMD_Relation.hpp:
+
+/usr/include/c++/15/pstl/execution_defs.h:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/numpy.h:
+
+/usr/include/c++/15/bits/istream.tcc:
+
+/lib64/ld-linux-x86-64.so.2:
+
+/opt/kokkos-kernels/include/KokkosBlas1_nrm2_spec.hpp:
+
+/opt/kokkos-kernels/include/KokkosKernels_Error.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_nrm1.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_axpby_mv_eti_spec_avail.hpp:
+
+/opt/kokkos-kernels/include/KokkosKernels_PrintUtils.hpp:
+
+/opt/kokkos/include/desul/atomics/Lock_Based_Fetch_Op.hpp:
+
+/usr/include/bits/iscanonical.h:
+
+/usr/include/c++/15/bits/alloc_traits.h:
+
+/opt/kokkos-kernels/include/KokkosBlas1_update_spec.hpp:
+
+/opt/kokkos-kernels/include/KokkosSparse_spmv_struct_tpl_spec_decl.hpp:
+
+/opt/kokkos/include/OpenMP/Kokkos_OpenMP_Team.hpp:
+
+/opt/kokkos/include/Kokkos_Clamp.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_dot_spec.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_nrm2w.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_nrm2w_spec.hpp:
+
+/opt/kokkos-kernels/include/KokkosSparse_Utils_cusparse.hpp:
+
+/usr/include/c++/15/atomic:
+
+/opt/kokkos-kernels/include/KokkosKernels_config.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_sellmatrix_eti_spec_avail.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_sum_impl.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas3_gemm_dotbased_impl.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas2_serial_gemv.hpp:
+
+/opt/kokkos-kernels/include/KokkosBatched_Vector_SIMD_Math.hpp:
+
+/opt/kokkos/include/experimental/__p0009_bits/macros.hpp:
+
+/opt/kokkos/include/Kokkos_Parallel_Reduce.hpp:
+
+/opt/kokkos/include/OpenMP/Kokkos_OpenMP_Parallel_For.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/sm4intrin.h:
+
+/usr/include/c++/15/charconv:
+
+/usr/include/c++/15/bits/std_mutex.h:
+
+/usr/include/c++/15/bits/erase_if.h:
+
+/opt/kokkos-kernels/include/KokkosSparse_merge_matrix.hpp:
+
+/usr/include/bits/waitflags.h:
+
+/opt/kokkos/include/KokkosCore_Config_DeclareBackend.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/amxfp8intrin.h:
+
+/opt/kokkos/include/Kokkos_MemoryPool.hpp:
+
+/usr/include/bits/wctype-wchar.h:
+
+/usr/include/bits/stdint-intn.h:
+
+/opt/kokkos/include/OpenMP/Kokkos_OpenMP_WorkGraphPolicy.hpp:
+
+/opt/kokkos/include/traits/Kokkos_WorkItemPropertyTrait.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_serial_scal_impl.hpp:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/options.h:
+
+/opt/kokkos-kernels/include/KokkosSparse_spmv_bsrmatrix_impl_v42.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2w_eti_spec_decl.hpp:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/buffer_info.h:
+
+/usr/include/bits/floatn-common.h:
+
+/opt/kokkos/include/desul/atomics/Fetch_Op_GCC.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_nrm2w_tpl_spec_decl.hpp:
+
+/usr/include/c++/15/ext/string_conversions.h:
+
+/lib64/libmvec.so.1:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/pybind11.h:
+
+/opt/kokkos-kernels/include/KokkosBlas1_axpby_unification_attempt_traits.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_sum.hpp:
+
+/usr/include/gnu/stubs-64.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_abs_mv_eti_spec_decl.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_nrm1_tpl_spec_avail.hpp:
+
+/usr/include/bits/flt-eval-method.h:
+
+/usr/include/c++/15/x86_64-redhat-linux/bits/atomic_word.h:
+
+/opt/kokkos-kernels/include/KokkosSparse_spmv_struct_spec.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas3_gemm_tpl_spec_avail.hpp:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/common.h:
+
+/usr/include/assert.h:
+
+/opt/kokkos-kernels/include/KokkosSparse_spmv_bsrmatrix_tpl_spec_decl.hpp:
+
+/home/kesmarag/Code/morphdG/include/morphdg/dgsolver.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_axpby_mv_impl.hpp:
+
+/opt/kokkos/include/impl/Kokkos_Traits.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm1_mv_eti_spec_decl.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/sm3intrin.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas2_gemv_eti_spec_decl.hpp:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/gil_safe_call_once.h:
+
+/usr/include/python3.12/boolobject.h:
+
+/opt/kokkos-kernels/include/KokkosBlas2_gemv_impl.hpp:
+
+/usr/lib64/crtn.o:
+
+/usr/include/c++/15/bits/ostream.tcc:
+
+/opt/kokkos-kernels/include/KokkosBlas2_gemv.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_axpby_impl.hpp:
+
+/usr/include/bits/syscall.h:
+
+/usr/include/c++/15/tr1/special_function_util.h:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/conduit/wrap_include_python_h.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/keylockerintrin.h:
+
+/usr/include/linux/stddef.h:
+
+/usr/include/bits/fp-logb.h:
+
+/opt/kokkos-kernels/include/KokkosKernels_default_types.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas2_team_gemv_spec.hpp:
+
+/opt/kokkos/include/Kokkos_Timer.hpp:
+
+/opt/kokkos-kernels/include/KokkosSparse_CrsMatrix.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_reciprocal_mv_eti_spec_decl.hpp:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/value_and_holder.h:
+
+/opt/kokkos-kernels/include/KokkosBlas2_serial_gemv_internal.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vbmi2intrin.h:
+
+/usr/include/c++/15/bits/locale_classes.h:
+
+/opt/kokkos/include/KokkosCore_config.h:
+
+/opt/kokkos/include/desul/atomics/Compare_Exchange.hpp:
+
+CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
+
+/opt/kokkos-kernels/include/KokkosKernels_Singleton.hpp:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/internals.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512cdintrin.h:
+
+/opt/kokkos-kernels/include/KokkosBlas1_dot_tpl_spec_avail.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/emmintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512ifmavlintrin.h:
+
+/opt/kokkos-kernels/include/KokkosBlas1_abs_impl.hpp:
+
+/usr/include/bits/stat.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_abs_eti_spec_avail.hpp:
+
+/opt/kokkos-kernels/include/KokkosSparse_spmv_handle.hpp:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/cpp_conduit.h:
+
+/usr/lib64/libm.so:
+
+/opt/kokkos/include/Kokkos_Assert.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/crtbeginS.o:
+
+/usr/include/features-time64.h:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/using_smart_holder.h:
+
+/opt/kokkos/include/View/Kokkos_ViewCommonType.hpp:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/trampoline_self_life_support.h:
+
+/opt/kokkos-kernels/include/KokkosBlas1_nrm2_impl.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_nrminf_impl.hpp:
+
+/opt/kokkos-kernels/include/KokkosSparse_spmv_impl_omp.hpp:
+
+/opt/kokkos/lib64/libkokkosalgorithms.a:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/conduit/pybind11_platform_abi_id.h:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/attr.h:
+
+/opt/kokkos-kernels/include/KokkosBlas1_nrm2w_tpl_spec_avail.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/amxtileintrin.h:
+
+/usr/include/c++/15/x86_64-redhat-linux/bits/ctype_inline.h:
+
+/usr/include/c++/15/bits/stl_uninitialized.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrminf_eti_spec_decl.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_sum_tpl_spec_decl.hpp:
+
+/lib64/libc.so.6:
+
+/usr/include/linux/sched/types.h:
+
+/opt/kokkos-kernels/include/KokkosBlas1_scal_impl.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/libgomp.so:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/syslimits.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2_eti_spec_decl.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avxvnniintrin.h:
+
+/usr/include/c++/15/bits/utility.h:
+
+/opt/kokkos-kernels/include/KokkosBlas2_team_gemv.hpp:
+
+/usr/include/bits/stdlib-float.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/xtestintrin.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/libstdc++.so:
+
+/opt/kokkos-kernels/include/KokkosSparse_spmv_mv_tpl_spec_avail.hpp:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/pytypes.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/prfchwintrin.h:
+
+/usr/lib64/libpthread.a:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2w_mv_eti_spec_decl.hpp:
+
+/usr/include/c++/15/bits/functional_hash.h:
+
+/usr/lib64/libdl.a:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/stddef.h:
+
+/opt/kokkos/include/traits/Kokkos_PolicyTraitAdaptor.hpp:
+
+/opt/kokkos-kernels/include/KokkosSparse_spmv_mv_tpl_spec_decl.hpp:
+
+/usr/include/python3.12/pystrtod.h:
+
+/usr/include/c++/15/concepts:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/crtendS.o:
+
+/opt/kokkos-kernels/include/KokkosBlas3_gemm_spec.hpp:
+
+/opt/kokkos-kernels/include/KokkosBatched_InnerGemmFixC_Serial_Impl.hpp:
+
+/usr/include/python3.12/pymath.h:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/complex.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avxifmaintrin.h:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/stl.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/libgcc.a:
+
+/opt/kokkos/lib64/libkokkoscontainers.so.5.0.99:
+
+/usr/include/c++/15/list:
+
+/usr/include/bits/types/struct_timeval.h:
+
+/opt/kokkos-kernels/include/KokkosBlas1_sum_tpl_spec_avail.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_dot_impl.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/amxfp16intrin.h:
+
+/opt/kokkos/include/Kokkos_MathematicalFunctions.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_mult_eti_spec_avail.hpp:
+
+/opt/kokkos/include/View/MDSpan/Kokkos_MDSpan_Extents.hpp:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/struct_smart_holder.h:
+
+/usr/include/c++/15/x86_64-redhat-linux/bits/cpu_defines.h:
+
+/usr/include/bits/unistd_ext.h:
+
+/opt/kokkos-kernels/include/KokkosKernels_SafeCompare.hpp:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/type_caster_base.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/c++/15/bits/locale_facets.tcc:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/init.h:
+
+/opt/kokkos/include/impl/Kokkos_ZeroMemset_fwd.hpp:
+
+/opt/kokkos-kernels/include/KokkosKernels_VectorUtils.hpp:
+
+/usr/include/python3.12/pyerrors.h:
+
+/usr/include/python3.12/iterobject.h:
+
+/opt/kokkos-kernels/include/KokkosBatched_Vector_SIMD_View.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas3_gemm_impl.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_axpby.hpp:
+
+/opt/kokkos/include/impl/Kokkos_Half_NumericTraits.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm1_eti_spec_avail.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_mv_struct_eti_spec_decl.hpp:
+
+/usr/include/c++/15/semaphore:
+
+/usr/include/c++/15/bits/stl_multimap.h:
+
+/opt/kokkos-kernels/include/KokkosBlas1_mult_tpl_spec_decl.hpp:
+
+/usr/include/bits/libm-simd-decl-stubs.h:
+
+/opt/kokkos-kernels/include/KokkosBlas1_abs_tpl_spec_decl.hpp:
+
+/opt/kokkos/include/View/Kokkos_ViewTraits.hpp:
+
+/opt/kokkos/include/impl/Kokkos_AnalyzePolicy.hpp:
+
+/usr/include/linux/limits.h:
+
+/usr/include/c++/15/bits/semaphore_base.h:
+
+/opt/kokkos-kernels/include/KokkosKernels_Controls.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_reciprocal_tpl_spec_avail.hpp:
+
+/opt/kokkos-kernels/include/KokkosBatched_InnerGemmFixC_Decl.hpp:
+
+/usr/include/bits/statx.h:
+
+/opt/kokkos-kernels/include/KokkosBlas2_team_gemv_impl.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_scal.hpp:
+
+/opt/kokkos-kernels/include/KokkosBatched_Vector_SIMD.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_reciprocal_tpl_spec_decl.hpp:
+
+/opt/kokkos-kernels/include/KokkosKernels_Predicates.hpp:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/function_record_pyobject.h:
+
+/opt/kokkos-kernels/include/KokkosBlas1_abs.hpp:
+
+/opt/kokkos-kernels/include/KokkosBatched_Vector_SIMD_Logical.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas.hpp:
+
+/usr/include/bits/statx-generic.h:
+
+/opt/kokkos-kernels/include/KokkosSparse_spmv_bsrmatrix_impl.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2minmaxintrin.h:
+
+/opt/kokkos/include/View/MDSpan/Kokkos_MDSpan_Layout.hpp:
+
+/usr/include/bits/libc-header-start.h:
+
+/usr/include/python3.12/pylifecycle.h:
+
+/opt/kokkos-kernels/include/KokkosBlas1_update.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_abs_tpl_spec_avail.hpp:
+
+/usr/include/c++/15/bits/stl_construct.h:
+
+/opt/kokkos-kernels/include/KokkosBlas1_axpby_spec.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_abs_mv_eti_spec_avail.hpp:
+
+/opt/kokkos/include/traits/Kokkos_Traits_fwd.hpp:
+
+/usr/include/bits/setjmp.h:
+
+/opt/kokkos-kernels/include/KokkosBlas1_axpby_tpl_spec_avail.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_dot.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_mult_spec.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_dot_mv_impl.hpp:
+
+/usr/include/bits/pthread_stack_min-dynamic.h:
+
+/usr/include/c++/15/bits/valarray_after.h:
+
+/usr/include/bits/types/cookie_io_functions_t.h:
+
+/opt/kokkos-kernels/include/KokkosBlas1_nrm1_tpl_spec_decl.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2satcvtintrin.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_sellmatrix_eti_spec_decl.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vp2intersectintrin.h:
+
+/usr/include/stdio.h:
+
+/home/kesmarag/Code/morphdG/include/morphdg/aggmesh.hpp:
+
+/usr/include/c++/15/bits/stl_algobase.h:
+
+/opt/kokkos/include/experimental/__p0009_bits/utility.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_nrminf_tpl_spec_avail.hpp:
+
+/opt/kokkos/include/impl/Kokkos_UnorderedMap_impl.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas2_serial_gemv_tpl_spec_decl.hpp:
+
+/opt/kokkos/include/Kokkos_Array.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/libgcc_s.so:
+
+/opt/kokkos/include/desul/atomics/Compare_Exchange_GCC.hpp:
+
+/usr/include/c++/15/bits/gslice_array.h:
+
+/usr/include/c++/15/bits/exception.h:
+
+/opt/kokkos-kernels/include/KokkosBlas1_nrm1_spec.hpp:
+
+/opt/kokkos/include/desul/atomics/Generic.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_nrm2_squared.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_set_impl.hpp:
+
+/opt/kokkos/include/impl/Kokkos_GraphImpl_fwd.hpp:
+
+/usr/include/c++/15/ext/aligned_buffer.h:
+
+/opt/kokkos-kernels/include/KokkosBlas1_dot_tpl_spec_decl.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_nrm2_tpl_spec_avail.hpp:
+
+/opt/kokkos-kernels/include/KokkosSparse_SellMatrix.hpp:
+
+/usr/include/bits/locale.h:
+
+/usr/include/bits/mathcalls-macros.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_scal_mv_eti_spec_avail.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_nrm2w_impl.hpp:
+
+/usr/include/c++/15/x86_64-redhat-linux/bits/os_defines.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_update_mv_eti_spec_avail.hpp:
+
+/usr/include/c++/15/bits/this_thread_sleep.h:
+
+/opt/kokkos/include/View/MDSpan/Kokkos_MDSpan_Header.hpp:
+
+/usr/include/c++/15/bits/stl_heap.h:
+
+/usr/lib64/libc_nonshared.a:
+
+/opt/kokkos-kernels/include/KokkosBlas1_nrminf.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_mult_tpl_spec_avail.hpp:
+
+/opt/kokkos/include/View/Kokkos_ViewCtor.hpp:
+
+/usr/include/c++/15/bits/stl_stack.h:
+
+/lib64/libgcc_s.so.1:
+
+/opt/kokkos-kernels/include/KokkosBlas1_reciprocal_spec.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_update_eti_spec_avail.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrminf_eti_spec_avail.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/lzcntintrin.h:
+
+/usr/include/c++/15/cassert:
+
+/opt/kokkos-kernels/include/KokkosBatched_Vector_SIMD_Misc.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_nrminf_spec.hpp:
+
+/opt/kokkos-kernels/include/KokkosSparse_spmv_impl_merge.hpp:
+
+/opt/kokkos/include/impl/Kokkos_SharedAlloc.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_nrminf_tpl_spec_decl.hpp:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/dynamic_raw_ptr_cast_if_possible.h:
+
+/opt/kokkos/include/impl/Kokkos_BuiltinReducers.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_dot_eti_spec_decl.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_scal_eti_spec_avail.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_nrm2_tpl_spec_decl.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_scal_eti_spec_decl.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/uintrintrin.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_sum_eti_spec_avail.hpp:
+
+/usr/include/python3.12/cpython/weakrefobject.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_sum_eti_spec_decl.hpp:
+
+/opt/kokkos/include/Kokkos_MinMax.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_scal_mv_eti_spec_decl.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_sum_mv_eti_spec_decl.hpp:
+
+/usr/include/python3.12/frameobject.h:
+
+/opt/kokkos/include/Kokkos_TypeInfo.hpp:
+
+/usr/include/c++/15/ext/alloc_traits.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_update_eti_spec_decl.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_update_mv_eti_spec_decl.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas2_gemv_eti_spec_avail.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vnnivlintrin.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas3_gemm_eti_spec_decl.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_bsrmatrix_eti_spec_avail.hpp:
+
+/usr/include/c++/15/cstdint:
+
+/usr/include/c++/15/bits/stl_pair.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_eti_spec_avail.hpp:
+
+/opt/kokkos/include/Kokkos_Functional.hpp:
+
+/usr/include/c++/15/tr1/exp_integral.tcc:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_eti_spec_decl.hpp:
+
+/usr/include/syscall.h:
+
+/opt/kokkos/include/impl/Kokkos_QuadPrecisionMath.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_scal_tpl_spec_avail.hpp:
+
+/opt/kokkos/include/desul/atomics/Lock_Free_Fetch_Op.hpp:
+
+/usr/include/c++/15/bits/localefwd.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_mv_bsrmatrix_eti_spec_decl.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_mv_eti_spec_decl.hpp:
+
+/usr/include/c++/15/bits/concept_check.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_mv_struct_eti_spec_avail.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/limits.h:
+
+/usr/include/bits/types/__locale_t.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_struct_eti_spec_avail.hpp:
+
+/usr/include/bits/atomic_wide_counter.h:
+
+/opt/kokkos/include/Kokkos_Complex.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2-512bf16intrin.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_struct_eti_spec_decl.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512fintrin.h:
+
+/opt/kokkos/include/KokkosCore_Config_FwdBackend.hpp:
+
+/opt/kokkos/include/KokkosCore_Config_SetupBackend.hpp:
+
+/opt/kokkos-kernels/include/KokkosSparse_BsrMatrix.hpp:
+
+/usr/include/bits/errno.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/amxbf16intrin.h:
+
+/opt/kokkos/include/KokkosExp_MDRangePolicy.hpp:
+
+/opt/kokkos/include/Kokkos_Abort.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_axpby_tpl_spec_decl.hpp:
+
+/opt/kokkos/include/impl/Kokkos_StringManipulation.hpp:
+
+/home/kesmarag/Code/morphdG/bindings/pybind_wrapper.cpp:
+
+/opt/kokkos/include/Kokkos_AcquireUniqueTokenImpl.hpp:
+
+/usr/include/bits/types.h:
+
+/opt/kokkos/include/Kokkos_AnonymousSpace.hpp:
+
+/opt/kokkos/include/Kokkos_Atomic.hpp:
+
+/usr/include/math.h:
+
+/opt/kokkos/include/Kokkos_BitManipulation.hpp:
+
+/opt/kokkos/include/Kokkos_Bitset.hpp:
+
+/opt/kokkos/include/Kokkos_Concepts.hpp:
+
+/opt/kokkos/include/Kokkos_Core.hpp:
+
+/usr/include/c++/15/bits/requires_hosted.h:
+
+/usr/include/bits/time64.h:
+
+/opt/kokkos/include/impl/Kokkos_CStyleMemoryManagement.hpp:
+
+/opt/kokkos/include/Kokkos_Core_fwd.hpp:
+
+/usr/include/python3.12/typeslots.h:
+
+/usr/include/c++/15/bits/unicode-data.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2_mv_eti_spec_avail.hpp:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/argument_vector.h:
+
+/opt/kokkos/include/Kokkos_Crs.hpp:
+
+/usr/include/asm-generic/bitsperlong.h:
+
+/usr/include/asm-generic/types.h:
+
+/usr/include/c++/15/cstring:
+
+/opt/kokkos/include/Kokkos_ExecPolicy.hpp:
+
+/opt/kokkos/include/Kokkos_Extents.hpp:
+
+/usr/include/c++/15/bits/ios_base.h:
+
+/opt/kokkos/include/Kokkos_Half.hpp:
+
+/opt/kokkos-kernels/include/KokkosSparse_spmv_sellmatrix_spec.hpp:
+
+/opt/kokkos/include/Kokkos_HostSpace.hpp:
+
+/usr/include/c++/15/tr1/bessel_function.tcc:
+
+/opt/kokkos/include/Kokkos_Macros.hpp:
+
+/opt/kokkos/include/Kokkos_MathematicalConstants.hpp:
+
+/usr/include/asm-generic/posix_types.h:
+
+/opt/kokkos/include/desul/atomics/Adapt_GCC.hpp:
+
+/usr/include/c++/15/span:
+
+/usr/include/c++/15/cerrno:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/cast.h:
+
+/opt/kokkos/include/Kokkos_MemoryTraits.hpp:
+
+/opt/kokkos/include/Kokkos_NumericTraits.hpp:
+
+/opt/kokkos/include/Kokkos_Pair.hpp:
+
+/opt/kokkos/include/Kokkos_Parallel.hpp:
+
+/opt/kokkos/include/experimental/__p0009_bits/default_accessor.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/bmi2intrin.h:
+
+/opt/kokkos/include/desul/atomics/Lock_Array.hpp:
+
+/opt/kokkos/include/Kokkos_ReductionIdentity.hpp:
+
+/usr/include/python3.12/cpython/fileobject.h:
+
+/opt/kokkos/include/Kokkos_ScratchSpace.hpp:
+
+/usr/include/python3.12/memoryobject.h:
+
+/opt/kokkos/include/Kokkos_Swap.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/ia32intrin.h:
+
+/usr/include/c++/15/debug/assertions.h:
+
+/opt/kokkos-kernels/include/KokkosBlas3_gemm_tpl_spec_decl.hpp:
+
+/opt/kokkos/lib64/libkokkoscore.so.5.0.99:
+
+/opt/kokkos/include/Kokkos_Tuners.hpp:
+
+/usr/include/c++/15/pstl/pstl_config.h:
+
+/usr/include/c++/15/bits/basic_ios.tcc:
+
+/lib64/libm.so.6:
+
+/opt/kokkos/include/Kokkos_UniqueToken.hpp:
+
+/usr/include/bits/uintn-identity.h:
+
+/opt/kokkos/include/Kokkos_UnorderedMap.hpp:
+
+/usr/include/bits/pthreadtypes.h:
+
+/opt/kokkos/include/Kokkos_Vectorization.hpp:
+
+/opt/kokkos/include/Kokkos_View.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/lwpintrin.h:
+
+/usr/include/linux/stat.h:
+
+/opt/kokkos-kernels/include/KokkosBlas1_update_impl.hpp:
+
+/opt/kokkos/include/impl/Kokkos_InitializeFinalize.hpp:
+
+/opt/kokkos/include/Kokkos_Rank.hpp:
+
+/opt/kokkos/include/Kokkos_WorkGraphPolicy.hpp:
+
+/opt/kokkos/include/Kokkos_hwloc.hpp:
+
+/usr/include/c++/15/bits/stl_iterator.h:
+
+/usr/include/bits/types/__mbstate_t.h:
+
+/opt/kokkos/include/OpenMP/Kokkos_OpenMP_Instance.hpp:
+
+/usr/include/c++/15/bits/std_thread.h:
+
+/opt/kokkos/include/traits/Kokkos_IndexTypeTrait.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_mv_bsrmatrix_eti_spec_avail.hpp:
+
+/usr/include/asm/unistd_64.h:
+
+/usr/include/c++/15/bits/specfun.h:
+
+/opt/kokkos-kernels/include/KokkosBlas_util.hpp:
+
+/usr/include/bits/types/__fpos_t.h:
+
+/opt/kokkos/include/OpenMP/Kokkos_OpenMP_MDRangePolicy.hpp:
+
+/usr/include/c++/15/bits/locale_facets_nonio.tcc:
+
+/opt/kokkos/include/OpenMP/Kokkos_OpenMP_Parallel_Scan.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/sgxintrin.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_reciprocal_eti_spec_decl.hpp:
+
+/opt/kokkos/include/OpenMP/Kokkos_OpenMP_UniqueToken.hpp:
+
+/usr/include/c++/15/tr1/legendre_function.tcc:
+
+/opt/kokkos/include/OpenMP/Kokkos_OpenMP_ZeroMemset.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_abs_spec.hpp:
+
+/opt/kokkos/include/View/Kokkos_BasicView.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_sum_mv_eti_spec_avail.hpp:
+
+/opt/kokkos/include/Kokkos_DetectionIdiom.hpp:
+
+/opt/kokkos/include/View/Kokkos_ViewAccessPreconditionsCheck.hpp:
+
+/opt/kokkos/include/traits/Kokkos_StaticBatchSizeTrait.hpp:
+
+/opt/kokkos/include/View/Kokkos_ViewAlloc.hpp:
+
+/usr/include/c++/15/bits/atomic_lockfree_defines.h:
+
+/opt/kokkos/include/View/Kokkos_ViewAtomic.hpp:
+
+/usr/include/python3.12/pyframe.h:
+
+/usr/include/python3.12/cpython/abstract.h:
+
+/opt/kokkos/include/impl/Kokkos_Tools_Generic.hpp:
+
+/opt/kokkos/include/View/Kokkos_ViewDataAnalysis.hpp:
+
+/usr/include/python3.12/fileobject.h:
+
+/usr/include/python3.12/enumobject.h:
+
+/opt/kokkos/include/View/Kokkos_ViewMapping.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vbmi2vlintrin.h:
+
+/usr/include/c++/15/bits/postypes.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrminf_mv_eti_spec_decl.hpp:
+
+/opt/kokkos/include/View/Kokkos_ViewTracker.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_nrm2_eti_spec_avail.hpp:
+
+/opt/kokkos/include/impl/Kokkos_FunctorAnalysis.hpp:
+
+/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/descr.h:
+
+/opt/kokkos/include/View/Kokkos_ViewUniformType.hpp:
+
+/opt/kokkos-kernels/include/KokkosSparse_findRelOffset.hpp:
+
+/opt/kokkos/include/View/MDSpan/Kokkos_MDSpan_Accessor.hpp:
+
+/usr/include/python3.12/pyconfig-64.h:
+
+/opt/kokkos/include/decl/Kokkos_Declare_OPENMP.hpp:
+
+/opt/kokkos/include/desul/atomics/Macros.hpp:
+
+/usr/include/bits/thread-shared-types.h:
+
+/usr/include/python3.12/pythread.h:
+
+/opt/kokkos/include/desul/atomics/Atomic_Ref.hpp:
+
+/opt/kokkos/include/desul/atomics/Common.hpp:
+
+/usr/include/python3.12/bltinmodule.h:
+
+/opt/kokkos-kernels/include/KokkosBlas2_gemv_tpl_spec_avail.hpp:
+
+/usr/include/bits/mathcalls-helper-functions.h:
+
+/opt/kokkos/include/desul/atomics/Compare_Exchange_ScopeCaller.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/cetintrin.h:
+
+/opt/kokkos/include/desul/atomics/Config.hpp:
+
+/usr/include/c++/15/bits/cpp_type_traits.h:
+
+/opt/kokkos/include/desul/atomics/Fetch_Op.hpp:
+
+/opt/kokkos/include/desul/atomics/Fetch_Op_Generic.hpp:
+
+/opt/kokkos/include/Kokkos_CopyViews.hpp:
+
+/opt/kokkos/include/desul/atomics/Fetch_Op_ScopeCaller.hpp:
+
+/opt/kokkos/include/desul/atomics/Lock_Based_Fetch_Op_Host.hpp:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_dot_mv_eti_spec_decl.hpp:
+
+/opt/kokkos/include/desul/atomics/Thread_Fence.hpp:
+
+/opt/kokkos/include/desul/atomics/Thread_Fence_ScopeCaller.hpp:
+
+/opt/kokkos/include/experimental/__p0009_bits/compressed_pair.hpp:
+
+/opt/kokkos/include/experimental/__p0009_bits/config.hpp:
+
+/opt/kokkos-kernels/include/KokkosBatched_Vector.hpp:
+
+/opt/kokkos/include/experimental/__p0009_bits/full_extent_t.hpp:
+
+/usr/include/bits/wordsize.h:
+
+/opt/kokkos/include/experimental/__p0009_bits/layout_left.hpp:
+
+/opt/kokkos/include/experimental/__p0009_bits/layout_right.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2bf16intrin.h:
+
+/usr/include/bits/endian.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/wmmintrin.h:
+
+/opt/kokkos-kernels/include/KokkosBlas2_serial_gemv_impl.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_nrm2.hpp:
+
+/opt/kokkos/include/experimental/__p0009_bits/layout_stride.hpp:
+
+/opt/kokkos/include/experimental/__p0009_bits/mdspan.hpp:
+
+/opt/kokkos-kernels/include/KokkosBlas1_mult_impl.hpp:
+
+/opt/kokkos/include/impl/Kokkos_CheckUsage.hpp:
+
+/opt/kokkos/include/experimental/__p2389_bits/dims.hpp:
+
+/usr/include/c++/15/bits/ranges_algobase.h:
+
+/usr/include/asm/unistd.h:
+
+/opt/kokkos/include/experimental/__p2630_bits/submdspan.hpp:
+
+/opt/kokkos/include/experimental/__p2630_bits/submdspan_extents.hpp:
+
+/usr/include/bits/posix_opt.h:
+
+/usr/include/bits/types/locale_t.h:
+
+/opt/kokkos/include/experimental/__p2630_bits/submdspan_mapping.hpp:
 
 /usr/include/python3.12/cpython/funcobject.h:
 
@@ -1167,497 +3079,177 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: /home/kesmarag/Code/m
 
 /usr/include/bits/types/__FILE.h:
 
-/opt/kokkos/include/experimental/__p2630_bits/submdspan_extents.hpp:
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosSparse_spmv_bsrmatrix_eti_spec_decl.hpp:
 
-/usr/include/bits/posix_opt.h:
+/opt/kokkos/include/experimental/__p2642_bits/layout_padded.hpp:
 
-/opt/kokkos/include/impl/Kokkos_HostThreadTeam.hpp:
+/usr/lib/gcc/x86_64-redhat-linux/15/include/mmintrin.h:
+
+/usr/include/python3.12/cpython/pyfpe.h:
+
+/usr/include/asm-generic/int-ll64.h:
+
+/opt/kokkos/include/impl/KokkosExp_Host_IterateTile.hpp:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512ifmaintrin.h:
+
+/opt/kokkos-kernels/include/KokkosBlas1_reciprocal_impl.hpp:
+
+/usr/include/asm/types.h:
+
+/usr/include/sys/types.h:
+
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_dot_eti_spec_avail.hpp:
+
+/opt/kokkos/include/impl/Kokkos_Bitset_impl.hpp:
+
+/opt/kokkos/include/traits/Kokkos_OccupancyControlTrait.hpp:
+
+/opt/kokkos/include/impl/Kokkos_ClockTic.hpp:
+
+/opt/kokkos/include/impl/Kokkos_Combined_Reducer.hpp:
+
+/opt/kokkos/include/Kokkos_MathematicalSpecialFunctions.hpp:
+
+/opt/kokkos/include/impl/Kokkos_ConcurrentBitset.hpp:
+
+/opt/kokkos/include/impl/Kokkos_DesulAtomicsConfig.hpp:
+
+/opt/kokkos/include/impl/Kokkos_Error.hpp:
 
 /opt/kokkos/include/impl/Kokkos_Half_MathematicalFunctions.hpp:
 
-/usr/include/c++/15/iostream:
+/usr/include/c++/15/bits/shared_ptr_base.h:
 
-/opt/kokkos/include/experimental/__p2630_bits/strided_slice.hpp:
+/opt/kokkos-kernels/include/KokkosBlas1_fill.hpp:
 
-/opt/kokkos/include/Kokkos_Printf.hpp:
+/opt/kokkos/include/OpenMP/Kokkos_OpenMP_Parallel_Reduce.hpp:
 
-/opt/kokkos/include/experimental/__p0009_bits/macros.hpp:
+/opt/kokkos/include/impl/Kokkos_Half_ReductionIdentity.hpp:
 
-/opt/kokkos/include/experimental/__p0009_bits/layout_stride.hpp:
+/usr/lib/gcc/x86_64-redhat-linux/15/include/bmiintrin.h:
 
-/usr/include/c++/15/bits/invoke.h:
-
-/opt/kokkos/include/experimental/__p0009_bits/full_extent_t.hpp:
-
-/opt/kokkos/include/experimental/__p0009_bits/dynamic_extent.hpp:
-
-/opt/kokkos/include/experimental/__p0009_bits/default_accessor.hpp:
-
-/opt/kokkos/include/Kokkos_Parallel.hpp:
-
-/usr/include/asm/errno.h:
-
-/usr/include/bits/stdint-uintn.h:
-
-/opt/kokkos/include/desul/atomics/Thread_Fence_GCC.hpp:
-
-/opt/kokkos/include/Kokkos_Layout.hpp:
-
-/usr/include/bits/types/clockid_t.h:
-
-/opt/kokkos/include/desul/atomics/Thread_Fence.hpp:
-
-/opt/kokkos/include/impl/Kokkos_HostSharedPtr.hpp:
-
-/usr/include/c++/15/bits/utility.h:
-
-/opt/kokkos/include/desul/atomics/Macros.hpp:
-
-/usr/include/python3.12/pyconfig-64.h:
-
-/opt/kokkos/include/decl/Kokkos_Declare_OPENMP.hpp:
-
-/usr/include/c++/15/cassert:
-
-/opt/kokkos/include/desul/atomics/Lock_Based_Fetch_Op.hpp:
-
-/usr/include/bits/iscanonical.h:
-
-/opt/kokkos/include/desul/atomics/Fetch_Op_GCC.hpp:
-
-/opt/kokkos/include/experimental/__p0009_bits/layout_right.hpp:
-
-/usr/include/bits/endian.h:
-
-/opt/kokkos/include/desul/atomics/Config.hpp:
-
-/opt/kokkos/include/desul/atomics/Compare_Exchange_GCC.hpp:
-
-/usr/lib/gcc/x86_64-redhat-linux/15/libgcc_s.so:
-
-/usr/include/c++/15/bits/cxxabi_forced.h:
-
-/usr/include/c++/15/bits/valarray_before.h:
-
-/usr/include/c++/15/compare:
-
-/opt/kokkos/include/impl/Kokkos_GraphImpl_fwd.hpp:
-
-/opt/kokkos/include/desul/atomics/Compare_Exchange.hpp:
-
-/usr/include/c++/15/deque:
-
-/opt/kokkos/include/desul/atomics/Common.hpp:
-
-/usr/include/python3.12/bltinmodule.h:
-
-/usr/include/bits/mathcalls-helper-functions.h:
-
-/opt/kokkos/include/desul/atomics/Adapt_GCC.hpp:
-
-/usr/lib64/libc.so:
-
-/usr/include/bits/thread-shared-types.h:
-
-/usr/include/asm-generic/types.h:
-
-/usr/include/asm-generic/bitsperlong.h:
-
-/usr/include/asm-generic/errno-base.h:
-
-/opt/kokkos/include/View/MDSpan/Kokkos_MDSpan_Accessor.hpp:
-
-/usr/include/python3.12/fileobject.h:
-
-/usr/include/python3.12/enumobject.h:
-
-/opt/kokkos/include/View/Kokkos_ViewMapping.hpp:
-
-/usr/include/python3.12/pyframe.h:
-
-/usr/include/python3.12/cpython/abstract.h:
-
-/opt/kokkos/include/impl/Kokkos_Tools_Generic.hpp:
-
-/opt/kokkos/include/View/Kokkos_ViewDataAnalysis.hpp:
-
-/usr/include/python3.12/sliceobject.h:
-
-/usr/include/c++/15/bits/predefined_ops.h:
-
-/usr/include/c++/15/optional:
-
-/usr/include/python3.12/modsupport.h:
-
-/opt/kokkos/include/traits/Kokkos_WorkTagTrait.hpp:
-
-/opt/kokkos/include/View/Kokkos_ViewCtor.hpp:
-
-/usr/include/asm-generic/posix_types.h:
-
-/opt/kokkos/include/Kokkos_MathematicalConstants.hpp:
-
-/opt/kokkos/include/impl/Kokkos_HostBarrier.hpp:
+/usr/include/bits/select.h:
 
 /usr/include/bits/dl_find_object.h:
 
-/usr/include/bits/types.h:
+/opt/kokkos/include/impl/Kokkos_HostBarrier.hpp:
 
-/opt/kokkos-kernels/lib64/libkokkoskernels.so:
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vpopcntdqvlintrin.h:
 
-/opt/kokkos/include/traits/Kokkos_WorkItemPropertyTrait.hpp:
+/opt/kokkos-kernels/include/KokkosKernels_SimpleUtils.hpp:
 
-/usr/include/bits/statx-generic.h:
+/opt/kokkos/include/impl/Kokkos_HostSharedPtr.hpp:
 
-/usr/include/linux/sched/types.h:
+/usr/include/python3.12/cpython/pytime.h:
 
-/usr/lib/gcc/x86_64-redhat-linux/15/libgomp.so:
+/usr/include/c++/15/bit:
 
-/opt/kokkos/include/experimental/__p0009_bits/config.hpp:
+/usr/lib64/crti.o:
 
-/usr/include/python3.12/memoryobject.h:
+/usr/include/bits/types/__fpos64_t.h:
 
-/opt/kokkos/include/Kokkos_Swap.hpp:
+/opt/kokkos/include/impl/Kokkos_HostSpace_deepcopy.hpp:
 
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/gil.h:
+/opt/kokkos-kernels/include/KokkosBlas2_serial_gemv_inner_multiple_dot.hpp:
 
-/usr/include/c++/15/bits/stl_deque.h:
+/opt/kokkos/include/impl/Kokkos_HostThreadTeam.hpp:
 
-/usr/include/python3.12/pythread.h:
+/opt/kokkos/include/impl/Kokkos_NvidiaGpuArchitectures.hpp:
 
-/opt/kokkos/include/desul/atomics/Atomic_Ref.hpp:
+/opt/kokkos/include/impl/Kokkos_PartitionSpace.hpp:
 
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/class.h:
+/usr/include/c++/15/stdexcept:
 
-/opt/kokkos/include/Kokkos_Clamp.hpp:
+/opt/kokkos/include/mdspan/mdspan.hpp:
 
-/opt/kokkos/include/Kokkos_Atomic.hpp:
+/usr/lib/gcc/x86_64-redhat-linux/15/include/shaintrin.h:
 
-/usr/include/c++/15/math.h:
+/usr/include/stdc-predef.h:
 
-/usr/include/c++/15/chrono:
+/usr/include/c++/15/tr1/ell_integral.tcc:
 
-/opt/kokkos/include/impl/Kokkos_StringManipulation.hpp:
+/opt/kokkos/include/impl/Kokkos_Profiling.hpp:
 
-/opt/kokkos/include/Kokkos_Abort.hpp:
+/opt/kokkos-kernels/include/KokkosBatched_Util.hpp:
 
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/holder_caster_foreign_helpers.h:
+/opt/kokkos/include/experimental/__p2642_bits/layout_padded_fwd.hpp:
 
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/function_record_pyobject.h:
-
-/usr/include/c++/15/bits/locale_facets_nonio.h:
-
-/opt/kokkos/include/View/Kokkos_ViewAlloc.hpp:
-
-/opt/kokkos/include/impl/Kokkos_Half_FloatingPointWrapper.hpp:
-
-/usr/include/c++/15/bits/ranges_algo.h:
-
-/opt/kokkos/include/desul/atomics/Thread_Fence_ScopeCaller.hpp:
-
-/usr/include/c++/15/bits/align.h:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/exception_translation.h:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/pybind11_namespace_macros.h:
-
-/usr/include/python3.12/objimpl.h:
-
-/usr/include/c++/15/bits/ranges_util.h:
-
-/opt/kokkos/include/Kokkos_AcquireUniqueTokenImpl.hpp:
-
-/home/kesmarag/Code/morphdG/bindings/pybind_wrapper.cpp:
-
-/opt/kokkos/include/Kokkos_MemoryPool.hpp:
-
-/opt/kokkos/include/experimental/__p2630_bits/submdspan_mapping.hpp:
-
-/usr/include/bits/types/locale_t.h:
-
-/opt/kokkos/include/impl/Kokkos_BuiltinReducers.hpp:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/dynamic_raw_ptr_cast_if_possible.h:
-
-/usr/include/python3.12/cpython/bytesobject.h:
-
-/usr/include/asm/bitsperlong.h:
-
-/usr/include/c++/15/bits/algorithmfwd.h:
-
-/opt/kokkos/include/KokkosCore_Config_FwdBackend.hpp:
-
-/opt/kokkos/include/desul/atomics/Lock_Free_Fetch_Op.hpp:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/value_and_holder.h:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/descr.h:
-
-/opt/kokkos/include/View/Kokkos_ViewUniformType.hpp:
-
-/usr/include/c++/15/bits/stl_stack.h:
-
-/lib64/libgcc_s.so.1:
-
-/opt/kokkos/include/Kokkos_Parallel_Reduce.hpp:
-
-/opt/kokkos/include/OpenMP/Kokkos_OpenMP_Parallel_For.hpp:
-
-/usr/include/asm/posix_types_64.h:
-
-/usr/include/c++/15/bits/ranges_base.h:
-
-/opt/kokkos/include/Kokkos_MinMax.hpp:
-
-/usr/include/c++/15/bits/fstream.tcc:
-
-/opt/kokkos/include/traits/Kokkos_Traits_fwd.hpp:
-
-/opt/kokkos/include/impl/Kokkos_SharedAlloc.hpp:
-
-/usr/include/python3.12/sysmodule.h:
-
-/usr/include/c++/15/ext/numeric_traits.h:
-
-/usr/include/c++/15/bits/deque.tcc:
-
-/usr/include/c++/15/bits/stl_tempbuf.h:
-
-/opt/kokkos/include/desul/atomics/Compare_Exchange_ScopeCaller.hpp:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/options.h:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/buffer_info.h:
-
-/usr/include/bits/floatn-common.h:
-
-/usr/include/c++/15/bits/exception_ptr.h:
-
-/usr/include/c++/15/bits/gslice.h:
-
-/usr/include/c++/15/ext/atomicity.h:
-
-/usr/include/c++/15/ext/concurrence.h:
-
-/opt/kokkos/include/impl/Kokkos_AnalyzePolicy.hpp:
-
-/opt/kokkos/include/View/Kokkos_ViewTraits.hpp:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/native_enum_data.h:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/pybind11.h:
+/opt/kokkos/include/impl/Kokkos_Profiling_C_Interface.h:
 
 /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/typeid.h:
 
 /opt/kokkos/include/impl/Kokkos_ScopeGuard.hpp:
 
-/opt/kokkos/include/experimental/__p0009_bits/utility.hpp:
+/usr/include/c++/15/bits/max_size_type.h:
 
-/usr/include/c++/15/bits/stl_algobase.h:
+/opt/kokkos/include/impl/Kokkos_Utilities.hpp:
 
-/usr/include/python3.12/floatobject.h:
+/opt/kokkos/include/impl/Kokkos_Tools.hpp:
 
-/usr/include/c++/15/bits/random.tcc:
+/opt/kokkos-kernels/include/KokkosBlas1_mult.hpp:
 
-/usr/include/c++/15/bits/stl_relops.h:
+/usr/include/bits/cpu-set.h:
 
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/common.h:
+/usr/include/bits/dlfcn.h:
 
-/usr/include/assert.h:
+/opt/kokkos/include/impl/Kokkos_Volatile_Load.hpp:
 
-/usr/include/c++/15/fstream:
-
-/opt/kokkos/include/experimental/__p0009_bits/layout_left.hpp:
-
-/usr/include/bits/wordsize.h:
-
-/usr/include/python3.12/boolobject.h:
-
-/usr/lib64/crtn.o:
-
-/usr/include/c++/15/tr1/special_function_util.h:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/conduit/wrap_include_python_h.h:
-
-/usr/include/linux/stddef.h:
-
-/usr/include/bits/fp-logb.h:
-
-/usr/include/c++/15/bits/valarray_array.h:
-
-CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/internals.h:
-
-/usr/include/c++/15/ctime:
-
-/opt/kokkos/include/OpenMP/Kokkos_OpenMP_MDRangePolicy.hpp:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/attr.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/15/include/emmintrin.h:
-
-/usr/include/bits/stat.h:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/trampoline_self_life_support.h:
-
-/usr/include/c++/15/pstl/execution_defs.h:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/numpy.h:
-
-/opt/kokkos/include/experimental/__p0009_bits/compressed_pair.hpp:
-
-/usr/include/c++/15/streambuf:
-
-/usr/include/c++/15/format:
-
-/opt/kokkos/lib64/libkokkosalgorithms.a:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/conduit/pybind11_platform_abi_id.h:
-
-/usr/include/bits/types/struct_FILE.h:
-
-/opt/kokkos/include/Kokkos_Timer.hpp:
-
-/usr/include/c++/15/map:
-
-/usr/include/c++/15/bits/refwrap.h:
-
-/opt/kokkos/include/desul/atomics/Generic.hpp:
-
-/usr/include/c++/15/atomic:
-
-/usr/include/python3.12/cpython/picklebufobject.h:
-
-/opt/kokkos/include/fwd/Kokkos_Fwd_OPENMP.hpp:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/gil_simple.h:
-
-/opt/kokkos/include/desul/atomics/Fetch_Op_Generic.hpp:
-
-/usr/include/c++/15/complex:
-
-/usr/lib/gcc/x86_64-redhat-linux/15/libstdc++.so:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/pytypes.h:
-
-/usr/include/python3.12/cpython/compile.h:
-
-/opt/kokkos/include/traits/Kokkos_IterationPatternTrait.hpp:
-
-/opt/kokkos/include/desul/atomics/Operator_Function_Objects.hpp:
-
-/opt/kokkos/include/desul/atomics.hpp:
-
-/opt/kokkos/include/experimental/__p0009_bits/extents.hpp:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/stl.h:
-
-/usr/include/python3.12/pymath.h:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/complex.h:
-
-/usr/include/python3.12/ceval.h:
-
-/usr/include/c++/15/bits/atomic_base.h:
-
-/usr/lib64/libpthread.a:
-
-/opt/kokkos/include/View/MDSpan/Kokkos_MDSpan_Extents.hpp:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/struct_smart_holder.h:
-
-/opt/kokkos/include/Kokkos_Array.hpp:
-
-/usr/include/python3.12/bytesobject.h:
-
-/usr/include/c++/15/algorithm:
-
-/usr/include/c++/15/bits/hash_bytes.h:
-
-/usr/include/python3.12/pystrtod.h:
-
-/usr/include/c++/15/concepts:
-
-/usr/lib/gcc/x86_64-redhat-linux/15/crtendS.o:
-
-/opt/kokkos/include/Kokkos_Pair.hpp:
-
-/usr/lib/gcc/x86_64-redhat-linux/15/libgcc.a:
-
-/usr/include/bits/byteswap.h:
-
-/opt/kokkos/include/View/Kokkos_ViewAccessPreconditionsCheck.hpp:
-
-/opt/kokkos/include/Kokkos_DetectionIdiom.hpp:
-
-/usr/include/bits/statx.h:
-
-/opt/kokkos/include/Kokkos_Concepts.hpp:
-
-/opt/kokkos/include/OpenMP/Kokkos_OpenMP_Team.hpp:
-
-/usr/include/bits/xopen_lim.h:
-
-/usr/include/c++/15/bits/string_view.tcc:
-
-/opt/kokkos/include/Kokkos_View.hpp:
-
-/usr/include/c++/15/bits/stl_set.h:
-
-/opt/kokkos/include/View/MDSpan/Kokkos_MDSpan_Layout.hpp:
-
-/usr/include/bits/libc-header-start.h:
-
-/opt/kokkos/include/Kokkos_HostSpace.hpp:
+/opt/kokkos/include/traits/Kokkos_ExecutionSpaceTrait.hpp:
 
 /opt/kokkos/include/impl/Kokkos_Profiling_DeviceInfo.hpp:
 
 /opt/kokkos/include/traits/Kokkos_GraphKernelTrait.hpp:
 
-/opt/kokkos/lib64/libkokkoscontainers.so.5.0.99:
+/usr/include/python3.12/cpython/compile.h:
 
-/opt/kokkos/include/Kokkos_NumericTraits.hpp:
+/opt/kokkos/include/experimental/__p0009_bits/extents.hpp:
 
-/usr/include/stdio.h:
+/opt/kokkos/include/desul/atomics.hpp:
 
-/home/kesmarag/Code/morphdG/include/morphdg/aggmesh.hpp:
+/opt/kokkos/include/desul/atomics/Operator_Function_Objects.hpp:
 
-/home/kesmarag/Code/morphdG/include/morphdg/dgsolver.hpp:
+/opt/kokkos/include/traits/Kokkos_IterationPatternTrait.hpp:
 
-/usr/include/features-time64.h:
+/opt/kokkos/include/OpenMP/Kokkos_OpenMP.hpp:
 
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/using_smart_holder.h:
+/opt/kokkos/include/traits/Kokkos_LaunchBoundsTrait.hpp:
 
-/opt/kokkos/include/View/Kokkos_ViewCommonType.hpp:
+/usr/include/endian.h:
 
-/usr/lib/gcc/x86_64-redhat-linux/15/crtbeginS.o:
+/opt/kokkos/include/traits/Kokkos_ScheduleTrait.hpp:
 
-/usr/include/c++/15/bits/stringfwd.h:
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512bf16vlintrin.h:
 
-/opt/kokkos/include/impl/Kokkos_Combined_Reducer.hpp:
+/usr/include/python3.12/modsupport.h:
 
-/opt/kokkos/include/KokkosExp_MDRangePolicy.hpp:
+/opt/kokkos/include/traits/Kokkos_WorkTagTrait.hpp:
 
-/usr/include/c++/15/bits/quoted_string.h:
+/usr/include/alloca.h:
 
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/gil_safe_call_once.h:
+/opt/kokkos-kernels/include/generated_specializations_hpp/KokkosBlas1_mult_eti_spec_decl.hpp:
 
-/opt/kokkos/include/OpenMP/Kokkos_OpenMP_UniqueToken.hpp:
+/usr/include/asm-generic/errno-base.h:
 
-/opt/kokkos/include/Kokkos_AnonymousSpace.hpp:
+/usr/include/sys/single_threaded.h:
 
-/opt/kokkos/include/Kokkos_Vectorization.hpp:
+/usr/include/c++/15/valarray:
 
-/opt/kokkos/include/Kokkos_Core_fwd.hpp:
+/usr/include/asm-generic/errno.h:
 
-/opt/kokkos/include/impl/Kokkos_CStyleMemoryManagement.hpp:
+/usr/include/python3.12/cpython/bytesobject.h:
 
-/opt/kokkos/include/Kokkos_Atomics_Desul_Wrapper.hpp:
+/usr/include/c++/15/bits/algorithmfwd.h:
 
-/usr/include/math.h:
+/usr/include/asm/bitsperlong.h:
 
-/opt/kokkos/include/Kokkos_BitManipulation.hpp:
+/usr/lib/gcc/x86_64-redhat-linux/15/include/mwaitxintrin.h:
+
+/opt/kokkos-kernels/include/KokkosSparse_spmv_bsrmatrix_spec.hpp:
+
+/usr/include/asm/errno.h:
+
+/usr/include/bits/stdint-uintn.h:
 
 /usr/include/python3.12/warnings.h:
 
@@ -1665,135 +3257,23 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 
 /usr/include/bits/time.h:
 
-/opt/kokkos/include/desul/atomics/Fetch_Op_ScopeCaller.hpp:
+/usr/include/asm/posix_types_64.h:
 
-/opt/kokkos/include/desul/atomics/Lock_Based_Fetch_Op_Host.hpp:
+/usr/include/bits/byteswap.h:
 
-/opt/kokkos/include/Kokkos_CopyViews.hpp:
+/usr/include/bits/confname.h:
 
-/usr/include/bits/atomic_wide_counter.h:
+/usr/include/bits/endianness.h:
 
-/opt/kokkos/include/Kokkos_Complex.hpp:
+/usr/include/c++/15/bits/sstream.tcc:
 
-/usr/include/c++/15/bits/shared_ptr_atomic.h:
+/usr/include/bits/environments.h:
 
-/usr/include/bits/types/struct_sched_param.h:
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2-512minmaxintrin.h:
 
-/opt/kokkos/include/impl/Kokkos_ClockTic.hpp:
-
-/opt/kokkos/include/Kokkos_Core.hpp:
-
-/usr/include/c++/15/bits/requires_hosted.h:
-
-/usr/include/bits/time64.h:
-
-/usr/include/c++/15/bits/atomic_wait.h:
-
-/opt/kokkos/include/Kokkos_hwloc.hpp:
-
-/usr/include/bits/select.h:
-
-/opt/kokkos/include/Kokkos_Extents.hpp:
-
-/usr/include/c++/15/bits/ios_base.h:
-
-/opt/kokkos/include/Kokkos_Half.hpp:
-
-/opt/kokkos/include/experimental/__p2389_bits/dims.hpp:
-
-/usr/include/c++/15/bits/basic_string.tcc:
-
-/usr/include/c++/15/bits/streambuf.tcc:
-
-/opt/kokkos/include/traits/Kokkos_LaunchBoundsTrait.hpp:
-
-/opt/kokkos/include/OpenMP/Kokkos_OpenMP.hpp:
-
-/usr/include/c++/15/bits/uniform_int_dist.h:
-
-/opt/kokkos/include/Kokkos_MathematicalFunctions.hpp:
-
-/opt/kokkos/include/Kokkos_Assert.hpp:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/cpp_conduit.h:
-
-/usr/lib64/libm.so:
-
-/usr/include/c++/15/tr1/bessel_function.tcc:
-
-/opt/kokkos/include/Kokkos_Macros.hpp:
-
-/usr/include/c++/15/span:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/cast.h:
-
-/usr/include/c++/15/cerrno:
-
-/opt/kokkos/include/Kokkos_MemoryTraits.hpp:
-
-/opt/kokkos/include/Kokkos_ExecPolicy.hpp:
-
-/usr/include/c++/15/cstring:
-
-/opt/kokkos/include/desul/atomics/Lock_Array.hpp:
-
-/opt/kokkos/include/Kokkos_ReductionIdentity.hpp:
-
-/usr/include/python3.12/cpython/fileobject.h:
-
-/opt/kokkos/include/Kokkos_ScratchSpace.hpp:
-
-/usr/include/c++/15/bits/atomic_lockfree_defines.h:
-
-/opt/kokkos/include/View/Kokkos_ViewAtomic.hpp:
-
-/usr/include/python3.12/frameobject.h:
-
-/opt/kokkos/include/Kokkos_TypeInfo.hpp:
-
-/usr/include/bits/types/struct___jmp_buf_tag.h:
-
-/usr/include/bits/wchar.h:
-
-/usr/include/c++/15/bits/enable_special_members.h:
-
-/usr/include/string.h:
-
-/usr/include/c++/15/bits/stl_tree.h:
-
-/usr/include/linux/stat.h:
-
-/opt/kokkos/include/impl/Kokkos_InitializeFinalize.hpp:
-
-/opt/kokkos/include/Kokkos_Rank.hpp:
-
-/opt/kokkos/include/Kokkos_WorkGraphPolicy.hpp:
-
-/usr/include/c++/15/tr1/legendre_function.tcc:
-
-/opt/kokkos/include/OpenMP/Kokkos_OpenMP_ZeroMemset.hpp:
-
-/usr/include/c++/15/iterator:
-
-/opt/kokkos/include/View/Hooks/Kokkos_ViewHooks.hpp:
-
-/usr/include/c++/15/new:
-
-/opt/kokkos/include/View/Kokkos_BasicView.hpp:
-
-/opt/kokkos/include/Kokkos_MathematicalSpecialFunctions.hpp:
-
-/opt/kokkos/include/impl/Kokkos_ConcurrentBitset.hpp:
-
-/usr/include/c++/15/bits/codecvt.h:
-
-/opt/kokkos/include/experimental/__p0009_bits/trait_backports.hpp:
-
-/usr/include/c++/15/bits/std_function.h:
+/opt/kokkos-kernels/include/KokkosKernels_Iota.hpp:
 
 /usr/include/bits/floatn.h:
-
-/usr/include/bits/flt-eval-method.h:
 
 /usr/include/python3.12/intrcheck.h:
 
@@ -1801,500 +3281,46 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o:
 
 /usr/include/bits/getopt_core.h:
 
-/usr/include/c++/15/x86_64-redhat-linux/bits/messages_members.h:
-
-/usr/include/c++/15/bits/list.tcc:
-
-/usr/include/c++/15/debug/debug.h:
-
 /usr/include/bits/getopt_posix.h:
-
-/usr/include/c++/15/cstddef:
-
-/usr/include/bits/libm-simd-decl-stubs.h:
 
 /usr/include/bits/local_lim.h:
 
-/opt/kokkos/include/View/Kokkos_ViewTracker.hpp:
-
-/usr/include/c++/15/bits/postypes.h:
-
-/usr/include/bits/locale.h:
-
 /usr/include/bits/long-double.h:
 
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx10_2-512mediaintrin.h:
+
 /usr/include/bits/math-vector.h:
-
-/usr/include/python3.12/Python.h:
-
-/usr/include/bits/uio_lim.h:
-
-/usr/include/c++/15/bits/concept_check.h:
-
-/usr/include/bits/mathcalls-macros.h:
-
-/usr/include/c++/15/cxxabi.h:
 
 /opt/kokkos/include/impl/Kokkos_InitializationSettings.hpp:
 
 /usr/include/bits/mathcalls-narrow.h:
 
-/usr/include/bits/mathcalls.h:
-
 /usr/include/python3.12/cpython/ceval.h:
 
 /usr/include/bits/posix1_lim.h:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/typing.h:
-
-/usr/include/bits/posix2_lim.h:
-
-/usr/include/bits/pthread_stack_min-dynamic.h:
 
 /usr/include/python3.12/structseq.h:
 
 /usr/include/bits/pthreadtypes-arch.h:
 
-/usr/include/bits/pthreadtypes.h:
-
 /usr/include/bits/semaphore.h:
-
-/usr/include/python3.12/cpython/pythread.h:
-
-/usr/include/c++/15/bits/locale_conv.h:
-
-/usr/include/bits/setjmp.h:
 
 /usr/include/c++/15/typeindex:
 
 /usr/include/bits/stdint-least.h:
 
-/opt/kokkos/include/View/MDSpan/Kokkos_MDSpan_Header.hpp:
-
-/usr/include/c++/15/bits/this_thread_sleep.h:
-
 /usr/include/bits/stdio_lim.h:
-
-/usr/include/bits/stdlib-float.h:
 
 /usr/include/bits/struct_mutex.h:
 
 /usr/include/bits/struct_stat.h:
 
-/usr/include/bits/syscall.h:
-
-/usr/include/c++/15/string:
-
-/usr/include/bits/timesize.h:
-
 /opt/kokkos/lib64/libkokkossimd.a:
+
+/opt/kokkos-kernels/include/KokkosBatched_Vector_SIMD_Arith.hpp:
 
 /usr/include/bits/timex.h:
 
+/usr/lib/gcc/x86_64-redhat-linux/15/include/avx512vbmiintrin.h:
+
 /usr/include/bits/types/FILE.h:
-
-/usr/include/c++/15/bits/forward_list.h:
-
-/usr/include/python3.12/cpython/pytime.h:
-
-/usr/include/c++/15/bit:
-
-/opt/kokkos/include/impl/Kokkos_HostSpace_deepcopy.hpp:
-
-/usr/lib64/crti.o:
-
-/usr/include/bits/types/__fpos64_t.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/15/include/limits.h:
-
-/usr/include/bits/types/__locale_t.h:
-
-/usr/include/c++/15/bits/stream_iterator.h:
-
-/usr/include/python3.12/pystate.h:
-
-/usr/include/bits/types/__sigset_t.h:
-
-/usr/include/bits/types/clock_t.h:
-
-/usr/include/c++/15/bits/charconv.h:
-
-/usr/include/c++/15/pstl/glue_algorithm_defs.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/15/include/pmmintrin.h:
-
-/usr/include/bits/types/error_t.h:
-
-/usr/include/c++/15/bits/ostream_insert.h:
-
-/usr/include/bits/types/mbstate_t.h:
-
-/usr/include/bits/types/sigset_t.h:
-
-/usr/include/c++/15/bits/hashtable.h:
-
-/usr/include/c++/15/memory:
-
-/usr/include/c++/15/bits/allocator.h:
-
-/usr/include/bits/types/struct_statx_timestamp.h:
-
-/usr/include/bits/types/struct_timespec.h:
-
-/usr/include/c++/15/random:
-
-/usr/include/c++/15/bits/stl_algo.h:
-
-/usr/include/bits/types/time_t.h:
-
-/usr/include/bits/types/timer_t.h:
-
-/usr/include/c++/15/backward/auto_ptr.h:
-
-/usr/include/c++/15/bits/exception_defines.h:
-
-/usr/lib64/libc_nonshared.a:
-
-/usr/include/c++/15/bits/stl_heap.h:
-
-/usr/include/bits/types/wint_t.h:
-
-/usr/include/gnu/stubs.h:
-
-/usr/include/c++/15/bits/locale_facets.h:
-
-/usr/include/bits/typesizes.h:
-
-/usr/include/bits/uintn-identity.h:
-
-/usr/include/c++/15/x86_64-redhat-linux/bits/cpu_defines.h:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/type_caster_base.h:
-
-/usr/include/bits/unistd_ext.h:
-
-/usr/include/bits/waitstatus.h:
-
-/usr/include/c++/15/mutex:
-
-/opt/kokkos/include/KokkosCore_Config_DeclareBackend.hpp:
-
-/usr/include/bits/waitflags.h:
-
-/usr/include/bits/stdint-intn.h:
-
-/opt/kokkos/include/OpenMP/Kokkos_OpenMP_WorkGraphPolicy.hpp:
-
-/usr/include/bits/wctype-wchar.h:
-
-/opt/kokkos/include/desul/atomics/Fetch_Op.hpp:
-
-/usr/include/c++/15/bits/cpp_type_traits.h:
-
-/usr/include/c++/15/exception:
-
-/usr/include/c++/15/numbers:
-
-/usr/include/c++/15/backward/binders.h:
-
-/usr/include/bits/types/__fpos_t.h:
-
-/usr/include/c++/15/bits/specfun.h:
-
-/usr/include/c++/15/bits/alloc_traits.h:
-
-/usr/include/locale.h:
-
-/usr/include/c++/15/bits/allocated_ptr.h:
-
-/lib64/ld-linux-x86-64.so.2:
-
-/usr/include/c++/15/bits/istream.tcc:
-
-/usr/include/c++/15/bits/atomic_timed_wait.h:
-
-/usr/include/c++/15/variant:
-
-/usr/include/c++/15/bits/basic_ios.h:
-
-/usr/include/c++/15/pstl/pstl_config.h:
-
-/opt/kokkos/include/Kokkos_UniqueToken.hpp:
-
-/lib64/libm.so.6:
-
-/usr/include/c++/15/bits/basic_ios.tcc:
-
-/usr/include/c++/15/cctype:
-
-/usr/include/c++/15/bits/char_traits.h:
-
-/usr/include/c++/15/bits/random.h:
-
-/usr/include/c++/15/bits/cxxabi_init_exception.h:
-
-/usr/include/c++/15/bits/gslice_array.h:
-
-/usr/include/c++/15/bits/exception.h:
-
-/usr/include/c++/15/bits/basic_string.h:
-
-/usr/include/c++/15/ostream:
-
-/usr/include/c++/15/bits/formatfwd.h:
-
-/usr/include/c++/15/bits/forward_list.tcc:
-
-/usr/include/c++/15/bits/functexcept.h:
-
-/usr/include/c++/15/bits/stl_vector.h:
-
-/usr/lib64/libdl.a:
-
-/usr/include/c++/15/bits/functional_hash.h:
-
-/usr/include/c++/15/bits/hashtable_policy.h:
-
-/lib64/libmvec.so.1:
-
-/usr/include/c++/15/ext/string_conversions.h:
-
-/usr/include/c++/15/bits/indirect_array.h:
-
-/usr/include/c++/15/bits/iterator_concepts.h:
-
-/opt/kokkos/include/KokkosCore_config.h:
-
-/usr/include/c++/15/bits/locale_classes.h:
-
-/usr/include/c++/15/ratio:
-
-/usr/include/c++/15/bits/stl_map.h:
-
-/usr/include/bits/types/struct_timeval.h:
-
-/usr/include/c++/15/list:
-
-/usr/include/c++/15/bits/locale_classes.tcc:
-
-/usr/include/stdlib.h:
-
-/opt/kokkos/include/impl/Kokkos_ZeroMemset_fwd.hpp:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/init.h:
-
-/usr/include/c++/15/bits/locale_facets.tcc:
-
-/opt/kokkos/include/OpenMP/Kokkos_OpenMP_Parallel_Scan.hpp:
-
-/usr/include/c++/15/bits/locale_facets_nonio.tcc:
-
-/usr/include/c++/15/bits/localefwd.h:
-
-/usr/include/c++/15/bits/mask_array.h:
-
-/opt/kokkos/include/impl/Kokkos_Utilities.hpp:
-
-/usr/include/c++/15/bits/max_size_type.h:
-
-/usr/include/c++/15/bits/stl_function.h:
-
-/usr/include/bits/types/struct_itimerspec.h:
-
-/usr/include/c++/15/bits/memory_resource.h:
-
-/usr/include/c++/15/bits/memoryfwd.h:
-
-/usr/include/c++/15/bits/nested_exception.h:
-
-/usr/include/c++/15/bits/node_handle.h:
-
-/usr/include/python3.12/cpython/object.h:
-
-/usr/include/c++/15/bits/stl_raw_storage_iter.h:
-
-/usr/include/c++/15/bits/ostream.h:
-
-/usr/include/c++/15/bits/ostream.tcc:
-
-/usr/include/python3.12/pymacconfig.h:
-
-/usr/include/c++/15/bits/parse_numbers.h:
-
-/usr/include/bits/types/struct_tm.h:
-
-/usr/include/c++/15/bits/ptr_traits.h:
-
-/opt/kokkos/include/experimental/__p2630_bits/submdspan.hpp:
-
-/usr/include/asm/unistd.h:
-
-/usr/include/c++/15/bits/ranges_algobase.h:
-
-/usr/include/linux/limits.h:
-
-/usr/include/c++/15/bits/semaphore_base.h:
-
-/usr/include/c++/15/bits/stl_construct.h:
-
-/usr/include/c++/15/bits/range_access.h:
-
-/usr/include/c++/15/bits/ranges_cmp.h:
-
-/usr/include/python3.12/typeslots.h:
-
-/opt/kokkos/include/Kokkos_Crs.hpp:
-
-/home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/argument_vector.h:
-
-/usr/include/c++/15/bits/unicode-data.h:
-
-/usr/include/c++/15/bits/ranges_uninitialized.h:
-
-/usr/include/c++/15/iomanip:
-
-/usr/include/c++/15/bits/shared_ptr.h:
-
-/opt/kokkos/include/OpenMP/Kokkos_OpenMP_Parallel_Reduce.hpp:
-
-/opt/kokkos/include/impl/Kokkos_Half_ReductionIdentity.hpp:
-
-/usr/include/c++/15/bits/shared_ptr_base.h:
-
-/usr/include/c++/15/semaphore:
-
-/usr/include/c++/15/bits/stl_multimap.h:
-
-/usr/include/c++/15/x86_64-redhat-linux/bits/ctype_inline.h:
-
-/lib64/libc.so.6:
-
-/usr/include/c++/15/bits/stl_uninitialized.h:
-
-/usr/include/c++/15/bits/slice_array.h:
-
-/usr/include/c++/15/bits/erase_if.h:
-
-/usr/include/c++/15/bits/std_mutex.h:
-
-/usr/include/c++/15/charconv:
-
-/usr/include/bits/environments.h:
-
-/usr/include/c++/15/bits/sstream.tcc:
-
-/usr/include/c++/15/ios:
-
-/usr/include/c++/15/bits/std_abs.h:
-
-/opt/kokkos/include/traits/Kokkos_IndexTypeTrait.hpp:
-
-/usr/include/c++/15/bits/std_thread.h:
-
-/opt/kokkos/include/Kokkos_Tuners.hpp:
-
-/opt/kokkos/lib64/libkokkoscore.so.5.0.99:
-
-/usr/include/c++/15/debug/assertions.h:
-
-/opt/kokkos/include/impl/Kokkos_TeamMDPolicy.hpp:
-
-/usr/include/c++/15/bits/stl_bvector.h:
-
-/usr/include/c++/15/cstdint:
-
-/usr/include/c++/15/bits/stl_pair.h:
-
-/opt/kokkos/include/OpenMP/Kokkos_OpenMP_Instance.hpp:
-
-/usr/include/bits/types/__mbstate_t.h:
-
-/usr/include/c++/15/bits/stl_iterator.h:
-
-/usr/include/c++/15/bits/stl_iterator_base_funcs.h:
-
-/usr/include/c++/15/bits/stl_iterator_base_types.h:
-
-/usr/include/c++/15/bits/stl_list.h:
-
-/usr/include/c++/15/bits/unique_lock.h:
-
-/usr/include/c++/15/bits/stl_multiset.h:
-
-/usr/include/python3.12/cpython/unicodeobject.h:
-
-/usr/include/c++/15/bits/unicode.h:
-
-/usr/include/c++/15/bits/stl_numeric.h:
-
-/usr/include/c++/15/bits/streambuf_iterator.h:
-
-/usr/include/c++/15/bits/move.h:
-
-/usr/include/c++/15/bits/unique_ptr.h:
-
-/usr/include/python3.12/complexobject.h:
-
-/usr/include/dlfcn.h:
-
-/usr/include/c++/15/bits/unordered_map.h:
-
-/usr/include/c++/15/bits/unordered_set.h:
-
-/usr/include/c++/15/bits/chrono.h:
-
-/usr/include/c++/15/bits/uses_allocator_args.h:
-
-/usr/include/bits/types/cookie_io_functions_t.h:
-
-/usr/include/c++/15/bits/valarray_after.h:
-
-/usr/include/c++/15/bits/valarray_array.tcc:
-
-/usr/include/c++/15/bits/version.h:
-
-/usr/include/c++/15/cinttypes:
-
-/usr/include/c++/15/bits/vector.tcc:
-
-/usr/include/bits/types/struct_statx.h:
-
-/usr/include/c++/15/climits:
-
-/usr/include/c++/15/cstdio:
-
-/usr/include/c++/15/cstdlib:
-
-/usr/include/c++/15/cwchar:
-
-/usr/include/c++/15/cwctype:
-
-/usr/include/c++/15/ext/aligned_buffer.h:
-
-/usr/include/c++/15/ext/alloc_traits.h:
-
-/usr/include/c++/15/ext/type_traits.h:
-
-/usr/include/c++/15/forward_list:
-
-/usr/include/c++/15/functional:
-
-/usr/include/python3.12/setobject.h:
-
-/usr/include/python3.12/cpython/setobject.h:
-
-/usr/include/c++/15/initializer_list:
-
-/usr/include/c++/15/bits/chrono_io.h:
-
-/usr/include/c++/15/iosfwd:
-
-/usr/include/c++/15/istream:
-
-/usr/include/c++/15/limits:
-
-/usr/include/c++/15/locale:
-
-/usr/include/c++/15/numeric:
-
-/usr/include/c++/15/pstl/glue_memory_defs.h:
