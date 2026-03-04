@@ -1,5 +1,5 @@
 (undo-tree-save-format-version . 1)
-"06f2a8e9ddf5b7c24c80af0ee5689f97e65ee768"
+"598c57a430b2a77dc964f4a60da5340ff6b0eb8a"
 [nil nil nil nil (27048 965 101159 209000) 0 nil]
 ([nil nil ((nil rear-nonsticky nil 735 . 736) (nil fontified nil 1 . 736) (1 . 736) (t . -1)) nil (27048 965 101156 416000) 0 nil])
 ([nil nil ((736 . 737)) nil (27048 965 101149 292000) 0 nil])
@@ -453,5 +453,7 @@ p_array[-1] = 2
 ([nil nil ((#("4096" 0 4 (fontified t)) . 103) (undo-tree-id2672 . -4) (undo-tree-id2673 . -4) (undo-tree-id2674 . -4) (undo-tree-id2675 . -4) (undo-tree-id2676 . -3) (undo-tree-id2677 . -1) (undo-tree-id2678 . -4) (t 27048 12497 636015 877000)) nil (27048 12503 811813 683000) 0 nil])
 ([nil nil ((103 . 107)) nil (27048 12503 811699 981000) 0 nil])
 ([nil nil ((apply 2 113 124 undo--wrap-and-run-primitive-undo 113 124 ((#("# " 0 2 (face font-lock-comment-delimiter-face fontified t)) . -113) 126 (t 27048 12503 816947 95000)))) nil (27048 12522 794593 917000) 0 nil])
-([nil current ((351 . 354) (t 27048 12522 799735 849000)) nil (27048 12566 346183 856000) 0 nil])
+([nil nil ((351 . 354) (t 27048 12522 799735 849000)) nil (27048 12566 346183 856000) 0 nil])
+([nil nil ((apply -2 113 127 undo--wrap-and-run-primitive-undo 113 127 ((113 . 115) 124 (t 27048 12566 351251 197000)))) nil (27048 15662 528103 339000) 0 nil])
+([nil current ((apply -2 738 790 undo--wrap-and-run-primitive-undo 738 790 ((738 . 740) 764))) nil (27048 15662 528098 31000) 0 nil])
 nil

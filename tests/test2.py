@@ -4,7 +4,7 @@ import morphdg as mdg
 mesh = mdg.Mesh()
 mesh.load("mesh.dat")   
 mesh.agglomerate(1024, 42)
-mesh.plot()
+# mesh.plot()
 
 solver = mdg.DGSolver(mesh)
 
@@ -29,6 +29,6 @@ solver.set_neumann_bc(loc=lambda x, y: y > 0.99, neumann_input=1.0)
 solver.set_neumann_bc(loc=lambda x, y: y < 0.01, neumann_input=0.0)
 
 solution = solver.solve(mode="kokkos")
-solver.plot_solution(solution, "dg_solution.png")
+# solver.plot_solution(solution, "dg_solution.png")
 
 del solver, mesh
