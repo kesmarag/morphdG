@@ -2,7 +2,9 @@ import numpy as np
 import scipy.sparse as sp
 import scipy.sparse.linalg as spla
 import matplotlib.pyplot as plt
+
 from . import morphdg_core
+from .jit import JITEvaluator  # Import our new JIT compiler
 
 class DGSolver:
 
@@ -10,18 +12,46 @@ class DGSolver:
         # mesh is the Python AggMesh object
         self.mesh = mesh 
         self._cpp_solver = morphdg_core.DGSolver()
-        # self._cpp_solver.coeffs.alpha = alpha
         
-        # Set polynomial order
-        p_orders = np.full(self.mesh.num_elements, p_order, dtype=np.int32)
-        self._cpp_solver.set_p_orders(p_orders)
+        # Set polynomial order and FIX the missing class attribute
+        self.p_orders = np.full(self.mesh.num_elements, p_order, dtype=np.int32)
+        self._cpp_solver.set_p_orders(self.p_orders)
         
         # Internal boundary tracking
         self._dirichlet_conditions = []
         self._neumann_conditions = []
 
     def _eval_any(self, field_input, X, Y):
-        if isinstance(field_input, np.ndarray):
+        """
+        Evaluates input fields. 
+        If it's a string, it triggers the C++ Kokkos JIT compiler for maximum performance.
+        Otherwise, it falls back to standard NumPy/Python evaluation.
+        """
+        # --- THE JIT COMPILER APPROACH ---
+        if isinstance(field_input, str):
+            # Create a blank array to hold the Kokkos output
+            out_array = np.zeros_like(X, dtype=np.float64)
+            
+            # Ensure X and Y are contiguous in memory (required for C++ pointers)
+            X_contig = np.ascontiguousarray(X, dtype=np.float64)
+            Y_contig = np.ascontiguousarray(Y, dtype=np.float64)
+            
+            # Compile the C++ string (or load it from cache instantly)
+            jit_eval = JITEvaluator(field_input)
+            
+            # Get the raw memory addresses from the NumPy arrays
+            ptr_out = out_array.ctypes.data
+            ptr_x = X_contig.ctypes.data
+            ptr_y = Y_contig.ctypes.data
+            n_points = len(X)
+            
+            # Execute the compiled Kokkos kernel! (Time t=0.0 for steady-state setup)
+            jit_eval.evaluate(ptr_out, ptr_x, ptr_y, n_points, 0.0)
+            
+            return out_array
+            
+        # --- THE STANDARD PYTHON FALLBACK APPROACH ---
+        elif isinstance(field_input, np.ndarray):
             val = field_input
         elif callable(field_input):
             try:
@@ -30,8 +60,9 @@ class DGSolver:
                 val = np.vectorize(field_input)(X, Y)
         else:
             val = field_input
-        return np.broadcast_to(val, X.shape).astype(np.float64).copy()
+            
         # .copy() ensures the memory is contiguous so Pybind11/C++ doesn't panic.
+        return np.broadcast_to(val, X.shape).astype(np.float64).copy()
         
     def set_params(self, vx=0.0, vy=0.0, Kxx=1.0, Kyy=1.0, Kxy=0.0, Kyx=0.0, alpha=5.0):
         # Volume points
@@ -137,14 +168,12 @@ class DGSolver:
         n_elem = self.mesh.num_elements
         
         tri_vals = np.zeros(len(tris))
-        dof_offset = 0  # <--- Dynamic read head for the solution array
+        dof_offset = 0  
         
         for e in range(n_elem):
-            # Calculate how many basis functions this specific element has
             p = self.p_orders[e]
             n_basis_e = (p + 1) * (p + 2) // 2
             
-            # Slice the exact coefficients for this element
             coeffs = solution[dof_offset : dof_offset + n_basis_e]
             dof_offset += n_basis_e
             
@@ -192,4 +221,3 @@ class DGSolver:
         plt.savefig(save_as, dpi=300)
         print(f" -> Saved to '{save_as}'!")
         plt.close()
-

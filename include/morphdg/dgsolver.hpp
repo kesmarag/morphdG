@@ -286,11 +286,10 @@ struct AssembleVolumeKernel {
                                       x_phys, y_phys, vals[i], gx[i], gy[i]);
         }
 
-        // --- 3. THE MAGIC: O(1) MEMORY LOOKUP INSTEAD OF SCALARS ---
         // Calculate exactly which quadrature point we are at globally
         int global_q_idx = t_idx * n_q + q;
 
-        // Read physics directly from Kokkos GPU memory
+        // Read directly from Kokkos DEVICE memory
         Real source_f = source_exact(global_q_idx);
         Real l_vx = vx_quad(global_q_idx);
         Real l_vy = vy_quad(global_q_idx);
@@ -303,7 +302,6 @@ struct AssembleVolumeKernel {
           local_rhs[r] += source_f * vals[r] * w;
 
           for (int c = 0; c < n_basis; c++) {
-            // Plug the local variables right into your exact same math!
             Real diff_term = gx[r] * (l_Kxx * gx[c] + l_Kxy * gy[c]) +
                              gy[r] * (l_Kyx * gx[c] + l_Kyy * gy[c]);
 
@@ -315,7 +313,7 @@ struct AssembleVolumeKernel {
       }
     }
 
-    // --- SCATTER TO GLOBAL MATRIX & VECTOR (Unchanged) ---
+    // --- SCATTER TO GLOBAL MATRIX & VECTOR ---
     for (int r = 0; r < n_basis; ++r) {
       int global_row = row_start_global + r;
 
@@ -349,7 +347,6 @@ struct AssembleFaceKernel {
   ViewInt1D element_orders;
   ViewInt1D dof_offsets;
 
-  // Face Physics Fields
   ViewReal1D vx_face, vy_face;
   ViewReal1D Kxx_face, Kxy_face, Kyx_face, Kyy_face;
   Real alpha; // The penalty parameter
@@ -366,7 +363,7 @@ struct AssembleFaceKernel {
 
   KOKKOS_INLINE_FUNCTION
   void operator()(const int f) const {
-    // 1. Unpack Face Geometry
+    // Unpack Face Geometry
     int ePlus = faces(4 * f + 0);
     int eMinus = faces(4 * f + 1);
     int nA = faces(4 * f + 2);
@@ -414,7 +411,6 @@ struct AssembleFaceKernel {
       Real x_phys = shapeA * xA + shapeB * xB;
       Real y_phys = shapeA * yA + shapeB * yB;
 
-      // Global 1D Index for O(1) Memory Lookup!
       int global_q_idx = f * n_q + q;
       Real l_vx = vx_face(global_q_idx), l_vy = vy_face(global_q_idx);
       Real l_Kxx = Kxx_face(global_q_idx), l_Kyy = Kyy_face(global_q_idx);
@@ -570,13 +566,10 @@ struct AssembleBoundaryKernel {
       Real x_phys = 0.5 * (1.0 - xi) * xA + 0.5 * (1.0 + xi) * xB;
       Real y_phys = 0.5 * (1.0 - xi) * yA + 0.5 * (1.0 + xi) * yB;
 
-      // PHYSICS LOOKUP (Uses global offset because vx/Kxx are unified)
       int global_q_idx = (offset_internal_faces + f) * n_q + q;
       Real l_vx = vx_face(global_q_idx), l_vy = vy_face(global_q_idx);
       Real l_Kxx = Kxx_face(global_q_idx), l_Kyy = Kyy_face(global_q_idx);
 
-      // BOUNDARY LOOKUP (Uses strict boundary offset because arrays are
-      // perfectly sized!)
       int bnd_q_idx = f * n_q + q;
       Real l_g_D = g_D_face(bnd_q_idx);
       Real l_g_N = g_N_face(bnd_q_idx);
@@ -673,8 +666,6 @@ struct DGSolver {
       int n3 = mesh.h_triangles[3 * t + 2];
 
       double B00, B01, B10, B11, cx, cy;
-      // Now it cleanly calls the global get_affine_map from the top of the
-      // file!
       get_affine_map(mesh.h_nodes[2 * n1], mesh.h_nodes[2 * n1 + 1],
                      mesh.h_nodes[2 * n2], mesh.h_nodes[2 * n2 + 1],
                      mesh.h_nodes[2 * n3], mesh.h_nodes[2 * n3 + 1], B00, B01,
@@ -701,13 +692,12 @@ struct DGSolver {
     int num_bnd_faces = mesh.h_bnd_faces.size() / 3;
     int total_faces = num_int_faces + num_bnd_faces;
 
-    // Allocate the unified 1D arrays
     std::vector<double> x_face(total_faces * n_q_face);
     std::vector<double> y_face(total_faces * n_q_face);
 
     int offset = 0;
 
-    // 1. Map Internal Faces
+    // Map Internal Faces
     for (int f = 0; f < num_int_faces; ++f) {
       int nA = mesh.h_faces[4 * f + 2];
       int nB = mesh.h_faces[4 * f + 3];
@@ -729,7 +719,6 @@ struct DGSolver {
       }
     }
 
-    // 2. Map Boundary Faces (Appended straight to the end!)
     for (int f = 0; f < num_bnd_faces; ++f) {
       int nA = mesh.h_bnd_faces[3 * f + 1];
       int nB = mesh.h_bnd_faces[3 * f + 2];
@@ -753,7 +742,6 @@ struct DGSolver {
     return {x_face, y_face};
   }
 
-  // --- ADAPTIVITY STATE VIEWS ---
   Kokkos::View<int *, Kokkos::LayoutLeft,
                Kokkos::DefaultExecutionSpace::memory_space>
       d_orders;
@@ -773,14 +761,12 @@ struct DGSolver {
     h_offsets(0) = 0;
 
     for (int i = 0; i < n_elem; ++i) {
-      // Cleanly calls the global get_basis_count!
       h_offsets(i + 1) = h_offsets(i) + get_basis_count(h_orders_raw(i));
     }
     Kokkos::deep_copy(d_offsets, h_offsets);
     total_dofs = h_offsets(n_elem);
   }
 
-  // --- VELOCITY FIELDS ---
   Kokkos::View<double *, Kokkos::LayoutLeft,
                Kokkos::DefaultExecutionSpace::memory_space>
       d_vx_quad;
@@ -804,7 +790,6 @@ struct DGSolver {
     Kokkos::deep_copy(d_vy_quad, h_raw);
   }
 
-  // --- DIFFUSION TENSOR FIELDS ---
   Kokkos::View<double *, Kokkos::LayoutLeft,
                Kokkos::DefaultExecutionSpace::memory_space>
       d_Kxx_quad;
@@ -847,7 +832,6 @@ struct DGSolver {
     Kokkos::deep_copy(d_Kyy_quad, h_raw);
   }
 
-  // --- FACE ZERO-COPY VIEWS ---
   Kokkos::View<double *, Kokkos::LayoutLeft,
                Kokkos::DefaultExecutionSpace::memory_space>
       d_vx_face;
@@ -868,7 +852,6 @@ struct DGSolver {
                Kokkos::DefaultExecutionSpace::memory_space>
       d_Kyy_face;
 
-  // --- FACE SETTERS ---
   void set_vx_face(const double *data, int n) {
     Kokkos::View<const double *, Kokkos::HostSpace,
                  Kokkos::MemoryTraits<Kokkos::Unmanaged>>
@@ -912,8 +895,7 @@ struct DGSolver {
     Kokkos::resize(d_Kyy_face, n);
     Kokkos::deep_copy(d_Kyy_face, h_raw);
   }
-
-  // --- EXPLICIT BOUNDARY CONDITION FIELDS ---
+  
   Kokkos::View<double *, Kokkos::LayoutLeft,
                Kokkos::DefaultExecutionSpace::memory_space>
       d_g_D_face;
@@ -972,34 +954,24 @@ struct DGSolver {
 
   // --- KOKKOS KERNEL LAUNCHER ---
   void assemble(const AggMesh &mesh) {
-    // 1. Zero out the matrix values and RHS vector before accumulating
-    // (We use Kokkos::deep_copy to blast zeros across the GPU memory instantly)
     Kokkos::deep_copy(d_global_vals, 0.0);
     Kokkos::deep_copy(d_rhs, 0.0);
 
-    // 2. Instantiate the Functor with all your zero-copy views
     AssembleVolumeKernel vol_kernel(
         d_global_vals, d_global_cols, d_global_rows, d_rhs, mesh.d_t_offsets,
         mesh.d_triangles, mesh.d_nodes, mesh.d_bboxes, // Mesh data
-        d_orders, d_offsets,                           // DG data
+        d_orders, d_offsets,                           // dG data
         d_source_nodal,                                // Source field
         d_vx_quad, d_vy_quad,                          // Velocity fields
-        d_Kxx_quad, d_Kxy_quad, d_Kyx_quad, d_Kyy_quad // Tensor fields
+        d_Kxx_quad, d_Kxy_quad, d_Kyx_quad, d_Kyy_quad // Diffusion
     );
 
-    // 3. LAUNCH THE GPU KERNEL!
-    // We launch 1 thread per polygonal element (mesh.n_elems).
+    // 1 thread per polygonal element (mesh.n_elems).
     Kokkos::parallel_for("AssembleVolume", mesh.num_elements(), vol_kernel);
-
-    // 4. Synchronization barrier: Wait for the GPU to finish before returning
-    // to Python
     Kokkos::fence();
 
-    // Launch Internal Face Kernel!
     int num_int_faces = mesh.h_faces.size() / 4;
 
-    // We pass coeffs.alpha so Python can tune the penalty parameter
-    // dynamically!
     AssembleFaceKernel face_kernel(
         d_global_vals, d_global_cols, d_global_rows, mesh.d_faces, mesh.d_nodes,
         mesh.d_bboxes, d_orders, d_offsets, d_vx_face, d_vy_face, d_Kxx_face,
@@ -1008,7 +980,7 @@ struct DGSolver {
     Kokkos::parallel_for("AssembleInternalFaces", num_int_faces, face_kernel);
     Kokkos::fence();
 
-    // 3. Boundary Faces
+    // Boundary Faces
     int num_bnd_faces = mesh.h_bnd_faces.size() / 3;
     AssembleBoundaryKernel bnd_kernel(
         d_global_vals, d_global_cols, d_global_rows, d_rhs, mesh.d_bnd_faces,
@@ -1019,18 +991,15 @@ struct DGSolver {
     Kokkos::fence();
   }
 
-  // Inside struct DGSolver in include/morphdg/dg_solver.hpp
-
-  // --- SPARSE MATRIX ALLOCATOR ---
   void create_sparse_graph(const AggMesh &mesh) {
     if (total_dofs == 0) {
       throw std::runtime_error(
-          "You must call set_p_orders() before creating the sparse graph!");
+          "You must call set_p_orders() before!");
     }
 
     int n_elem = mesh.num_elements();
 
-    // 1. Build an element-to-neighbor adjacency list using the mesh faces
+    // Build an element-to-neighbor adjacency list using the mesh faces
     std::vector<std::vector<int>> elem_neighbors(n_elem);
     int num_faces = mesh.h_faces.size() / 4;
     for (int f = 0; f < num_faces; ++f) {
@@ -1041,19 +1010,17 @@ struct DGSolver {
       elem_neighbors[eMinus].push_back(ePlus);
     }
 
-    // 2. Fetch the DOF offsets from the GPU back to the CPU temporarily
+    // Fetch the DOF offsets from the DEVICE back to the CPU
     auto h_offsets =
         Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), d_offsets);
 
-    // --- ADD THESE 4 LINES TO REMOVE DUPLICATES ---
     for (int e = 0; e < n_elem; ++e) {
       std::sort(elem_neighbors[e].begin(), elem_neighbors[e].end());
       elem_neighbors[e].erase(
           std::unique(elem_neighbors[e].begin(), elem_neighbors[e].end()),
           elem_neighbors[e].end());
     }
-    // 3. Build the Sparsity Pattern (List of non-zero columns for each global
-    // row)
+    // Build the Sparsity Pattern (List of non-zero columns for each global row)
     std::vector<std::vector<int>> row_cols(total_dofs);
 
     for (int e = 0; e < n_elem; ++e) {
@@ -1085,7 +1052,7 @@ struct DGSolver {
       }
     }
 
-    // 4. Flatten the graph into the CSR 1D arrays
+    // Flatten the graph into the CSR 1D arrays
     std::vector<int> h_rows(total_dofs + 1, 0);
     std::vector<int> h_cols;
     int nnz = 0; // Number of Non-Zeros
@@ -1099,13 +1066,13 @@ struct DGSolver {
     }
     h_rows[total_dofs] = nnz;
 
-    // 5. Allocate the Kokkos GPU Views!
+    // Allocate the Kokkos DEVICE Views!
     d_global_rows = ViewCSRRows("d_global_rows", total_dofs + 1);
     d_global_cols = ViewCSRCols("d_global_cols", nnz);
-    d_global_vals = ViewCSRVals("d_global_vals", nnz); // Matrix values
-    d_rhs = ViewReal1D("d_rhs", total_dofs);           // RHS vector
+    d_global_vals = ViewCSRVals("d_global_vals", nnz); 
+    d_rhs = ViewReal1D("d_rhs", total_dofs);           
 
-    // 6. Deep copy the graph structure to the GPU
+    // Deep copy the graph structure to the GPU
     auto mirror_rows = Kokkos::create_mirror_view(d_global_rows);
     auto mirror_cols = Kokkos::create_mirror_view(d_global_cols);
 
@@ -1117,11 +1084,8 @@ struct DGSolver {
     Kokkos::deep_copy(d_global_rows, mirror_rows);
     Kokkos::deep_copy(d_global_cols, mirror_cols);
 
-    // (Note: d_global_vals and d_rhs are filled with 0.0 automatically inside
-    // assemble_volume!)
   }
 
-  // Inside struct DGSolver
 
   void print_matrix(int print_limit = 20) {
     if (total_dofs == 0 || d_global_rows.extent(0) == 0) {
@@ -1129,7 +1093,7 @@ struct DGSolver {
       return;
     }
 
-    // 1. Safely pull the CSR arrays from the GPU back to the CPU
+    // Safely pull the CSR arrays from the GPU back to the CPU
     auto h_rows =
         Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), d_global_rows);
     auto h_cols =
@@ -1139,7 +1103,7 @@ struct DGSolver {
     auto h_offs =
         Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), d_offsets);
 
-    // 2. Call your print function using the Host Views
+    // Call your print function using the Host Views
     print_csr_matrix_blocks(h_rows, h_cols, h_vals, h_offs, print_limit);
   }
 
@@ -1158,7 +1122,7 @@ struct DGSolver {
     ViewReal1D d_Ap("Ap", total_dofs);
 
     Kokkos::deep_copy(d_x, 0.0);
-    Kokkos::deep_copy(d_r, d_rhs); // Uses your d_rhs class variable!
+    Kokkos::deep_copy(d_r, d_rhs);
     Kokkos::deep_copy(d_p, d_r);
 
     Real r_dot_r = KokkosBlas::dot(d_r, d_r);

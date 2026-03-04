@@ -431,159 +431,6 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: \
  /usr/lib/gcc/x86_64-redhat-linux/15/include/mwaitintrin.h \
  /usr/include/c++/15/bits/random.tcc \
  /home/kesmarag/Code/morphdG/bindings/../include/morphdg/dgsolver.hpp \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/numpy.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/pybind11.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/class.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/attr.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/common.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/conduit/wrap_include_python_h.h \
- /usr/include/python3.12/Python.h /usr/include/python3.12/patchlevel.h \
- /usr/include/python3.12/pyconfig.h /usr/include/python3.12/pyconfig-64.h \
- /usr/include/python3.12/pymacconfig.h /usr/include/python3.12/pyport.h \
- /usr/include/c++/15/math.h /usr/include/sys/time.h \
- /usr/include/sys/stat.h /usr/include/bits/stat.h \
- /usr/include/bits/struct_stat.h /usr/include/bits/statx.h \
- /usr/include/linux/stat.h /usr/include/bits/statx-generic.h \
- /usr/include/bits/types/struct_statx_timestamp.h \
- /usr/include/bits/types/struct_statx.h /usr/include/python3.12/exports.h \
- /usr/include/python3.12/pymacro.h /usr/include/python3.12/pymath.h \
- /usr/include/python3.12/pymem.h /usr/include/python3.12/cpython/pymem.h \
- /usr/include/python3.12/pytypedefs.h /usr/include/python3.12/pybuffer.h \
- /usr/include/python3.12/object.h /usr/include/python3.12/pystats.h \
- /usr/include/python3.12/cpython/object.h \
- /usr/include/python3.12/objimpl.h \
- /usr/include/python3.12/cpython/objimpl.h \
- /usr/include/python3.12/typeslots.h /usr/include/python3.12/pyhash.h \
- /usr/include/python3.12/cpython/pydebug.h \
- /usr/include/python3.12/bytearrayobject.h \
- /usr/include/python3.12/cpython/bytearrayobject.h \
- /usr/include/python3.12/bytesobject.h \
- /usr/include/python3.12/cpython/bytesobject.h \
- /usr/include/python3.12/unicodeobject.h \
- /usr/include/python3.12/cpython/unicodeobject.h \
- /usr/include/python3.12/cpython/initconfig.h \
- /usr/include/python3.12/pystate.h \
- /usr/include/python3.12/cpython/pystate.h \
- /usr/include/python3.12/pyerrors.h \
- /usr/include/python3.12/cpython/pyerrors.h \
- /usr/include/python3.12/longobject.h \
- /usr/include/python3.12/cpython/longobject.h \
- /usr/include/python3.12/cpython/longintrepr.h \
- /usr/include/python3.12/boolobject.h \
- /usr/include/python3.12/floatobject.h \
- /usr/include/python3.12/cpython/floatobject.h \
- /usr/include/python3.12/complexobject.h \
- /usr/include/python3.12/cpython/complexobject.h \
- /usr/include/python3.12/rangeobject.h \
- /usr/include/python3.12/memoryobject.h \
- /usr/include/python3.12/cpython/memoryobject.h \
- /usr/include/python3.12/tupleobject.h \
- /usr/include/python3.12/cpython/tupleobject.h \
- /usr/include/python3.12/listobject.h \
- /usr/include/python3.12/cpython/listobject.h \
- /usr/include/python3.12/dictobject.h \
- /usr/include/python3.12/cpython/dictobject.h \
- /usr/include/python3.12/cpython/odictobject.h \
- /usr/include/python3.12/enumobject.h /usr/include/python3.12/setobject.h \
- /usr/include/python3.12/cpython/setobject.h \
- /usr/include/python3.12/methodobject.h \
- /usr/include/python3.12/cpython/methodobject.h \
- /usr/include/python3.12/moduleobject.h \
- /usr/include/python3.12/cpython/funcobject.h \
- /usr/include/python3.12/cpython/classobject.h \
- /usr/include/python3.12/fileobject.h \
- /usr/include/python3.12/cpython/fileobject.h \
- /usr/include/python3.12/pycapsule.h \
- /usr/include/python3.12/cpython/code.h /usr/include/python3.12/pyframe.h \
- /usr/include/python3.12/cpython/pyframe.h \
- /usr/include/python3.12/traceback.h \
- /usr/include/python3.12/cpython/traceback.h \
- /usr/include/python3.12/sliceobject.h \
- /usr/include/python3.12/cpython/cellobject.h \
- /usr/include/python3.12/iterobject.h \
- /usr/include/python3.12/cpython/genobject.h \
- /usr/include/python3.12/descrobject.h \
- /usr/include/python3.12/cpython/descrobject.h \
- /usr/include/python3.12/genericaliasobject.h \
- /usr/include/python3.12/warnings.h \
- /usr/include/python3.12/cpython/warnings.h \
- /usr/include/python3.12/weakrefobject.h \
- /usr/include/python3.12/cpython/weakrefobject.h \
- /usr/include/python3.12/structseq.h \
- /usr/include/python3.12/cpython/picklebufobject.h \
- /usr/include/python3.12/cpython/pytime.h \
- /usr/include/python3.12/codecs.h /usr/include/python3.12/pythread.h \
- /usr/include/python3.12/cpython/pythread.h \
- /usr/include/python3.12/cpython/context.h \
- /usr/include/python3.12/modsupport.h \
- /usr/include/python3.12/cpython/modsupport.h \
- /usr/include/python3.12/compile.h \
- /usr/include/python3.12/cpython/compile.h \
- /usr/include/python3.12/pythonrun.h \
- /usr/include/python3.12/cpython/pythonrun.h \
- /usr/include/python3.12/pylifecycle.h \
- /usr/include/python3.12/cpython/pylifecycle.h \
- /usr/include/python3.12/ceval.h /usr/include/python3.12/cpython/ceval.h \
- /usr/include/python3.12/sysmodule.h \
- /usr/include/python3.12/cpython/sysmodule.h \
- /usr/include/python3.12/osmodule.h /usr/include/python3.12/intrcheck.h \
- /usr/include/python3.12/import.h \
- /usr/include/python3.12/cpython/import.h \
- /usr/include/python3.12/abstract.h \
- /usr/include/python3.12/cpython/abstract.h \
- /usr/include/python3.12/bltinmodule.h \
- /usr/include/python3.12/cpython/pyctype.h \
- /usr/include/python3.12/pystrtod.h /usr/include/python3.12/pystrcmp.h \
- /usr/include/python3.12/fileutils.h \
- /usr/include/python3.12/cpython/fileutils.h \
- /usr/include/python3.12/cpython/pyfpe.h \
- /usr/include/python3.12/tracemalloc.h \
- /usr/include/python3.12/frameobject.h \
- /usr/include/python3.12/cpython/frameobject.h \
- /usr/include/python3.12/pythread.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/pybind11_namespace_macros.h \
- /usr/include/c++/15/forward_list /usr/include/c++/15/bits/forward_list.h \
- /usr/include/c++/15/bits/forward_list.tcc /usr/include/c++/15/typeindex \
- /usr/include/c++/15/unordered_set \
- /usr/include/c++/15/bits/unordered_set.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/cast.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/argument_vector.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/pytypes.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/buffer_info.h \
- /usr/include/c++/15/iterator /usr/include/c++/15/bits/stream_iterator.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/descr.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/holder_caster_foreign_helpers.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/gil.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/internals.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/conduit/pybind11_platform_abi_id.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/gil_simple.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/trampoline_self_life_support.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/using_smart_holder.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/struct_smart_holder.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/value_and_holder.h \
- /usr/include/c++/15/atomic /usr/include/c++/15/thread \
- /usr/include/c++/15/stop_token /usr/include/c++/15/bits/std_thread.h \
- /usr/include/c++/15/semaphore /usr/include/c++/15/bits/semaphore_base.h \
- /usr/include/c++/15/bits/atomic_timed_wait.h \
- /usr/include/c++/15/bits/this_thread_sleep.h /usr/include/semaphore.h \
- /usr/include/bits/semaphore.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/native_enum_data.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/type_caster_base.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/cpp_conduit.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/dynamic_raw_ptr_cast_if_possible.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/typeid.h \
- /usr/include/c++/15/cxxabi.h \
- /usr/include/c++/15/x86_64-redhat-linux/bits/cxxabi_tweaks.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/options.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/exception_translation.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/function_record_pyobject.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/init.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/gil_safe_call_once.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/typing.h \
- /usr/include/c++/15/ranges /usr/include/c++/15/stack \
- /usr/include/c++/15/deque /usr/include/c++/15/bits/stl_deque.h \
- /usr/include/c++/15/bits/deque.tcc /usr/include/c++/15/bits/stl_stack.h \
- /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/complex.h \
  /opt/kokkos-kernels/include/KokkosBlas1_axpby.hpp \
  /opt/kokkos-kernels/include/KokkosBlas1_axpby_spec.hpp \
  /opt/kokkos-kernels/include/KokkosKernels_config.h \
@@ -942,6 +789,159 @@ CMakeFiles/morphdg_core.dir/bindings/pybind_wrapper.cpp.o: \
  /opt/kokkos/include/impl/Kokkos_UnorderedMap_impl.hpp \
  /opt/kokkos-kernels/include/KokkosKernels_PrintUtils.hpp \
  /opt/kokkos-kernels/include/KokkosKernels_VectorUtils.hpp \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/numpy.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/pybind11.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/class.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/attr.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/common.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/conduit/wrap_include_python_h.h \
+ /usr/include/python3.12/Python.h /usr/include/python3.12/patchlevel.h \
+ /usr/include/python3.12/pyconfig.h /usr/include/python3.12/pyconfig-64.h \
+ /usr/include/python3.12/pymacconfig.h /usr/include/python3.12/pyport.h \
+ /usr/include/c++/15/math.h /usr/include/sys/time.h \
+ /usr/include/sys/stat.h /usr/include/bits/stat.h \
+ /usr/include/bits/struct_stat.h /usr/include/bits/statx.h \
+ /usr/include/linux/stat.h /usr/include/bits/statx-generic.h \
+ /usr/include/bits/types/struct_statx_timestamp.h \
+ /usr/include/bits/types/struct_statx.h /usr/include/python3.12/exports.h \
+ /usr/include/python3.12/pymacro.h /usr/include/python3.12/pymath.h \
+ /usr/include/python3.12/pymem.h /usr/include/python3.12/cpython/pymem.h \
+ /usr/include/python3.12/pytypedefs.h /usr/include/python3.12/pybuffer.h \
+ /usr/include/python3.12/object.h /usr/include/python3.12/pystats.h \
+ /usr/include/python3.12/cpython/object.h \
+ /usr/include/python3.12/objimpl.h \
+ /usr/include/python3.12/cpython/objimpl.h \
+ /usr/include/python3.12/typeslots.h /usr/include/python3.12/pyhash.h \
+ /usr/include/python3.12/cpython/pydebug.h \
+ /usr/include/python3.12/bytearrayobject.h \
+ /usr/include/python3.12/cpython/bytearrayobject.h \
+ /usr/include/python3.12/bytesobject.h \
+ /usr/include/python3.12/cpython/bytesobject.h \
+ /usr/include/python3.12/unicodeobject.h \
+ /usr/include/python3.12/cpython/unicodeobject.h \
+ /usr/include/python3.12/cpython/initconfig.h \
+ /usr/include/python3.12/pystate.h \
+ /usr/include/python3.12/cpython/pystate.h \
+ /usr/include/python3.12/pyerrors.h \
+ /usr/include/python3.12/cpython/pyerrors.h \
+ /usr/include/python3.12/longobject.h \
+ /usr/include/python3.12/cpython/longobject.h \
+ /usr/include/python3.12/cpython/longintrepr.h \
+ /usr/include/python3.12/boolobject.h \
+ /usr/include/python3.12/floatobject.h \
+ /usr/include/python3.12/cpython/floatobject.h \
+ /usr/include/python3.12/complexobject.h \
+ /usr/include/python3.12/cpython/complexobject.h \
+ /usr/include/python3.12/rangeobject.h \
+ /usr/include/python3.12/memoryobject.h \
+ /usr/include/python3.12/cpython/memoryobject.h \
+ /usr/include/python3.12/tupleobject.h \
+ /usr/include/python3.12/cpython/tupleobject.h \
+ /usr/include/python3.12/listobject.h \
+ /usr/include/python3.12/cpython/listobject.h \
+ /usr/include/python3.12/dictobject.h \
+ /usr/include/python3.12/cpython/dictobject.h \
+ /usr/include/python3.12/cpython/odictobject.h \
+ /usr/include/python3.12/enumobject.h /usr/include/python3.12/setobject.h \
+ /usr/include/python3.12/cpython/setobject.h \
+ /usr/include/python3.12/methodobject.h \
+ /usr/include/python3.12/cpython/methodobject.h \
+ /usr/include/python3.12/moduleobject.h \
+ /usr/include/python3.12/cpython/funcobject.h \
+ /usr/include/python3.12/cpython/classobject.h \
+ /usr/include/python3.12/fileobject.h \
+ /usr/include/python3.12/cpython/fileobject.h \
+ /usr/include/python3.12/pycapsule.h \
+ /usr/include/python3.12/cpython/code.h /usr/include/python3.12/pyframe.h \
+ /usr/include/python3.12/cpython/pyframe.h \
+ /usr/include/python3.12/traceback.h \
+ /usr/include/python3.12/cpython/traceback.h \
+ /usr/include/python3.12/sliceobject.h \
+ /usr/include/python3.12/cpython/cellobject.h \
+ /usr/include/python3.12/iterobject.h \
+ /usr/include/python3.12/cpython/genobject.h \
+ /usr/include/python3.12/descrobject.h \
+ /usr/include/python3.12/cpython/descrobject.h \
+ /usr/include/python3.12/genericaliasobject.h \
+ /usr/include/python3.12/warnings.h \
+ /usr/include/python3.12/cpython/warnings.h \
+ /usr/include/python3.12/weakrefobject.h \
+ /usr/include/python3.12/cpython/weakrefobject.h \
+ /usr/include/python3.12/structseq.h \
+ /usr/include/python3.12/cpython/picklebufobject.h \
+ /usr/include/python3.12/cpython/pytime.h \
+ /usr/include/python3.12/codecs.h /usr/include/python3.12/pythread.h \
+ /usr/include/python3.12/cpython/pythread.h \
+ /usr/include/python3.12/cpython/context.h \
+ /usr/include/python3.12/modsupport.h \
+ /usr/include/python3.12/cpython/modsupport.h \
+ /usr/include/python3.12/compile.h \
+ /usr/include/python3.12/cpython/compile.h \
+ /usr/include/python3.12/pythonrun.h \
+ /usr/include/python3.12/cpython/pythonrun.h \
+ /usr/include/python3.12/pylifecycle.h \
+ /usr/include/python3.12/cpython/pylifecycle.h \
+ /usr/include/python3.12/ceval.h /usr/include/python3.12/cpython/ceval.h \
+ /usr/include/python3.12/sysmodule.h \
+ /usr/include/python3.12/cpython/sysmodule.h \
+ /usr/include/python3.12/osmodule.h /usr/include/python3.12/intrcheck.h \
+ /usr/include/python3.12/import.h \
+ /usr/include/python3.12/cpython/import.h \
+ /usr/include/python3.12/abstract.h \
+ /usr/include/python3.12/cpython/abstract.h \
+ /usr/include/python3.12/bltinmodule.h \
+ /usr/include/python3.12/cpython/pyctype.h \
+ /usr/include/python3.12/pystrtod.h /usr/include/python3.12/pystrcmp.h \
+ /usr/include/python3.12/fileutils.h \
+ /usr/include/python3.12/cpython/fileutils.h \
+ /usr/include/python3.12/cpython/pyfpe.h \
+ /usr/include/python3.12/tracemalloc.h \
+ /usr/include/python3.12/frameobject.h \
+ /usr/include/python3.12/cpython/frameobject.h \
+ /usr/include/python3.12/pythread.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/pybind11_namespace_macros.h \
+ /usr/include/c++/15/forward_list /usr/include/c++/15/bits/forward_list.h \
+ /usr/include/c++/15/bits/forward_list.tcc /usr/include/c++/15/typeindex \
+ /usr/include/c++/15/unordered_set \
+ /usr/include/c++/15/bits/unordered_set.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/cast.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/argument_vector.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/pytypes.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/buffer_info.h \
+ /usr/include/c++/15/iterator /usr/include/c++/15/bits/stream_iterator.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/descr.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/holder_caster_foreign_helpers.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/gil.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/internals.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/conduit/pybind11_platform_abi_id.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/gil_simple.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/trampoline_self_life_support.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/using_smart_holder.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/struct_smart_holder.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/value_and_holder.h \
+ /usr/include/c++/15/atomic /usr/include/c++/15/thread \
+ /usr/include/c++/15/stop_token /usr/include/c++/15/bits/std_thread.h \
+ /usr/include/c++/15/semaphore /usr/include/c++/15/bits/semaphore_base.h \
+ /usr/include/c++/15/bits/atomic_timed_wait.h \
+ /usr/include/c++/15/bits/this_thread_sleep.h /usr/include/semaphore.h \
+ /usr/include/bits/semaphore.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/native_enum_data.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/type_caster_base.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/cpp_conduit.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/dynamic_raw_ptr_cast_if_possible.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/typeid.h \
+ /usr/include/c++/15/cxxabi.h \
+ /usr/include/c++/15/x86_64-redhat-linux/bits/cxxabi_tweaks.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/options.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/exception_translation.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/function_record_pyobject.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/detail/init.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/gil_safe_call_once.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/typing.h \
+ /usr/include/c++/15/ranges /usr/include/c++/15/stack \
+ /usr/include/c++/15/deque /usr/include/c++/15/bits/stl_deque.h \
+ /usr/include/c++/15/bits/deque.tcc /usr/include/c++/15/bits/stl_stack.h \
+ /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/complex.h \
  /home/kesmarag/.venv-dG/lib/python3.12/site-packages/pybind11/include/pybind11/stl.h \
  /usr/include/c++/15/list /usr/include/c++/15/bits/stl_list.h \
  /usr/include/c++/15/bits/list.tcc /usr/include/c++/15/valarray \

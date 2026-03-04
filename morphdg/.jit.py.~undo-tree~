@@ -1,0 +1,10 @@
+(undo-tree-save-format-version . 1)
+"7b0c674db59ff840566100c23e7de4de8e8b42c3"
+[nil nil nil nil (27048 25627 399725 504000) 0 nil]
+([nil nil ((1139 . 1147) (#("        " 0 8 (fontified nil)) . 1138) (undo-tree-id3 . -8) (undo-tree-id4 . -8) (undo-tree-id5 . -8) (1138 . 1147) (#("        " 0 8 (fontified nil)) . 1137) (undo-tree-id6 . -8) (undo-tree-id7 . -8) (undo-tree-id8 . -8) (1137 . 1146) (#("        " 0 8 (fontified nil)) . 1136) (undo-tree-id9 . -8) (undo-tree-id10 . -8) (undo-tree-id11 . -8) (undo-tree-id12 . -8) (1135 . 1145) (t 27048 25003 256438 42000)) nil (27048 25627 399722 640000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 1187 . 1188) (nil fontified nil 1137 . 1188) (1137 . 1188)) nil (27048 25627 399714 888000) 0 nil])
+([nil nil ((#("# solver.plot_solution(solution, \"dg_solution.png\")" 0 2 (face font-lock-comment-delimiter-face fontified t) 2 50 (face font-lock-comment-face fontified t) 50 51 (face font-lock-comment-face rear-nonsticky t fontified t)) . 1137) (undo-tree-id0 . -51) (undo-tree-id1 . -51) (undo-tree-id2 . -51)) nil (27048 25627 399711 605000) 0 nil])
+([nil nil ((1137 . 1145)) nil (27048 25627 399690 653000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 1458 . 1459) (nil fontified nil 1145 . 1459) (1145 . 1459)) nil (27048 25627 399684 367000) 0 nil])
+([nil current ((apply -6 1470 1649 undo--wrap-and-run-primitive-undo 1470 1649 ((1604 . 1606) (1549 . 1551) (1478 . 1480) 1470 (t 27048 25627 399667 465000)))) nil (27048 25636 65785 474000) 0 nil])
+nil
