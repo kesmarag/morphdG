@@ -36,12 +36,12 @@ X_vol, Y_vol = solver.vol_quad_points(mesh)
 X_vol, Y_vol = np.array(X_vol), np.array(Y_vol)
 
 # Set diagonal advection velocity (vx=1.0, vy=1.0)
-solver.set_vx_field(5.0*np.ones_like(X_vol))
+solver.set_vx_field(5.0*np.ones_like(X_vol)*X_vol)
 solver.set_vy_field(5.0*np.ones_like(X_vol))
 
 # Set isotropic diffusion (Kxx=1.0, Kyy=1.0)
 solver.set_Kxx_field(np.ones_like(X_vol))
-solver.set_Kyy_field(np.ones_like(X_vol))
+solver.set_Kyy_field(np.ones_like(X_vol)*Y_vol)
 solver.set_Kxy_field(np.zeros_like(X_vol))
 solver.set_Kyx_field(np.zeros_like(X_vol))
 
@@ -57,10 +57,10 @@ X_face, Y_face = solver.face_quad_points(mesh)
 X_face, Y_face = np.array(X_face), np.array(Y_face)
 
 # Edges share the exact same physical properties as the volume
-solver.set_vx_face(5.0*np.ones_like(X_face))
+solver.set_vx_face(5.0*np.ones_like(X_face)*X_face)
 solver.set_vy_face(5.0*np.ones_like(X_face))
 solver.set_Kxx_face(np.ones_like(X_face))
-solver.set_Kyy_face(np.ones_like(X_face))
+solver.set_Kyy_face(np.ones_like(X_face)*Y_face)
 solver.set_Kxy_face(np.zeros_like(X_face))
 solver.set_Kyx_face(np.zeros_like(X_face))
 

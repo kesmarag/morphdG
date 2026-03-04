@@ -74,14 +74,14 @@ PYBIND11_MODULE(morphdg_core, m) {
       .def("push_to_device", &AggMesh::push_to_device);
 
   py::class_<Coeffs>(m, "Coeffs")
-  .def(py::init<>())
-  // .def_readwrite("Kxx", &Coeffs::Kxx)
-  // .def_readwrite("Kxy", &Coeffs::Kxy)
-  // .def_readwrite("Kyx", &Coeffs::Kyx)
-  // .def_readwrite("Kyy", &Coeffs::Kyy)
-  // .def_readwrite("vx", &Coeffs::vx)
-  // .def_readwrite("vy", &Coeffs::vy)
-  .def_readwrite("alpha", &Coeffs::alpha);
+      .def(py::init<>())
+      // .def_readwrite("Kxx", &Coeffs::Kxx)
+      // .def_readwrite("Kxy", &Coeffs::Kxy)
+      // .def_readwrite("Kyx", &Coeffs::Kyx)
+      // .def_readwrite("Kyy", &Coeffs::Kyy)
+      // .def_readwrite("vx", &Coeffs::vx)
+      // .def_readwrite("vy", &Coeffs::vy)
+      .def_readwrite("alpha", &Coeffs::alpha);
 
   py::class_<DGSolver>(m, "DGSolver")
       .def(py::init<>())
@@ -199,5 +199,10 @@ PYBIND11_MODULE(morphdg_core, m) {
              py::buffer_info b = a.request();
              s.set_bctype_face(static_cast<const double *>(b.ptr), b.shape[0]);
            })
-      .def("get_global_system", &DGSolver::get_global_system);
+      .def("get_global_system", &DGSolver::get_global_system)
+      .def("solve_cg", &DGSolver::solve_cg, py::arg("max_iters") = 10000,
+           py::arg("tolerance") = 1e-8)
+      .def("solve_bicgstab", &DGSolver::solve_bicgstab,
+           py::arg("max_iters") = 10000, py::arg("tolerance") = 1e-8);
+  ;
 }

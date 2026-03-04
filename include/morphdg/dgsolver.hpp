@@ -4,19 +4,13 @@
 #include <pybind11/numpy.h>
 #include <pybind11/pybind11.h>
 #include <vector>
+#include <KokkosBlas1_axpby.hpp>
+#include <KokkosBlas1_dot.hpp>
+#include <KokkosBlas1_nrm2.hpp>
+#include <KokkosSparse_CrsMatrix.hpp>
+#include <KokkosSparse_spmv.hpp>
 
 struct Coeffs {
-  // Diffusion Tensor
-  // double Kxx = 0.0;
-  // double Kxy = 0.0;
-  // double Kyx = 0.0;
-  // double Kyy = 0.0;
-
-  // Advection Velocity
-  // double vx = 0.0;
-  // double vy = 0.0;
-
-  // DG Penalty Parameter
   double alpha = 0.0;
 };
 
@@ -1146,4 +1140,147 @@ struct DGSolver {
     // 2. Call your print function using the Host Views
     print_csr_matrix_blocks(h_rows, h_cols, h_vals, h_offs, print_limit);
   }
+
+
+// --- KOKKOS GPU CONJUGATE GRADIENT SOLVER (SYMMETRIC ONLY) ---
+  pybind11::array_t<Real> solve_cg(int max_iters = 10000, Real tolerance = 1e-8) {
+    using CrsMatrixType = KokkosSparse::CrsMatrix<Real, int, ExecutionSpace, void, int>;
+    int nnz = d_global_vals.extent(0);
+    CrsMatrixType A("LHS_Matrix", total_dofs, total_dofs, nnz, d_global_vals,
+                    d_global_rows, d_global_cols);
+
+    ViewReal1D d_x("x", total_dofs);
+    ViewReal1D d_r("r", total_dofs);
+    ViewReal1D d_p("p", total_dofs);
+    ViewReal1D d_Ap("Ap", total_dofs);
+
+    Kokkos::deep_copy(d_x, 0.0);
+    Kokkos::deep_copy(d_r, d_rhs); // Uses your d_rhs class variable!
+    Kokkos::deep_copy(d_p, d_r);
+
+    Real r_dot_r = KokkosBlas::dot(d_r, d_r);
+    Real initial_norm = Kokkos::sqrt(r_dot_r);
+
+    if (initial_norm > 1e-14) {
+      int iter = 0;
+      for (; iter < max_iters; ++iter) {
+        KokkosSparse::spmv("N", 1.0, A, d_p, 0.0, d_Ap);
+        Real p_dot_Ap = KokkosBlas::dot(d_p, d_Ap);
+        Real alpha = r_dot_r / p_dot_Ap;
+
+        KokkosBlas::axpy(alpha, d_p, d_x);
+        KokkosBlas::axpy(-alpha, d_Ap, d_r);
+
+        Real r_new_dot_r_new = KokkosBlas::dot(d_r, d_r);
+        Real current_norm = Kokkos::sqrt(r_new_dot_r_new);
+
+        if (current_norm / initial_norm < tolerance) {
+          std::cout << "   -> CG Converged in " << iter + 1
+                    << " iterations! Norm: " << current_norm << std::endl;
+          break;
+        }
+
+        Real beta = r_new_dot_r_new / r_dot_r;
+        KokkosBlas::axpby(1.0, d_r, beta, d_p);
+        r_dot_r = r_new_dot_r_new;
+      }
+      if (iter == max_iters) {
+        std::cout << "   -> Warning: CG did not converge within " << max_iters 
+                  << " iterations." << std::endl;
+      }
+    }
+
+    pybind11::array_t<Real> py_x(total_dofs);
+    Kokkos::View<Real*, Kokkos::HostSpace, Kokkos::MemoryTraits<Kokkos::Unmanaged>> 
+        h_py_x(py_x.mutable_data(), py_x.shape(0));
+    Kokkos::deep_copy(h_py_x, d_x);
+
+    return py_x;
+  }
+
+  // --- KOKKOS GPU BiCGStab SOLVER (NON-SYMMETRIC MATRICES) ---
+  pybind11::array_t<Real> solve_bicgstab(int max_iters = 10000, Real tolerance = 1e-8) {
+    using CrsMatrixType = KokkosSparse::CrsMatrix<Real, int, ExecutionSpace, void, int>;
+    int nnz = d_global_vals.extent(0);
+    CrsMatrixType A("LHS_Matrix", total_dofs, total_dofs, nnz, d_global_vals,
+                    d_global_rows, d_global_cols);
+
+    ViewReal1D d_x("x", total_dofs);
+    ViewReal1D d_r("r", total_dofs);
+    ViewReal1D d_r0_star("r0_star", total_dofs);
+    ViewReal1D d_p("p", total_dofs);
+    ViewReal1D d_v("v", total_dofs); 
+    ViewReal1D d_s("s", total_dofs);
+    ViewReal1D d_t("t", total_dofs); 
+
+    Kokkos::deep_copy(d_x, 0.0);
+    Kokkos::deep_copy(d_r, d_rhs);
+    Kokkos::deep_copy(d_r0_star, d_r);
+    Kokkos::deep_copy(d_p, d_r);
+
+    Real initial_norm = Kokkos::sqrt(KokkosBlas::dot(d_r, d_r));
+    Real rho_prev = 1.0, alpha = 1.0, omega = 1.0;
+
+    if (initial_norm > 1e-14) {
+      int iter = 0;
+      for (; iter < max_iters; ++iter) {
+        Real rho = KokkosBlas::dot(d_r0_star, d_r);
+        if (std::abs(rho) < 1e-14) break; 
+
+        if (iter > 0) {
+          Real beta = (rho / rho_prev) * (alpha / omega);
+          KokkosBlas::axpy(-omega, d_v, d_p);
+          KokkosBlas::axpby(1.0, d_r, beta, d_p);
+        }
+
+        KokkosSparse::spmv("N", 1.0, A, d_p, 0.0, d_v);
+        Real r0_dot_v = KokkosBlas::dot(d_r0_star, d_v);
+        if (std::abs(r0_dot_v) < 1e-14) break; 
+
+        alpha = rho / r0_dot_v;
+
+        Kokkos::deep_copy(d_s, d_r);
+        KokkosBlas::axpy(-alpha, d_v, d_s);
+
+        Real norm_s = Kokkos::sqrt(KokkosBlas::dot(d_s, d_s));
+        if (norm_s / initial_norm < tolerance) {
+          KokkosBlas::axpy(alpha, d_p, d_x);
+          std::cout << "   -> BiCGStab Converged in " << iter + 1 << " iterations! Norm: " << norm_s << std::endl;
+          break;
+        }
+
+        KokkosSparse::spmv("N", 1.0, A, d_s, 0.0, d_t);
+        Real t_dot_s = KokkosBlas::dot(d_t, d_s);
+        Real t_dot_t = KokkosBlas::dot(d_t, d_t);
+        omega = t_dot_s / t_dot_t;
+
+        KokkosBlas::axpy(alpha, d_p, d_x);
+        KokkosBlas::axpy(omega, d_s, d_x);
+
+        Kokkos::deep_copy(d_r, d_s);
+        KokkosBlas::axpy(-omega, d_t, d_r);
+
+        Real current_norm = Kokkos::sqrt(KokkosBlas::dot(d_r, d_r));
+        if (current_norm / initial_norm < tolerance) {
+          std::cout << "   -> BiCGStab Converged in " << iter + 1 << " iterations! Norm: " << current_norm << std::endl;
+          break;
+        }
+
+        rho_prev = rho;
+      }
+      if (iter == max_iters) {
+        std::cout << "   -> Warning: BiCGStab did not converge within " << max_iters << " iterations." << std::endl;
+      }
+    }
+
+    pybind11::array_t<Real> py_x(total_dofs);
+    Kokkos::View<Real*, Kokkos::HostSpace, Kokkos::MemoryTraits<Kokkos::Unmanaged>> 
+        h_py_x(py_x.mutable_data(), py_x.shape(0));
+    Kokkos::deep_copy(h_py_x, d_x);
+
+    return py_x;
+  }
+
+
+  
 };
