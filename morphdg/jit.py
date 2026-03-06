@@ -4,10 +4,6 @@ import ctypes
 import hashlib
 
 class JITEvaluator:
-    """
-    Just-In-Time compiler for Kokkos device kernels.
-    Takes a C++ math string, compiles it into a shared library, and maps it to device memory.
-    """
     def __init__(self, math_expr, func_name="eval"):
         self.math_expr = math_expr
         self.func_name = func_name
@@ -36,12 +32,6 @@ class JITEvaluator:
         cpp_filename = os.path.join(cache_dir, f"jit_{expr_hash}.cpp")
         so_filename  = os.path.join(cache_dir, f"jit_{expr_hash}.so")
 
-        
-        # expr_hash = hashlib.md5(self.math_expr.encode()).hexdigest()
-        # cpp_filename = f".jit_cache_{expr_hash}.cpp"
-        # so_filename = f".jit_cache_{expr_hash}.so"
-        
-        # Skip compilation if we already compiled this exact string previously
         if os.path.exists(so_filename):
             return so_filename
 
@@ -64,7 +54,6 @@ class JITEvaluator:
                     double x = x_view(i);
                     double y = y_view(i);
                     
-                    // User's injected math expression
                     out_view(i) = {self.math_expr}; 
                 }});
                 Kokkos::fence();
@@ -75,10 +64,9 @@ class JITEvaluator:
         with open(cpp_filename, "w") as f:
             f.write(cpp_code)
             
-        # --- IMPORTANT: Update these paths to match your Kokkos installation! ---
         compile_cmd = [
             "g++", "-O3", "-shared", "-fPIC", 
-            "-std=c++20", "-fopenmp",          # <-- ADD THESE TWO FLAGS
+            "-std=c++20", "-fopenmp",         
             "-I/opt/kokkos/include",           
             cpp_filename, "-o", so_filename, 
             "-L/opt/kokkos/lib64", 

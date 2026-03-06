@@ -19,7 +19,7 @@ using Real = double;
 using ExecutionSpace = Kokkos::DefaultExecutionSpace;
 using MemorySpace = Kokkos::DefaultExecutionSpace::memory_space;
 
-constexpr int MAX_BASIS = 6; // P=2 -> 6 basis functions
+constexpr int MAX_BASIS = 10; // P=1 -> 3, P=2 -> 6, P=3 -> 10
 
 // Views
 using ViewInt1D = Kokkos::View<int *, Kokkos::LayoutLeft, MemorySpace>;
@@ -32,44 +32,213 @@ using ViewCSRRows = Kokkos::View<int *, Kokkos::LayoutLeft, MemorySpace>;
 using ViewCSRCols = Kokkos::View<int *, Kokkos::LayoutLeft, MemorySpace>;
 using ViewCSRVals = Kokkos::View<Real *, Kokkos::LayoutLeft, MemorySpace>;
 
+// struct QuadData {
+//   KOKKOS_INLINE_FUNCTION
+//   static int get_num_vol_points() { return 4; }
+
+//   KOKKOS_INLINE_FUNCTION
+//   static void get_vol(int q, Real &s, Real &t, Real &w) {
+//     if (q == 0) {
+//       s = 1.0 / 3.0;
+//       t = 1.0 / 3.0;
+//       w = -0.28125;
+//     } else if (q == 1) {
+//       s = 1.0 / 5.0;
+//       t = 1.0 / 5.0;
+//       w = 0.2604166666666667;
+//     } else if (q == 2) {
+//       s = 3.0 / 5.0;
+//       t = 1.0 / 5.0;
+//       w = 0.2604166666666667;
+//     } else {
+//       s = 1.0 / 5.0;
+//       t = 3.0 / 5.0;
+//       w = 0.2604166666666667;
+//     }
+//   }
+// };
+
 struct QuadData {
   KOKKOS_INLINE_FUNCTION
-  static int get_num_vol_points() { return 4; }
+  static int get_num_vol_points(int p_order) {
+    if (p_order == 1)
+      return 4;
+    if (p_order == 2)
+      return 6;
+    if (p_order == 3)
+      return 12;
+    return 4;
+  }
 
   KOKKOS_INLINE_FUNCTION
-  static void get_vol(int q, Real &s, Real &t, Real &w) {
-    if (q == 0) {
-      s = 1.0 / 3.0;
-      t = 1.0 / 3.0;
-      w = -0.28125;
-    } else if (q == 1) {
-      s = 1.0 / 5.0;
-      t = 1.0 / 5.0;
-      w = 0.2604166666666667;
-    } else if (q == 2) {
-      s = 3.0 / 5.0;
-      t = 1.0 / 5.0;
-      w = 0.2604166666666667;
-    } else {
-      s = 1.0 / 5.0;
-      t = 3.0 / 5.0;
-      w = 0.2604166666666667;
+  static void get_vol(int p_order, int q, Real &s, Real &t, Real &w) {
+    if (p_order == 1) {
+      // User's existing 4-point rule
+      if (q == 0) {
+        s = 1.0 / 3.0;
+        t = 1.0 / 3.0;
+        w = -0.28125;
+      } else if (q == 1 or q == 2) {
+        s = 1.0 / 5.0;
+        t = 1.0 / 5.0;
+        w = 0.2604166666666667;
+      } else if (q == 2) {
+        s = 3.0 / 5.0;
+        t = 1.0 / 5.0;
+        w = 0.2604166666666667;
+      } else {
+        s = 1.0 / 5.0;
+        t = 3.0 / 5.0;
+        w = 0.2604166666666667;
+      }
+    } else if (p_order == 2) {
+      // 6-point rule
+      if (q == 0) {
+        s = 0.108103018168070;
+        t = 0.445948490915965;
+        w = 0.111690794839005;
+      } else if (q == 1) {
+        s = 0.445948490915965;
+        t = 0.108103018168070;
+        w = 0.111690794839005;
+      } else if (q == 2) {
+        s = 0.445948490915965;
+        t = 0.445948490915965;
+        w = 0.111690794839005;
+      } else if (q == 3) {
+        s = 0.816847572980459;
+        t = 0.091576213509771;
+        w = 0.054975871827661;
+      } else if (q == 4) {
+        s = 0.091576213509771;
+        t = 0.816847572980459;
+        w = 0.054975871827661;
+      } else {
+        s = 0.091576213509771;
+        t = 0.091576213509771;
+        w = 0.054975871827661;
+      }
+    } else if (p_order == 3) {
+      // 12-point rule
+      if (q == 0) {
+        s = 0.091576213509771;
+        t = 0.091576213509771;
+        w = 0.054975871827661;
+      } else if (q == 1) {
+        s = 0.816847572980459;
+        t = 0.091576213509771;
+        w = 0.054975871827661;
+      } else if (q == 2) {
+        s = 0.091576213509771;
+        t = 0.816847572980459;
+        w = 0.054975871827661;
+      } else if (q == 3) {
+        s = 0.445948490915965;
+        t = 0.108103018168070;
+        w = 0.111690794839005;
+      } else if (q == 4) {
+        s = 0.108103018168070;
+        t = 0.445948490915965;
+        w = 0.111690794839005;
+      } else if (q == 5) {
+        s = 0.445948490915965;
+        t = 0.445948490915965;
+        w = 0.111690794839005;
+      } else if (q == 6) {
+        s = 0.059615876915220;
+        t = 0.470142061542390;
+        w = 0.066197076394253;
+      } else if (q == 7) {
+        s = 0.470142061542390;
+        t = 0.059615876915220;
+        w = 0.066197076394253;
+      } else if (q == 8) {
+        s = 0.470142061542390;
+        t = 0.470142061542390;
+        w = 0.066197076394253;
+      } else if (q == 9) {
+        s = 0.797426985353087;
+        t = 0.101286507323456;
+        w = 0.062969590273635;
+      } else if (q == 10) {
+        s = 0.101286507323456;
+        t = 0.797426985353087;
+        w = 0.062969590273635;
+      } else {
+        s = 0.101286507323456;
+        t = 0.101286507323456;
+        w = 0.062969590273635;
+      }
     }
   }
 };
 
+// struct QuadData1D {
+//   KOKKOS_INLINE_FUNCTION
+//   static int get_num_face_points() { return 2; }
+
+//   KOKKOS_INLINE_FUNCTION
+//   static void get_face(int q, Real &xi, Real &w) {
+//     if (q == 0) {
+//       xi = -0.5773502691896257;
+//       w = 1.0;
+//     } else {
+//       xi = 0.5773502691896257;
+//       w = 1.0;
+//     }
+//   }
+// };
+
 struct QuadData1D {
   KOKKOS_INLINE_FUNCTION
-  static int get_num_face_points() { return 2; }
+  static int get_num_face_points(int p_order) {
+    if (p_order == 1)
+      return 2;
+    if (p_order == 2)
+      return 3;
+    if (p_order == 3)
+      return 4;
+    return 2;
+  }
 
   KOKKOS_INLINE_FUNCTION
-  static void get_face(int q, Real &xi, Real &w) {
-    if (q == 0) {
-      xi = -0.5773502691896257;
-      w = 1.0;
-    } else {
-      xi = 0.5773502691896257;
-      w = 1.0;
+  static void get_face(int p_order, int q, Real &xi, Real &w) {
+    if (p_order == 1) {
+      // 2-Point Rule
+      if (q == 0) {
+        xi = -0.5773502691896257;
+        w = 1.0;
+      } else {
+        xi = 0.5773502691896257;
+        w = 1.0;
+      }
+    } else if (p_order == 2) {
+      // 3-Point Rule
+      if (q == 0) {
+        xi = -0.7745966692414834;
+        w = 0.5555555555555556;
+      } else if (q == 1) {
+        xi = 0.0;
+        w = 0.8888888888888888;
+      } else {
+        xi = 0.7745966692414834;
+        w = 0.5555555555555556;
+      }
+    } else if (p_order == 3) {
+      // 4-Point Rule
+      if (q == 0) {
+        xi = -0.8611363115940526;
+        w = 0.3478548451374538;
+      } else if (q == 1) {
+        xi = -0.3399810435848563;
+        w = 0.6521451548625461;
+      } else if (q == 2) {
+        xi = 0.3399810435848563;
+        w = 0.6521451548625461;
+      } else {
+        xi = 0.8611363115940526;
+        w = 0.3478548451374538;
+      }
     }
   }
 };
@@ -101,6 +270,9 @@ void legendre_poly(int n, Real x, Real &val, Real &dval) {
     Real c = 1.5811388300841898;
     val = c * (1.5 * x * x - 0.5);
     dval = c * (3.0 * x);
+  } else if (n == 3) {
+    val = 1.87082869 * (2.5 * x * x * x - 1.5 * x);
+    dval = 1.87082869 * (7.5 * x * x - 1.5);
   }
 }
 
@@ -119,14 +291,18 @@ void eval_physical_basis_dynamic(int basis_idx, Real bb_min_x, Real bb_min_y,
   Real scale_x = Kokkos::sqrt(2.0 / dx);
   Real scale_y = Kokkos::sqrt(2.0 / dy);
 
+  // -- P=0 --
   int nx = 0, ny = 0;
+  // -- P=1 --
   if (basis_idx == 1) {
     nx = 1;
     ny = 0;
   } else if (basis_idx == 2) {
     nx = 0;
     ny = 1;
-  } else if (basis_idx == 3) {
+  }
+  // -- P=2 --
+  else if (basis_idx == 3) {
     nx = 2;
     ny = 0;
   } else if (basis_idx == 4) {
@@ -135,6 +311,20 @@ void eval_physical_basis_dynamic(int basis_idx, Real bb_min_x, Real bb_min_y,
   } else if (basis_idx == 5) {
     nx = 0;
     ny = 2;
+  }
+  // -- P=3 --
+  else if (basis_idx == 6) {
+    nx = 3;
+    ny = 0;
+  } else if (basis_idx == 7) {
+    nx = 2;
+    ny = 1;
+  } else if (basis_idx == 8) {
+    nx = 1;
+    ny = 2;
+  } else if (basis_idx == 9) {
+    nx = 0;
+    ny = 3;
   }
 
   Real Lx, dLx, Ly, dLy;
@@ -146,12 +336,28 @@ void eval_physical_basis_dynamic(int basis_idx, Real bb_min_x, Real bb_min_y,
   grad_y = (scale_x * Lx) * (scale_y * dLy * deta_dy);
 }
 
+// KOKKOS_INLINE_FUNCTION
+// int linear_search(const ViewCSRCols &cols, int start_idx, int end_idx,
+//                   int target) {
+//   for (int i = start_idx; i < end_idx; ++i) {
+//     if (cols(i) == target)
+//       return i;
+//   }
+//   return -1;
+// }
+
 KOKKOS_INLINE_FUNCTION
-int linear_search(const ViewCSRCols &cols, int start_idx, int end_idx,
-                  int target) {
-  for (int i = start_idx; i < end_idx; ++i) {
-    if (cols(i) == target)
-      return i;
+int binary_search(const ViewCSRCols &cols, int start, int end, int target) {
+  int left = start;
+  int right = end - 1;
+  while (left <= right) {
+    int mid = left + (right - left) / 2;
+    if (cols(mid) == target)
+      return mid;
+    if (cols(mid) < target)
+      left = mid + 1;
+    else
+      right = mid - 1;
   }
   return -1;
 }
@@ -229,12 +435,10 @@ struct AssembleVolumeKernel {
   ViewInt1D element_orders;
   ViewInt1D dof_offsets;
 
-  // --- 1. NEW FIELD VIEWS (Replacing old scalars) ---
   ViewReal1D source_exact;
   ViewReal1D vx_quad, vy_quad;
   ViewReal1D Kxx_quad, Kxy_quad, Kyx_quad, Kyy_quad;
 
-  // --- 2. UPDATED CONSTRUCTOR ---
   AssembleVolumeKernel(ViewCSRVals _vals, ViewCSRCols _cols, ViewCSRRows _rows,
                        ViewReal1D _rhs, ViewInt1D _toff, ViewInt2D _tri,
                        ViewReal2D _nodes, ViewReal2D _bb, ViewInt1D _orders,
@@ -271,10 +475,12 @@ struct AssembleVolumeKernel {
                      nodes(n3, 0), nodes(n3, 1), B00, B01, B10, B11, cx, cy);
       Real detJ = Kokkos::abs(B00 * B11 - B01 * B10);
 
-      int n_q = QuadData::get_num_vol_points();
+      int p_order = element_orders(e); 
+      int n_q = QuadData::get_num_vol_points(p_order);
+      
       for (int q = 0; q < n_q; ++q) {
         Real qr_s, qr_t, qr_w;
-        QuadData::get_vol(q, qr_s, qr_t, qr_w);
+        QuadData::get_vol(p_order,q, qr_s, qr_t, qr_w);
 
         Real x_phys = B00 * qr_s + B01 * qr_t + cx;
         Real y_phys = B10 * qr_s + B11 * qr_t + cy;
@@ -317,7 +523,7 @@ struct AssembleVolumeKernel {
     for (int r = 0; r < n_basis; ++r) {
       int global_row = row_start_global + r;
 
-      if (Kokkos::abs(local_rhs[r]) > 1e-14) {
+      if (Kokkos::abs(local_rhs[r]) > 0.0) {
         Kokkos::atomic_add(&rhs_vector(global_row), local_rhs[r]);
       }
 
@@ -325,9 +531,9 @@ struct AssembleVolumeKernel {
       int row_ptr_end = global_rows(global_row + 1);
 
       for (int c = 0; c < n_basis; c++) {
-        if (Kokkos::abs(local_Ke[r][c]) > 1e-12) {
+        if (Kokkos::abs(local_Ke[r][c]) > 0.0) {
           int global_col = row_start_global + c;
-          int idx = linear_search(global_cols, row_ptr_start, row_ptr_end,
+          int idx = binary_search(global_cols, row_ptr_start, row_ptr_end,
                                   global_col);
           if (idx != -1)
             Kokkos::atomic_add(&global_vals(idx), local_Ke[r][c]);
@@ -387,7 +593,7 @@ struct AssembleFaceKernel {
       ny = -ny;
     }
 
-    // 2. Element Setup
+    // Element Setup
     int pPlus = element_orders(ePlus), pMinus = element_orders(eMinus);
     int n_bPlus = get_basis_count(pPlus), n_bMinus = get_basis_count(pMinus);
     int row_start_Plus = dof_offsets(ePlus),
@@ -399,11 +605,12 @@ struct AssembleFaceKernel {
     Real K_MP[MAX_BASIS][MAX_BASIS] = {0.0}; // Minus-Plus
     Real K_MM[MAX_BASIS][MAX_BASIS] = {0.0}; // Minus-Minus
 
-    int n_q = QuadData1D::get_num_face_points();
+    int p_max = (pPlus > pMinus) ? pPlus : pMinus;
+    int n_q = QuadData1D::get_num_face_points(p_max);
 
     for (int q = 0; q < n_q; ++q) {
       Real xi, w_ref;
-      QuadData1D::get_face(q, xi, w_ref);
+      QuadData1D::get_face(p_max, q, xi, w_ref);
       Real w = w_ref * (h_edge / 2.0); // Jacobian of 1D line
 
       // Physical coordinates of quad point
@@ -480,7 +687,7 @@ struct AssembleFaceKernel {
       }
     }
 
-    // 3. Scatter All 4 Blocks to Global CSR Matrix
+    // Scatter All 4 Blocks to Global CSR Matrix
     auto scatter = [&](int r_start, int c_start, int num_r, int num_c,
                        Real local_K[MAX_BASIS][MAX_BASIS]) {
       for (int r = 0; r < num_r; ++r) {
@@ -488,9 +695,9 @@ struct AssembleFaceKernel {
         int row_ptr_start = global_rows(global_row);
         int row_ptr_end = global_rows(global_row + 1);
         for (int c = 0; c < num_c; ++c) {
-          if (Kokkos::abs(local_K[r][c]) > 1e-12) {
+          if (Kokkos::abs(local_K[r][c]) > 0.0) {
             int global_col = c_start + c;
-            int idx = linear_search(global_cols, row_ptr_start, row_ptr_end,
+            int idx = binary_search(global_cols, row_ptr_start, row_ptr_end,
                                     global_col);
             if (idx != -1)
               Kokkos::atomic_add(&global_vals(idx), local_K[r][c]);
@@ -557,11 +764,11 @@ struct AssembleBoundaryKernel {
         row_start = dof_offsets(ePlus);
     Real local_K[MAX_BASIS][MAX_BASIS] = {0.0};
     Real local_rhs[MAX_BASIS] = {0.0};
-    int n_q = QuadData1D::get_num_face_points();
+    int n_q = QuadData1D::get_num_face_points(pPlus);
 
     for (int q = 0; q < n_q; ++q) {
       Real xi, w_ref;
-      QuadData1D::get_face(q, xi, w_ref);
+      QuadData1D::get_face(pPlus, q, xi, w_ref);
       Real w = w_ref * (h_edge / 2.0);
       Real x_phys = 0.5 * (1.0 - xi) * xA + 0.5 * (1.0 + xi) * xB;
       Real y_phys = 0.5 * (1.0 - xi) * yA + 0.5 * (1.0 + xi) * yB;
@@ -589,11 +796,11 @@ struct AssembleBoundaryKernel {
       Real inflow_flux = (vn < 0.0) ? vn : 0.0;
 
       for (int r = 0; r < n_bPlus; ++r) {
-        if (bc_type > 0.5) { // NEUMANN
+        if (bc_type > 0.5) { // NEUMANN BC
           local_rhs[r] += (-l_g_N * vP[r]) * w;
           for (int c = 0; c < n_bPlus; ++c)
             local_K[r][c] += (outflow_flux * vP[r] * vP[c]) * w;
-        } else { // DIRICHLET
+        } else { // DIRICHLET BC
           Real adv_rhs = -inflow_flux * l_g_D * vP[r];
           Real diff_rhs = penalty * l_g_D * vP[r] -
                           (l_Kxx * gxP[r] * nx + l_Kyy * gyP[r] * ny) * l_g_D;
@@ -612,13 +819,13 @@ struct AssembleBoundaryKernel {
 
     for (int r = 0; r < n_bPlus; ++r) {
       int global_row = row_start + r;
-      if (Kokkos::abs(local_rhs[r]) > 1e-14)
+      if (Kokkos::abs(local_rhs[r]) > 0.0)
         Kokkos::atomic_add(&rhs_vector(global_row), local_rhs[r]);
       int r_start = global_rows(global_row),
           r_end = global_rows(global_row + 1);
       for (int c = 0; c < n_bPlus; ++c) {
-        if (Kokkos::abs(local_K[r][c]) > 1e-12) {
-          int idx = linear_search(global_cols, r_start, r_end, row_start + c);
+        if (Kokkos::abs(local_K[r][c]) > 0.0) {
+          int idx = binary_search(global_cols, r_start, r_end, row_start + c);
           if (idx != -1)
             Kokkos::atomic_add(&global_vals(idx), local_K[r][c]);
         }
@@ -651,11 +858,19 @@ struct DGSolver {
 
   DGSolver() = default;
 
-  // --- EXACT QUADRATURE COORDINATE GENERATOR ---
+  // --- QUADRATURE COORDINATES ---
   std::pair<std::vector<double>, std::vector<double>>
   vol_quad_points(const AggMesh &mesh) {
     int n_tri = mesh.num_triangles();
-    int n_q = QuadData::get_num_vol_points();
+    auto h_orders = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), d_orders);
+    int max_p = 1;
+    for(int i = 0; i < h_orders.extent(0); ++i) {
+        if(h_orders(i) > max_p) max_p = h_orders(i);
+    }
+
+    
+    
+    int n_q = QuadData::get_num_vol_points(max_p);
 
     std::vector<double> x_quads(n_tri * n_q);
     std::vector<double> y_quads(n_tri * n_q);
@@ -673,7 +888,7 @@ struct DGSolver {
 
       for (int q = 0; q < n_q; ++q) {
         double s, t_coord, w;
-        QuadData::get_vol(q, s, t_coord, w);
+        QuadData::get_vol(max_p, q, s, t_coord, w);
 
         x_quads[t * n_q + q] = B00 * s + B01 * t_coord + cx;
         y_quads[t * n_q + q] = B10 * s + B11 * t_coord + cy;
@@ -682,11 +897,17 @@ struct DGSolver {
     return {x_quads, y_quads};
   }
 
-  // --- EXACT FACE QUADRATURE COORDINATE GENERATOR ---
+  // --- FACE QUADRATURE COORDINATES ---
   std::pair<std::vector<double>, std::vector<double>>
   face_quad_points(const AggMesh &mesh) {
+auto h_orders = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), d_orders);
+    int max_p = 1;
+    for(int i = 0; i < h_orders.extent(0); ++i) {
+        if(h_orders(i) > max_p) max_p = h_orders(i);
+    }
+    
     int n_q_face =
-        QuadData1D::get_num_face_points(); // Should be 2 points per face
+        QuadData1D::get_num_face_points(max_p); // Should be 2 points per face
 
     int num_int_faces = mesh.h_faces.size() / 4;
     int num_bnd_faces = mesh.h_bnd_faces.size() / 3;
@@ -707,7 +928,7 @@ struct DGSolver {
 
       for (int q = 0; q < n_q_face; ++q) {
         double xi, w;
-        QuadData1D::get_face(q, xi, w);
+        QuadData1D::get_face(max_p, q, xi, w);
 
         // Map from 1D reference [-1, 1] to the physical 2D segment
         double shapeA = 0.5 * (1.0 - xi);
@@ -728,7 +949,7 @@ struct DGSolver {
 
       for (int q = 0; q < n_q_face; ++q) {
         double xi, w;
-        QuadData1D::get_face(q, xi, w);
+        QuadData1D::get_face(max_p, q, xi, w);
 
         double shapeA = 0.5 * (1.0 - xi);
         double shapeB = 0.5 * (1.0 + xi);
@@ -895,7 +1116,7 @@ struct DGSolver {
     Kokkos::resize(d_Kyy_face, n);
     Kokkos::deep_copy(d_Kyy_face, h_raw);
   }
-  
+
   Kokkos::View<double *, Kokkos::LayoutLeft,
                Kokkos::DefaultExecutionSpace::memory_space>
       d_g_D_face;
@@ -993,8 +1214,7 @@ struct DGSolver {
 
   void create_sparse_graph(const AggMesh &mesh) {
     if (total_dofs == 0) {
-      throw std::runtime_error(
-          "You must call set_p_orders() before!");
+      throw std::runtime_error("You must call set_p_orders() before!");
     }
 
     int n_elem = mesh.num_elements();
@@ -1069,8 +1289,8 @@ struct DGSolver {
     // Allocate the Kokkos DEVICE Views!
     d_global_rows = ViewCSRRows("d_global_rows", total_dofs + 1);
     d_global_cols = ViewCSRCols("d_global_cols", nnz);
-    d_global_vals = ViewCSRVals("d_global_vals", nnz); 
-    d_rhs = ViewReal1D("d_rhs", total_dofs);           
+    d_global_vals = ViewCSRVals("d_global_vals", nnz);
+    d_rhs = ViewReal1D("d_rhs", total_dofs);
 
     // Deep copy the graph structure to the GPU
     auto mirror_rows = Kokkos::create_mirror_view(d_global_rows);
@@ -1083,9 +1303,7 @@ struct DGSolver {
 
     Kokkos::deep_copy(d_global_rows, mirror_rows);
     Kokkos::deep_copy(d_global_cols, mirror_cols);
-
   }
-
 
   void print_matrix(int print_limit = 20) {
     if (total_dofs == 0 || d_global_rows.extent(0) == 0) {
