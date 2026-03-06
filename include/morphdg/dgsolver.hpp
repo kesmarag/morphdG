@@ -32,32 +32,6 @@ using ViewCSRRows = Kokkos::View<int *, Kokkos::LayoutLeft, MemorySpace>;
 using ViewCSRCols = Kokkos::View<int *, Kokkos::LayoutLeft, MemorySpace>;
 using ViewCSRVals = Kokkos::View<Real *, Kokkos::LayoutLeft, MemorySpace>;
 
-// struct QuadData {
-//   KOKKOS_INLINE_FUNCTION
-//   static int get_num_vol_points() { return 4; }
-
-//   KOKKOS_INLINE_FUNCTION
-//   static void get_vol(int q, Real &s, Real &t, Real &w) {
-//     if (q == 0) {
-//       s = 1.0 / 3.0;
-//       t = 1.0 / 3.0;
-//       w = -0.28125;
-//     } else if (q == 1) {
-//       s = 1.0 / 5.0;
-//       t = 1.0 / 5.0;
-//       w = 0.2604166666666667;
-//     } else if (q == 2) {
-//       s = 3.0 / 5.0;
-//       t = 1.0 / 5.0;
-//       w = 0.2604166666666667;
-//     } else {
-//       s = 1.0 / 5.0;
-//       t = 3.0 / 5.0;
-//       w = 0.2604166666666667;
-//     }
-//   }
-// };
-
 struct QuadData {
   KOKKOS_INLINE_FUNCTION
   static int get_num_vol_points(int p_order) {
@@ -172,22 +146,6 @@ struct QuadData {
     }
   }
 };
-
-// struct QuadData1D {
-//   KOKKOS_INLINE_FUNCTION
-//   static int get_num_face_points() { return 2; }
-
-//   KOKKOS_INLINE_FUNCTION
-//   static void get_face(int q, Real &xi, Real &w) {
-//     if (q == 0) {
-//       xi = -0.5773502691896257;
-//       w = 1.0;
-//     } else {
-//       xi = 0.5773502691896257;
-//       w = 1.0;
-//     }
-//   }
-// };
 
 struct QuadData1D {
   KOKKOS_INLINE_FUNCTION
@@ -336,16 +294,6 @@ void eval_physical_basis_dynamic(int basis_idx, Real bb_min_x, Real bb_min_y,
   grad_y = (scale_x * Lx) * (scale_y * dLy * deta_dy);
 }
 
-// KOKKOS_INLINE_FUNCTION
-// int linear_search(const ViewCSRCols &cols, int start_idx, int end_idx,
-//                   int target) {
-//   for (int i = start_idx; i < end_idx; ++i) {
-//     if (cols(i) == target)
-//       return i;
-//   }
-//   return -1;
-// }
-
 KOKKOS_INLINE_FUNCTION
 int binary_search(const ViewCSRCols &cols, int start, int end, int target) {
   int left = start;
@@ -423,6 +371,84 @@ void print_csr_matrix_blocks(const RowView &h_row_ptr, const ColView &h_col_ind,
   }
 }
 
+struct AssembleMassKernel {
+  ViewCSRVals mass_vals;
+  ViewCSRCols global_cols;
+  ViewCSRRows global_rows;
+  ViewInt1D t_offsets;
+  ViewInt2D triangles;
+  ViewReal2D nodes;
+  ViewReal2D bboxes;
+  ViewInt1D element_orders;
+  ViewInt1D dof_offsets;
+
+  AssembleMassKernel(ViewCSRVals _mvals, ViewCSRCols _cols, ViewCSRRows _rows,
+                     ViewInt1D _toff, ViewInt2D _tri, ViewReal2D _nodes,
+                     ViewReal2D _bb, ViewInt1D _orders, ViewInt1D _offsets)
+      : mass_vals(_mvals), global_cols(_cols), global_rows(_rows),
+        t_offsets(_toff), triangles(_tri), nodes(_nodes), bboxes(_bb),
+        element_orders(_orders), dof_offsets(_offsets) {}
+
+  KOKKOS_INLINE_FUNCTION
+  void operator()(const int e) const {
+    int p_order = element_orders(e);
+    int n_basis = get_basis_count(p_order);
+    int row_start_global = dof_offsets(e);
+
+    Real bb_min_x = bboxes(e, 0), bb_min_y = bboxes(e, 1);
+    Real bb_max_x = bboxes(e, 2), bb_max_y = bboxes(e, 3);
+    Real local_M[MAX_BASIS][MAX_BASIS] = {0.0};
+
+    int start = t_offsets(e);
+    int end = t_offsets(e + 1);
+
+    for (int t_idx = start; t_idx < end; ++t_idx) {
+      int n1 = triangles(t_idx, 0), n2 = triangles(t_idx, 1),
+          n3 = triangles(t_idx, 2);
+      Real B00, B01, B10, B11, cx, cy;
+      get_affine_map(nodes(n1, 0), nodes(n1, 1), nodes(n2, 0), nodes(n2, 1),
+                     nodes(n3, 0), nodes(n3, 1), B00, B01, B10, B11, cx, cy);
+      Real detJ = Kokkos::abs(B00 * B11 - B01 * B10);
+
+      int n_q = QuadData::get_num_vol_points(p_order);
+      for (int q = 0; q < n_q; ++q) {
+        Real qr_s, qr_t, qr_w;
+        QuadData::get_vol(p_order, q, qr_s, qr_t, qr_w);
+        Real x_phys = B00 * qr_s + B01 * qr_t + cx;
+        Real y_phys = B10 * qr_s + B11 * qr_t + cy;
+        Real w = qr_w * detJ;
+
+        Real vals[MAX_BASIS], gx[MAX_BASIS], gy[MAX_BASIS];
+        for (int i = 0; i < n_basis; ++i)
+          eval_physical_basis_dynamic(i, bb_min_x, bb_min_y, bb_max_x, bb_max_y,
+                                      x_phys, y_phys, vals[i], gx[i], gy[i]);
+
+        for (int r = 0; r < n_basis; ++r) {
+          for (int c = 0; c < n_basis; ++c) {
+            local_M[r][c] += vals[r] * vals[c] * w;
+          }
+        }
+      }
+    }
+
+    for (int r = 0; r < n_basis; ++r) {
+      int global_row = row_start_global + r;
+      int row_ptr_start = global_rows(global_row);
+      int row_ptr_end = global_rows(global_row + 1);
+
+      for (int c = 0; c < n_basis; ++c) {
+        if (Kokkos::abs(local_M[r][c]) > 0.0) {
+          int global_col = row_start_global + c;
+          int idx = binary_search(global_cols, row_ptr_start, row_ptr_end,
+                                  global_col);
+          if (idx != -1)
+            Kokkos::atomic_add(&mass_vals(idx), local_M[r][c]);
+        }
+      }
+    }
+  }
+};
+
 struct AssembleVolumeKernel {
   ViewCSRVals global_vals;
   ViewCSRCols global_cols;
@@ -475,12 +501,12 @@ struct AssembleVolumeKernel {
                      nodes(n3, 0), nodes(n3, 1), B00, B01, B10, B11, cx, cy);
       Real detJ = Kokkos::abs(B00 * B11 - B01 * B10);
 
-      int p_order = element_orders(e); 
+      int p_order = element_orders(e);
       int n_q = QuadData::get_num_vol_points(p_order);
-      
+
       for (int q = 0; q < n_q; ++q) {
         Real qr_s, qr_t, qr_w;
-        QuadData::get_vol(p_order,q, qr_s, qr_t, qr_w);
+        QuadData::get_vol(p_order, q, qr_s, qr_t, qr_w);
 
         Real x_phys = B00 * qr_s + B01 * qr_t + cx;
         Real y_phys = B10 * qr_s + B11 * qr_t + cy;
@@ -862,14 +888,14 @@ struct DGSolver {
   std::pair<std::vector<double>, std::vector<double>>
   vol_quad_points(const AggMesh &mesh) {
     int n_tri = mesh.num_triangles();
-    auto h_orders = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), d_orders);
+    auto h_orders =
+        Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), d_orders);
     int max_p = 1;
-    for(int i = 0; i < h_orders.extent(0); ++i) {
-        if(h_orders(i) > max_p) max_p = h_orders(i);
+    for (int i = 0; i < h_orders.extent(0); ++i) {
+      if (h_orders(i) > max_p)
+        max_p = h_orders(i);
     }
 
-    
-    
     int n_q = QuadData::get_num_vol_points(max_p);
 
     std::vector<double> x_quads(n_tri * n_q);
@@ -900,12 +926,14 @@ struct DGSolver {
   // --- FACE QUADRATURE COORDINATES ---
   std::pair<std::vector<double>, std::vector<double>>
   face_quad_points(const AggMesh &mesh) {
-auto h_orders = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), d_orders);
+    auto h_orders =
+        Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), d_orders);
     int max_p = 1;
-    for(int i = 0; i < h_orders.extent(0); ++i) {
-        if(h_orders(i) > max_p) max_p = h_orders(i);
+    for (int i = 0; i < h_orders.extent(0); ++i) {
+      if (h_orders(i) > max_p)
+        max_p = h_orders(i);
     }
-    
+
     int n_q_face =
         QuadData1D::get_num_face_points(max_p); // Should be 2 points per face
 
@@ -1173,6 +1201,9 @@ auto h_orders = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), d_order
   ViewCSRRows d_global_rows;
   ViewReal1D d_rhs;
 
+  ViewCSRVals d_mass_vals; // <--- ADD THIS
+  ViewReal1D d_u;          // <--- ADD THIS (The time-varying physics state)
+
   // --- KOKKOS KERNEL LAUNCHER ---
   void assemble(const AggMesh &mesh) {
     Kokkos::deep_copy(d_global_vals, 0.0);
@@ -1209,6 +1240,13 @@ auto h_orders = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), d_order
         d_Kxx_face, d_Kyy_face, d_g_D_face, d_g_N_face, d_bctype_face,
         coeffs.alpha, num_int_faces);
     Kokkos::parallel_for("AssembleBoundaryFaces", num_bnd_faces, bnd_kernel);
+    Kokkos::fence();
+
+    Kokkos::deep_copy(d_mass_vals, 0.0);
+    AssembleMassKernel mass_kernel(
+        d_mass_vals, d_global_cols, d_global_rows, mesh.d_t_offsets,
+        mesh.d_triangles, mesh.d_nodes, mesh.d_bboxes, d_orders, d_offsets);
+    Kokkos::parallel_for("AssembleMass", mesh.num_elements(), mass_kernel);
     Kokkos::fence();
   }
 
@@ -1291,6 +1329,10 @@ auto h_orders = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), d_order
     d_global_cols = ViewCSRCols("d_global_cols", nnz);
     d_global_vals = ViewCSRVals("d_global_vals", nnz);
     d_rhs = ViewReal1D("d_rhs", total_dofs);
+
+    d_mass_vals = ViewCSRVals("d_mass_vals", nnz);
+    Kokkos::resize(d_u, total_dofs);
+    Kokkos::deep_copy(d_u, 0.0);
 
     // Deep copy the graph structure to the GPU
     auto mirror_rows = Kokkos::create_mirror_view(d_global_rows);
@@ -1472,6 +1514,169 @@ auto h_orders = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace(), d_order
         h_py_x(py_x.mutable_data(), py_x.shape(0));
     Kokkos::deep_copy(h_py_x, d_x);
 
+    return py_x;
+  }
+
+
+// ============================================================================
+  // FULLY IMPLICIT BACKWARD EULER TIME STEPPING
+  // ============================================================================
+  void advance_implicit_euler(Real dt, int max_iters=1000, Real tolerance=1e-8) {
+    int nnz = d_global_vals.extent(0);
+    using CrsMatrixType = KokkosSparse::CrsMatrix<Real, int, ExecutionSpace, void, int>;
+    
+    // 1. Build the Implicit Matrix: A = M + dt * K
+    ViewCSRVals d_A("A_impl", nnz);
+    Kokkos::parallel_for("Build_Implicit_A", nnz, KOKKOS_LAMBDA(const int i) {
+        d_A(i) = d_mass_vals(i) + dt * d_global_vals(i);
+    });
+    CrsMatrixType A_mat("A_mat", total_dofs, total_dofs, nnz, d_A, d_global_rows, d_global_cols);
+
+    // 2. Build the Right Hand Side: b = M * u^n + dt * f
+    ViewReal1D d_b("b_impl", total_dofs);
+    CrsMatrixType M_mat("M_mat", total_dofs, total_dofs, nnz, d_mass_vals, d_global_rows, d_global_cols);
+    KokkosSparse::spmv("N", 1.0, M_mat, d_u, 0.0, d_b); // b = M * u^n
+    KokkosBlas::axpy(dt, d_rhs, d_b);                   // b = b + dt * f
+
+    // 3. Solve A * u^{n+1} = b using BiCGStab
+    // We use the current state (d_u) as the initial guess for lightning-fast convergence!
+    ViewReal1D d_r("r", total_dofs), d_r0_star("r0_star", total_dofs);
+    ViewReal1D d_p("p", total_dofs), d_v("v", total_dofs);
+    ViewReal1D d_s("s", total_dofs), d_t("t", total_dofs);
+
+    // r = b - A * u^n
+    Kokkos::deep_copy(d_r, d_b);
+    KokkosSparse::spmv("N", -1.0, A_mat, d_u, 1.0, d_r);
+    Kokkos::deep_copy(d_r0_star, d_r);
+    Kokkos::deep_copy(d_p, d_r);
+
+    Real initial_norm = Kokkos::sqrt(KokkosBlas::dot(d_r, d_r));
+    Real rho_prev = 1.0, alpha = 1.0, omega = 1.0;
+
+    if (initial_norm > 1e-12) {
+      int iter = 0;
+      for (; iter < max_iters; ++iter) {
+        Real rho = KokkosBlas::dot(d_r0_star, d_r);
+        if (Kokkos::abs(rho) < 1e-14) break;
+
+        if (iter > 0) {
+          Real beta = (rho / rho_prev) * (alpha / omega);
+          KokkosBlas::axpy(-omega, d_v, d_p);
+          KokkosBlas::axpby(1.0, d_r, beta, d_p);
+        }
+
+        KokkosSparse::spmv("N", 1.0, A_mat, d_p, 0.0, d_v);
+        Real r0_dot_v = KokkosBlas::dot(d_r0_star, d_v);
+        if (Kokkos::abs(r0_dot_v) < 1e-14) break;
+
+        alpha = rho / r0_dot_v;
+
+        Kokkos::deep_copy(d_s, d_r);
+        KokkosBlas::axpy(-alpha, d_v, d_s);
+
+        Real norm_s = Kokkos::sqrt(KokkosBlas::dot(d_s, d_s));
+        if (norm_s / initial_norm < tolerance) {
+          KokkosBlas::axpy(alpha, d_p, d_u); // Update u^{n+1} in place!
+          break;
+        }
+
+        KokkosSparse::spmv("N", 1.0, A_mat, d_s, 0.0, d_t);
+        Real t_dot_s = KokkosBlas::dot(d_t, d_s);
+        Real t_dot_t = KokkosBlas::dot(d_t, d_t);
+        omega = t_dot_s / t_dot_t;
+
+        KokkosBlas::axpy(alpha, d_p, d_u); // Update u^{n+1} in place!
+        KokkosBlas::axpy(omega, d_s, d_u);
+
+        Kokkos::deep_copy(d_r, d_s);
+        KokkosBlas::axpy(-omega, d_t, d_r);
+
+        Real current_norm = Kokkos::sqrt(KokkosBlas::dot(d_r, d_r));
+        if (current_norm / initial_norm < tolerance) break;
+        rho_prev = rho;
+      }
+    }
+  }
+
+  
+  // ============================================================================
+  // EXPLICIT RK4 TIME STEPPING
+  // ============================================================================
+  void compute_rk_rhs(ViewReal1D u_in, ViewReal1D k_out) {
+    using CrsMatrixType =
+        KokkosSparse::CrsMatrix<Real, int, ExecutionSpace, void, int>;
+    int nnz = d_global_vals.extent(0);
+    CrsMatrixType K_mat("K", total_dofs, total_dofs, nnz, d_global_vals,
+                        d_global_rows, d_global_cols);
+    CrsMatrixType M_mat("M", total_dofs, total_dofs, nnz, d_mass_vals,
+                        d_global_rows, d_global_cols);
+
+    ViewReal1D d_R("R", total_dofs), d_p("p", total_dofs),
+        d_Ap("Ap", total_dofs);
+
+    // 1. R = F - K * u
+    Kokkos::deep_copy(d_R, d_rhs);
+    KokkosSparse::spmv("N", -1.0, K_mat, u_in, 1.0, d_R);
+
+    // 2. Solve M * k = R (Mass Matrix is block-diagonal, CG converges in ~2-4
+    // iters)
+    Kokkos::deep_copy(k_out, 0.0);
+    Kokkos::deep_copy(d_p, d_R);
+    Real r_dot_r = KokkosBlas::dot(d_R, d_R);
+    Real init_norm = Kokkos::sqrt(r_dot_r);
+
+    if (init_norm > 1e-14) {
+      for (int iter = 0; iter < 50; ++iter) {
+        KokkosSparse::spmv("N", 1.0, M_mat, d_p, 0.0, d_Ap);
+        Real p_dot_Ap = KokkosBlas::dot(d_p, d_Ap);
+        if (Kokkos::abs(p_dot_Ap) < 1e-15)
+          break;
+
+        Real alpha = r_dot_r / p_dot_Ap;
+        KokkosBlas::axpy(alpha, d_p, k_out);
+        KokkosBlas::axpy(-alpha, d_Ap, d_R);
+
+        Real r_new = KokkosBlas::dot(d_R, d_R);
+        if (Kokkos::sqrt(r_new) / init_norm < 1e-8)
+          break;
+
+        KokkosBlas::axpby(1.0, d_R, r_new / r_dot_r, d_p);
+        r_dot_r = r_new;
+      }
+    }
+  }
+
+  void advance_rk4(Real dt) {
+    ViewReal1D k1("k1", total_dofs), k2("k2", total_dofs), k3("k3", total_dofs),
+        k4("k4", total_dofs), u_tmp("u_tmp", total_dofs);
+
+    compute_rk_rhs(d_u, k1);
+    Kokkos::deep_copy(u_tmp, d_u);
+    KokkosBlas::axpy(0.5 * dt, k1, u_tmp);
+
+    compute_rk_rhs(u_tmp, k2);
+    Kokkos::deep_copy(u_tmp, d_u);
+    KokkosBlas::axpy(0.5 * dt, k2, u_tmp);
+
+    compute_rk_rhs(u_tmp, k3);
+    Kokkos::deep_copy(u_tmp, d_u);
+    KokkosBlas::axpy(dt, k3, u_tmp);
+
+    compute_rk_rhs(u_tmp, k4);
+
+    // Final Update: u = u + dt/6 * (k1 + 2k2 + 2k3 + k4)
+    KokkosBlas::axpy(dt / 6.0, k1, d_u);
+    KokkosBlas::axpy(dt / 3.0, k2, d_u);
+    KokkosBlas::axpy(dt / 3.0, k3, d_u);
+    KokkosBlas::axpy(dt / 6.0, k4, d_u);
+  }
+
+  pybind11::array_t<Real> get_state() {
+    pybind11::array_t<Real> py_x(total_dofs);
+    Kokkos::View<Real *, Kokkos::HostSpace,
+                 Kokkos::MemoryTraits<Kokkos::Unmanaged>>
+        h_x(py_x.mutable_data(), py_x.shape(0));
+    Kokkos::deep_copy(h_x, d_u);
     return py_x;
   }
 };
